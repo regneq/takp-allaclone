@@ -1045,14 +1045,6 @@ function BuildItemStats($item, $show_name_icon) {
 	{
 		$html_string .= "<tr><td colspan='2' nowrap='1'><b>Skill Mod: ".ucfirstwords($dbskills[$item["skillmodtype"]]).": </b>".sign($item["skillmodvalue"])."%</td></tr>";
 	}
-	// Augmentations
-	for( $i = 1; $i <= 5; $i ++)
-	{
-		if($item["augslot".$i."type"] > 0)
-		{
-			$html_string .= "<tr><td width='0%' nowrap='1' colspan='2'><b>Slot ".$i.": </b>Type ".$item["augslot".$i."type"]."</td></tr>";
-		}
-	}
 	//item proc
 	if (($item["proceffect"]>0) && ($item["proceffect"]<65535))
 	{ 
