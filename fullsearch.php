@@ -104,20 +104,11 @@ $XhtmlCompliant = TRUE;
 include($includes_dir.'headers.php');
 
 // Display found objects
-print "          <table border='0' width='100%'>\n";
-print "            <tr valign='top'>\n";
-print "              <td nowrap='1' width='34%'>\n";
+echo '<div class="flex">';
 PrintQueryResults($FoundItems,       $MaxItemsReturned,    "item.php",    "item",    "items", "id", "name");
-print "              </td>\n";
-print "              <td nowrap='1' width='33%'>\n";
 PrintQueryResults($FoundNpcs,         $MaxNpcsReturned,     "npc.php",     "NPC",     "NPCs", "id", "name");
-print "              </td>\n";
-print "              <td nowrap='1' width='33%'>\n";
 PrintQueryResults($FoundFactions, $MaxFactionsReturned, "faction.php", "faction", "factions", "id", "name");
-print "              </td>\n";
-print "            </tr>\n";
-print "          </table>\n";
-
+echo '</div>';
 
 include($includes_dir."footers.php");
 ?>

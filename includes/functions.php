@@ -26,12 +26,12 @@ function PrintQueryResults($FoundObjects, $MaxObjectsReturned, $OpenObjectByIdPa
 	}
 	else
 	{
-		echo  "<ul><li><b>".$ObjectsToShow." ".($ObjectsToShow == 1 ? $ObjectDescription : $ObjectsDescription)." displayed.";
+		echo  "<div class=\"column\"><h3>".$ObjectsToShow." ".($ObjectsToShow == 1 ? $ObjectDescription : $ObjectsDescription)." displayed.";
 		if($MoreObjectsExist){
 			echo  " More ".$ObjectsDescription." exist but you reached the query limit.";
 		}
-		echo  "</b></li>\n";
-		echo  "<ul>\n";
+		echo  "</h3>\n";
+		echo  "<ul>";
 		for( $j = 1 ; $j <= $ObjectsToShow ; $j ++ ){
 			$row = mysql_fetch_array($FoundObjects);
 			$PrintString = " <li><a href='".$OpenObjectByIdPage."?id=".$row[$IdAttribute]."'>";
@@ -50,7 +50,7 @@ function PrintQueryResults($FoundObjects, $MaxObjectsReturned, $OpenObjectByIdPa
 			echo  $PrintString;
 			echo  "</li>\n";
 		}
-		echo  "</ul>\n</ul>\n";
+		echo  "</ul>\n</ul></div>\n";
 	}
 }
 /* Returns the actual limit to use for queries for the specified limit '$MaxObjects'
