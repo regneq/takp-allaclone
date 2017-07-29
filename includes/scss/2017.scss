@@ -35,9 +35,15 @@ header {
                 padding: 0;
                 margin: 0;
                 
+                li {
+                    &:nth-child(even) {
+                        background: #eee;
+                    }
+                }
+                
                 a {
                     display: block;
-                    margin-bottom: 20px;
+                    padding: 10px;
                     
                     @include mq('desktop') {
                         margin-bottom: 0;

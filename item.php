@@ -75,41 +75,28 @@
 	$item = $ItemRow;
 	$Tableborder = 0;
 
-	print "<center>\n";
-	print "<table border='$Tableborder' width='100%'>\n";
 
 	// Title and Icon bar
-	print "<tr valign='top'>\n";
-	print "<td colspan='2' class='headerrow'>\n";
 
 	if(file_exists(getcwd(). "/icons/item_". $item['icon'] . ".gif"))
 	{ 
-		echo "<img src='".$icons_url. "item_" . $item["icon"].".gif' align='left'/>"; 
+		echo "<div class='item-header'><img src='".$icons_url. "item_" . $item["icon"].".gif' align='left'/>"; 
 	}
 
-	print "<img src='".$images_url."spacer_1.png' align='left'/><a href='http://lucy.allakhazam.com/item.html?id=".$id."'><img src='".$images_url."lucy.png' align='right'/></a>\n";
-	print "                  <b>".$item["Name"]."</b>";
+	print "<a href='http://lucy.allakhazam.com/item.html?id=".$id."'><img src='".$images_url."lucy.png' align='right'/></a>";
+	print "<b>".$item["Name"]."</b>";
 	if($item["lore"] != "")
 	{
-		print "<br/>(".$item["lore"].") - id : ".$id."\n";
+		print "<p>(".$item["lore"].") - id : ".$id."</p></div>";
 	}
 	else
 	{
-		print "<br/>id : ".$id."\n";
+		print "id : ".$id."</div>";
 	}
-	print "</td>\n";
-	print "</tr>\n";
-	print "<tr valign='top'>\n";
-	print "<td width='90%'>\n";
-	print "<table border='$Tableborder' width='100%'>\n";
-
-
 
 	// Prints all Item data into formatted tables
 	print BuildItemStats($item, 0);
 	
-	Print "<table border='$Tableborder' width='0%' cellpadding='0' cellspacing='0'>";
-
 	// Discovered by
 	if ($DiscoveredItemsOnly==TRUE)
 	{
@@ -224,11 +211,6 @@
 			print "</ul></td></tr>";
 		}
 	}
-
-	print "</table>\n";
-	print "</td>\n";
-	print "<td width='0%'>\n";
-	print "<table border='$Tableborder' width='0%'>\n";
 
 	$Separator = "";
 
@@ -354,9 +336,7 @@
 	$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
 	if (mysql_num_rows($result)>0)
 	{
-		print $Separator; $Separator = "<tr class='myline' height='6'><td colspan='2'></td><tr>\n";
-		print "<tr>\n";
-		print "<td nowrap='1'><b>This item spawns on the ground in : </b><br><br>\n";
+		print "<b>This item spawns on the ground in : </b><br><br>\n";
 		$CurrentZone = "";
 		while($row = mysql_fetch_array($result))
 		{
@@ -373,15 +353,7 @@
 			print "<li>".$row["max_y"]." (Y), ".$row["max_x"]." (X), ".$row["max_z"]." (Z)</a></li>";
 		}
 		print "</ul>\n";
-		print "</td>\n";
-		print "</tr>\n";
 	}
-
-	print "</table>\n";
-	print "</td>\n";
-	print "</tr>\n";
-	print "</table>\n";
-	print "</center>\n";
 
 	include($includes_dir."footers.php");
 ?>
