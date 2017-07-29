@@ -1,5 +1,15 @@
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+}
+
 header {
-    background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg);
+    background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg) top left no-repeat;
+}
+
+#main {
+    min-height: 60vh;
 }
 
 .container {
@@ -73,6 +83,8 @@ header {
                 border-right: 1px solid rgba(0, 0, 0, 0.3);
                 text-align: center;
                 width: 100%;
+                font-family: "Raleway";
+                font-weight: bold;
                 
                 &:hover {
                     background: #000;
@@ -105,7 +117,49 @@ header {
                         color: #fff;
                     }
                 }
+                
+                form {
+                    padding: 10px;
+                    
+                    li {
+                        margin-bottom: 10px;
+                        
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                    input {
+                        width: 100%;
+                        padding: 10px;
+                        
+                        &::placeholder {
+                            font-family: "Raleway";
+                            font-weight: bold;
+                        }
+                        
+                        &:focus {
+                            outline: none;
+                            background: #666;
+                            color: #fff;
+                            font-weight: bold;
+                            
+                            &::placeholder {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-family: "Raleway";
+    font-weight: bold;
+    background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg) bottom left no-repeat;
+    margin-top: 50px;
 }

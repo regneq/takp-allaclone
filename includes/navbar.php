@@ -1,6 +1,29 @@
 <div class="nav-wrapper">
     <ul class="navbar">
-        <li><a href="<?php echo $root_url; ?>index.php" title="">Home</a>
+        <li><a href="#" class="toggle">Search</a>
+            <ul class="dropdown-menu">
+                <form name='fullsearch' method='GET' action='fullsearch.php'>
+                    <input type='hidden' name='isearchtype' value='' />
+                    <li>
+                        <input 
+                            onfocus="if(this.value == 'Name...') { this.value = ''; }"
+                            onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'name'; this.form.submit(); } else {return true;}"
+                            type='text'
+                            name='iname'
+                            placeholder='Name...' />
+                    </li>
+                    <li>
+                        <input
+                            onfocus="if(this.value == 'ID...') { this.value = ''; }"
+                            onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
+                            type='text'
+                            name='iid'
+                            placeholder='ID...' />
+                    </li>
+                    </form>
+                </li>
+            </ul>
+        </li>
         <?php if ($EnableNews) : ?>
         <li><a href = "<?php echo $root_url; ?>news.php" >News</a ></li>
         <?php endif; ?>
