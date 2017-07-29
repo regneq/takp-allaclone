@@ -22,7 +22,7 @@ function PrintQueryResults($FoundObjects, $MaxObjectsReturned, $OpenObjectByIdPa
 
 	if($ObjectsToShow == 0)
 	{
-		echo  "<ul><li><b>No ".$ObjectDescription." found.</b></li></ul>\n";
+		echo  "";
 	}
 	else
 	{
@@ -824,6 +824,7 @@ function Pagination($targetpage, $page, $total_pages, $limit, $adjacents)
 	}
 	return $pagination;
 }
+
 // Function to build item stats tables
 // Used for item.php as well as for tooltips for items
 function BuildItemStats($item, $show_name_icon) {
@@ -833,7 +834,7 @@ function BuildItemStats($item, $show_name_icon) {
 	$Tableborder = 0;
 
 	$html_string = "";
-	$html_string .= "<table border='$Tableborder' width='100%'><tr><td valign='top'>";
+	$html_string .= "<div class='item-stats'><table border='$Tableborder' width='100%'><tr><td valign='top'>";
 	if ($show_name_icon)
 	{
 		$html_string .= "<h4 style='margin-top:0'>" . $item["Name"] . "</h4></td>";
@@ -1138,44 +1139,6 @@ function BuildItemStats($item, $show_name_icon) {
 		}
 	}
 
-	// Augmentation type
-	if($item["itemtype"] == 54)
-	{
-		if($item["augtype"] > 0)
-		{
-			$Comma = "";
-			$AugSlots = "";
-			$AugType = $item["augtype"];
-			$Bit = 1;
-			for ($i = 1; $i < 25; $i++)
-			{
-				if ($Bit <= $AugType && $Bit & $AugType)
-				{
-					$AugSlots .= $Comma.$i;
-					$Comma = ", ";
-				}
-				$Bit *= 2;
-			}	
-			$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Slot Type: </b>".$AugSlots."</td></tr>";
-		}
-		else
-		{
-			$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Slot Type: </b>All Slots</td></tr>";
-		}
-		if ($item["augrestrict"] > 0)
-		{
-			if ($item["augrestrict"] > 12)
-			{
-				$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Restriction: </b>Unknown Type</td></tr>";
-			}
-			else
-			{
-				$Restriction = $dbiaugrestrict[$item["augrestrict"]];
-				$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Restriction: </b>$Restriction</td></tr>";
-			}
-		}
-	}
-
 	$ItemPrice = $item["price"];
 	$ItemValue = "";
 	$Platinum = 0;
@@ -1208,7 +1171,7 @@ function BuildItemStats($item, $show_name_icon) {
 	$ItemValue .= "</td></tr><br>";
 	$html_string .= $ItemValue;
 
-	$html_string .= "</td></tr></table>";
+	$html_string .= "</td></tr></table></div>";
 
 	return $html_string;
 }
