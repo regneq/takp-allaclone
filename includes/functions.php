@@ -1045,6 +1045,14 @@ function BuildItemStats($item, $show_name_icon) {
 	{
 		$html_string .= "<tr><td colspan='2' nowrap='1'><b>Skill Mod: ".ucfirstwords($dbskills[$item["skillmodtype"]]).": </b>".sign($item["skillmodvalue"])."%</td></tr>";
 	}
+	// Augmentations
+	for( $i = 1; $i <= 5; $i ++)
+	{
+		if($item["augslot".$i."type"] > 0)
+		{
+			$html_string .= "<tr><td width='0%' nowrap='1' colspan='2'><b>Slot ".$i.": </b>Type ".$item["augslot".$i."type"]."</td></tr>";
+		}
+	}
 	//item proc
 	if (($item["proceffect"]>0) && ($item["proceffect"]<65535))
 	{ 
@@ -1128,6 +1136,44 @@ function BuildItemStats($item, $show_name_icon) {
 		if ($val>0)
 		{
 			$html_string .= " (".sign($val)."%)</td></tr>";
+		}
+	}
+
+	// Augmentation type
+	if($item["itemtype"] == 54)
+	{
+		if($item["augtype"] > 0)
+		{
+			$Comma = "";
+			$AugSlots = "";
+			$AugType = $item["augtype"];
+			$Bit = 1;
+			for ($i = 1; $i < 25; $i++)
+			{
+				if ($Bit <= $AugType && $Bit & $AugType)
+				{
+					$AugSlots .= $Comma.$i;
+					$Comma = ", ";
+				}
+				$Bit *= 2;
+			}	
+			$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Slot Type: </b>".$AugSlots."</td></tr>";
+		}
+		else
+		{
+			$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Slot Type: </b>All Slots</td></tr>";
+		}
+		if ($item["augrestrict"] > 0)
+		{
+			if ($item["augrestrict"] > 12)
+			{
+				$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Restriction: </b>Unknown Type</td></tr>";
+			}
+			else
+			{
+				$Restriction = $dbiaugrestrict[$item["augrestrict"]];
+				$html_string .= "<tr><td colspan='2' nowrap='1'><b>Augmentation Restriction: </b>$Restriction</td></tr>";
+			}
 		}
 	}
 
