@@ -840,54 +840,50 @@ function BuildItemStats($item, $show_name_icon) {
 		$html_string .= "<h4 style='margin-top:0'>" . $item["Name"] . "</h4></td>";
 		$html_string .= "<td><img src='" . $icons_url . "item_" . $item["icon"] . ".gif' align='right' valign='top'/></td></tr><tr><td>";
 	}
-	
-	$html_string .= "<table border='$Tableborder' width='100%' cellpadding='0' cellspacing='0'>";
 
 	// lore, nodrop, norent, magic
-	$html_string .= "<tr>";
-	$html_string .= "<td colspan='2' nowrap='1'>";
+	$html_string .= "<p>";
 	$v = "";
-	if($item["magic"] == 1)      { $html_string .= "$v MAGIC ITEM";   $v = " "; }
-	if(substr($item["lore"],0,2) == '*#')   { $html_string .= "$v LORE ITEM ARTIFACT";    $v = " "; }
-	elseif(substr($item["lore"],0,1) == '*') { $html_string .= "$v LORE ITEM";    $v = " "; }
-	elseif(substr($item["lore"],0,1) == '#') { $html_string .= "$v ARTIFACT";    $v = " "; }
-	if($item["nodrop"] == 0)     { $html_string .= "$v NODROP";       $v = " "; }
-	if($item["norent"] == 0)     { $html_string .= "$v NORENT";       $v = " "; }
-	$html_string .= "                            </td>";
-	$html_string .= "                          </tr>";
+	if($item["magic"] == 1)      { $html_string .= "MAGIC ITEM "; }
+	if(substr($item["lore"],0,2) == '*#')   { $html_string .= " LORE ITEM ARTIFACT"; }
+	elseif(substr($item["lore"],0,1) == '*') { $html_string .= " LORE ITEM"; }
+	elseif(substr($item["lore"],0,1) == '#') { $html_string .= " ARTIFACT"; }
+	if($item["nodrop"] == 0)     { $html_string .= " NODROP"; }
+	if($item["norent"] == 0)     { $html_string .= " NORENT"; }
+	$html_string .= "</p>";
 
 	// Classes
 	if($item["classes"] > 0)
 	{
-		$html_string .= "<tr><td colspan='2'><b>Classes: </b>".getclasses($item["classes"])."</td></tr>";
+		$html_string .= "<p><strong>Classes:</strong> ".getclasses($item["classes"])."</p>";
 	}
 	else
 	{
-		$html_string .= "<tr><td colspan='2' nowrap='1'><b>Classes: </b>All classes</td></tr>";
+		$html_string .= "<p><strong>Classes:</strong> ALL</p>";
 	}
 	// Races
 	if($item["races"] > 0)
 	{
-		$html_string .= "<tr><td colspan='2'><b>Races: </b>".getraces($item["races"])."</td></tr>";
+		$html_string .= "<p><strong>Races:</strong> ".getraces($item["races"])."</p>";
 	}
 	else
 	{
-		$html_string .= "<tr><td colspan='2' nowrap='1'><b>Races: </b>All races</td></tr>";
+		$html_string .= "<p><strong>Races: </strong> ALL</p>";
 	}  
 	// Deity
 	if($item["deity"] > 0)
 	{
-		$html_string .= "<tr><td colspan='2' nowrap='1'><b>Deity: </b>".gedeities($item["deity"])."</td></tr>";
+		$html_string .= "<p><strong>Deity:</strong> ".gedeities($item["deity"])."</p>";
 	}
 
 	// Slots
 	if($item["slots"] > 0)
 	{
-		$html_string .= "<tr><td colspan='2'><b>Slot: </b>".strtoupper(getslots($item["slots"]))."</td></tr>";
+		$html_string .= "<p><strong>Slot:</strong> ".strtoupper(getslots($item["slots"]))."</p>";
 	}
 	if($item["slots"] == 0)
 	{
-		$html_string .= "<tr><td colspan='2' ><b>Slot: </b>NONE</td></tr>";
+		$html_string .= "<p><strong>Slot:</strong> NONE</p>";
 	}
 
 	$TypeString = "";
@@ -1201,7 +1197,7 @@ function BuildItemStats($item, $show_name_icon) {
 		$Copper = ($ItemPrice - ($Platinum * 1000) - ($Gold * 100) - ($Silver * 10));
 	}
 	
-	$ItemValue .= "<tr><td nowrap><b>Value: </b>";	
+	$ItemValue .= "<tr><td style='vertical-align: middle;'><b>Value: </b>";	
 	$ItemValue .= $Platinum." <img src='" . $icons_url . "item_644.gif' width='14' height='14'/> ".
 					$Gold." <img src='" . $icons_url . "item_645.gif' width='14' height='14'/> ".
 					$Silver." <img src='" . $icons_url . "item_646.gif' width='14' height='14'/> ".

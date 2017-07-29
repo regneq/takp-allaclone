@@ -12,6 +12,7 @@ header {
 
 #main {
     min-height: 60vh;
+    padding: 20px;
     
     .flex {
         display: flex;
@@ -51,6 +52,10 @@ header {
                 }
             }
         }
+    }
+    
+    .item-wrapper {
+        
     }
 }
 

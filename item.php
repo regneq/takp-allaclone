@@ -80,7 +80,7 @@
 
 	if(file_exists(getcwd(). "/icons/item_". $item['icon'] . ".gif"))
 	{ 
-		echo "<div class='item-header'><img src='".$icons_url. "item_" . $item["icon"].".gif' align='left'/>"; 
+		echo "<div class='item-wrapper'><div class='item-header'><img src='".$icons_url. "item_" . $item["icon"].".gif' align='left'/>"; 
 	}
 
 	print "<a href='http://lucy.allakhazam.com/item.html?id=".$id."'><img src='".$images_url."lucy.png' align='right'/></a>";
@@ -96,7 +96,7 @@
 
 	// Prints all Item data into formatted tables
 	print BuildItemStats($item, 0);
-	
+	print '</div>';
 	// Discovered by
 	if ($DiscoveredItemsOnly==TRUE)
 	{
