@@ -1,13 +1,10 @@
 <div class="nav-wrapper">
-    <ul class="navbar container">
+    <ul class="navbar">
         <li><a href="<?php echo $root_url; ?>index.php" title="">Home</a>
         <?php if ($EnableNews) : ?>
         <li><a href = "<?php echo $root_url; ?>news.php" >News</a ></li>
         <?php endif; ?>
 
-        <li><a href="http://www.takproject.net/forums/index.php?forums/changelog.24/" target="_blank">Change Log</a></li>
-        <li><a href="http://www.eqemulator.org" target="_blank">EQEmulator</a></li>
-        <li><a href="http://everquest.allakhazam.com/" target="_blank">ZAM</a></li>
         <li><a href="#" class="toggle">Zones</a>
             <ul class="dropdown-menu">
                 <?php if ($UseCustomZoneList==TRUE) : ?>
@@ -19,11 +16,7 @@
                 <?php ; endif; ?>
             </ul>
         </li>
-        <li><a href="#" class="toggle">Items</a>
-            <ul class="dropdown-menu">
-                <li><a href="<?php echo $root_url; ?>items.php">Search</a></li>
-            </ul>
-        </li>
+        <li><a href="<?php echo $root_url; ?>items.php">Items</a></li>
         <li><a href="#" class="toggle">Bestiary</a>
             <ul class="dropdown-menu">
                 <li><a href="<?php echo $root_url; ?>npcs.php">NPC Search</a></li>
@@ -37,14 +30,12 @@
                 <li><a href="<?php echo $root_url; ?>npcfactions.php">NPCs By Faction</a></li>
             </ul>
         </li>
-        <li><a href="#" class="toggle">Spells</a>
+        <li><a href="<?php echo $root_url; ?>spells.php">Spells</a></li>
+        <li><a href="<?php echo $root_url; ?>recipes.php">Recipes</a></li>
+        <li><a href="#" class="toggle">Resources</a>
             <ul class="dropdown-menu">
-                <li><a href="<?php echo $root_url; ?>spells.php">Spell Search</a></li>
-            </ul>
-        </li>
-        <li><a href="#" class="toggle">Recipes</a>
-            <ul class="dropdown-menu">
-                <li><a href="<?php echo $root_url; ?>recipes.php">Recipe Search</a></li>
+                <li><a href="http://wiki.takp.info">TAKP Wiki</a></li>
+                <li><a href="http://www.takproject.net/forums/index.php?forums/changelog.24/" target="_blank">TAKP Change Log</a></li>
             </ul>
         </li>
     </ul>

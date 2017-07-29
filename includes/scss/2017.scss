@@ -33,7 +33,7 @@ header {
 }
 
 .nav-wrapper {
-    background: #666;
+    background: rgba(50, 50, 50, 0.3);
     
     .navbar {
         list-style-type: none;
@@ -46,8 +46,12 @@ header {
             margin: 0;
             padding: 0;
             position: relative;
+            border-left: 1px solid rgba(0, 0, 0, 0.3);
             border-right: 1px solid rgba(250, 250, 250, 0.3);
             text-align: center;
+            display: flex;
+            align-items: flex-start;
+            flex: 1 1 auto;
             
             &:hover {
                 .dropdown-menu {
@@ -56,22 +60,19 @@ header {
             }
             
             &:first-child {
-                border-left: 1px solid rgba(250, 250, 250, 0.3);
-                
-                a {
-                    border-left: 1px solid rgba(0, 0, 0, 0.3);
-                }
+                border-left: 0;
             }
 
             > a {
                 padding: 15px 15px;
-                display: block;
                 height: 50px;
                 text-decoration: none;
                 color: #fff;
                 text-transform: uppercase;
                 font-size: 13px;
                 border-right: 1px solid rgba(0, 0, 0, 0.3);
+                text-align: center;
+                width: 100%;
                 
                 &:hover {
                     background: #000;
