@@ -844,12 +844,12 @@ function BuildItemStats($item, $show_name_icon) {
 	// lore, nodrop, norent, magic
 	$html_string .= "<p>";
 	$v = "";
-	if($item["magic"] == 1)      { $html_string .= "MAGIC ITEM "; }
-	if(substr($item["lore"],0,2) == '*#')   { $html_string .= " LORE ITEM ARTIFACT"; }
-	elseif(substr($item["lore"],0,1) == '*') { $html_string .= " LORE ITEM"; }
-	elseif(substr($item["lore"],0,1) == '#') { $html_string .= " ARTIFACT"; }
-	if($item["nodrop"] == 0)     { $html_string .= " NODROP"; }
-	if($item["norent"] == 0)     { $html_string .= " NORENT"; }
+	if($item["magic"] == 1)      { $html_string .= "MAGIC ITEM"; }
+	if(substr($item["lore"],0,2) == '*#')   { $html_string .= ", LORE ITEM, ARTIFACT"; }
+	elseif(substr($item["lore"],0,1) == '*') { $html_string .= ", LORE ITEM"; }
+	elseif(substr($item["lore"],0,1) == '#') { $html_string .= ", ARTIFACT"; }
+	if($item["nodrop"] == 0)     { $html_string .= ", NODROP"; }
+	if($item["norent"] == 0)     { $html_string .= ", NORENT"; }
 	$html_string .= "</p>";
 
 	// Classes
