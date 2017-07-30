@@ -28,7 +28,7 @@
 
 	$Title="Welcome to TAKP AllaClone!";
 	include($includes_dir.'headers.php');
-//    echo'<img style="height:50%;margin-top:2px;" src="'. $root_url .'images/eqmac.jpg"/>';
+    echo'<img style="max-height:50%; margin:0 auto; display: block;" src="'. $root_url .'images/eqmac.jpg" />';
 
 	// Here's the main page of the website
 
@@ -39,7 +39,7 @@
 		print "</td></tr></table></center>";
 	}
 
-	if ($DiscoveredItemsOnly==TRUE){
+	if ($DiscoveredItemsOnly==FALSE){
 		$Title="Recently Discovered Items";
 		print "<center><table border='0' width='0%'><tr valign='top'><td class='header_cell'>";
 		print "<b><center>$Title</center></b>";

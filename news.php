@@ -15,12 +15,14 @@ $query="SELECT *
         FROM $tbnews
         ORDER BY DATE desc";
 $result=mysql_query($query) or message_die('news.php','MYSQL_QUERY',$query,mysql_error());
-$sep="";
+
 while ($res=mysql_fetch_array($result))
 {
-	print "<center>$sep<b>".WriteDate($res["date"])."</b></center>";
-	print "<blockquote><b><u>".$res["title"]."</u></b><br/>".$res["content"]."</blockquote>";
-	$sep="<center><p><img src=images/line.gif width=75% height=5><p></center>";
+	print "<article class='news'>";
+    print "<h2>" . $res["title"] . "</h2>";
+    print "<small class='news-post-date'><strong>" . WriteDate($res["date"]) . "</strong></small>";
+    print "<p>" . $res["content"] . "</p>";
+    print "</article>";
 }
 
 include($includes_dir."footers.php");
