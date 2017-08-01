@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+header {
+    background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg) top left no-repeat;
+}
+
+#main {
+    min-height: 60vh;
+    padding: 20px;
+    
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+        .column {
+            flex: 1 1 100%;
+            text-align: center;
+            
+            @include mq('tablet') {
+                flex: 1 1 50%;
+            }
+            
+            @include mq('desktop') {
+                flex: 1 1 33.3%;
+            }
+            
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                
+                li {
+                    &:nth-child(even) {
+                        background: #eee;
+                    }
+                }
+                
+                a {
+                    display: block;
+                    padding: 10px;
+                    
+                    @include mq('desktop') {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    
+    &.intro {
+        
+        overflow: hidden;
+        
+        h1 {
+            margin-left: 20px;
+            float: left;
+            font-family: "Raleway";
+            color: #fff;
+            display: none;
+            
+            @include mq('tablet') {
+                display: block;
+            }
+        }
+        
+        img {
+            width: 350px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            
+            @include mq('tablet') {
+                float: right;
+            }
+        }
+    }
+}
+
+.logo {
+    width: auto;
+    height: 150px;
+    display: block;
+    margin: 20px auto;
+}
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-family: "Raleway";
+    font-weight: bold;
+    background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg) bottom left no-repeat;
+    margin-top: 50px;
+}

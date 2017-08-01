@@ -6,8 +6,8 @@ include('../includes/headers.php');
 include('../includes/mysql.php');
 include('../includes/functions.php');
 ?>
-<p class=page_small_title>Cities and Zones</p><ul>
-<li>Deepest Guk<ul>
+<h2>Cities and Zones</h2><ul class="zone-list">
+<li>Deepest Guk<ul class="zone-list">
 <li><a href=../zone.php?name=gukb>The Drowning Crypt</a>
 <li><a href=../zone.php?name=gukc>The Ancient Aqueducts</a>
 <li><a href=../zone.php?name=gukd>The Mushroom Grove</a>
@@ -16,7 +16,7 @@ include('../includes/functions.php');
 <li><a href=../zone.php?name=gukg>The Root Garden</a>
 <li><a href=../zone.php?name=gukh>The Accursed Sanctuary</a>
 </ul>
-<li>Miragul's Menagerie<ul>
+<li>Miragul's Menagerie<ul class="zone-list">
 <li><a href=../zone.php?name=mira>The Silent Gallery</a>
 <li><a href=../zone.php?name=mirb>The Maw of the Menagerie</a>
 <li><a href=../zone.php?name=mirc>The Spider Den</a>
@@ -28,7 +28,7 @@ include('../includes/functions.php');
 <li><a href=../zone.php?name=miri>The Theater of Imprisoned Horror</a>
 <li><a href=../zone.php?name=mirj>The Grand Library</a>
 </ul>
-<li>Mistmoore Catacombs<ul>
+<li>Mistmoore Catacombs<ul class="zone-list">
 <li><a href=../zone.php?name=mmca>The Forlorn Caverns</a>
 <li><a href=../zone.php?name=mmcb>The Dreary Grotto</a>
 <li><a href=../zone.php?name=mmcv>The Asylum of Invoked Stone</a>
@@ -40,7 +40,7 @@ include('../includes/functions.php');
 <li><a href=../zone.php?name=mmci>The Halls of Sanguinary Rites</a>
 <li><a href=../zone.php?name=mmcj>The Infernal Sanctuary</a>
 </ul>
-<li>Rujarkian Hills<ul>
+<li>Rujarkian Hills<ul class="zone-list">
 <li><a href=../zone.php?name=ruja>The Bloodied Quarries</a>
 <li><a href=../zone.php?name=rujb>The Halls of War</a>
 <li><a href=../zone.php?name=rujc>The Wind Bridges</a>
@@ -52,7 +52,7 @@ include('../includes/functions.php');
 <li><a href=../zone.php?name=ruji>The Arena of Chance</a>
 <li><a href=../zone.php?name=rujj>The Barracks of War</a>
 </ul>
-<li>Takish-Hiz<ul>
+<li>Takish-Hiz<ul class="zone-list">
 <li><a href=../zone.php?name=taka>The Sunken Library</a>
 <li><a href=../zone.php?name=takb>The Shifting Tower</a>
 <li><a href=../zone.php?name=takc>The Fading Temple</a>

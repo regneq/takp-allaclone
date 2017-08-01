@@ -6,7 +6,7 @@ include('../includes/headers.php');
 include('../includes/mysql.php');
 include('../includes/functions.php');
 ?>
-<p class=page_small_title>Cities and Zones</p><ul>
+<h2>Cities and Zones</h2><ul class="zone-list">
 <li><a href=../zone.php?name=pofire>Doomfire, the Burning Lands</a>
 <li><a href=../zone.php?name=potactics>Drunder, Fortress of Zek (Plane of Tactics)</a>
 <li><a href=../zone.php?name=poair>Eryslai, the Kingdom of Wind</a>

@@ -6,7 +6,8 @@ include('../includes/headers.php');
 include('../includes/mysql.php');
 include('../includes/functions.php');
 ?>
-<p class=page_small_title>Cities and Zones</p><ul>
+<h2>Cities and Zones</h2>
+<ul class="zone-list">
 <li><a href=../zone.php?name=arena>The Arena</a>
 <li><a href=../zone.php?name=befallen>Befallen</a>
 <li><a href=../zone.php?name=beholder>Gorge of King Xorbb (Beholder's Maze)</a>

@@ -6,7 +6,7 @@ include('../includes/headers.php');
 include('../includes/mysql.php');
 include('../includes/functions.php');
 ?>
-<p class=page_small_title>Zones</p><ul>
+<h2>Zones</h2><ul class="zone-list">
 <li><a href=../zone.php?name=arthicrex>Arthicrex</a>
 <li><a href=../zone.php?name=arthicrex>Arthicrex: Raid Instance</a>
 <li><a href=../zone.php?name=arthicrex>Arthicrex: To Serve Sporali</a>

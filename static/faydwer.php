@@ -6,7 +6,7 @@ include('../includes/headers.php');
 include('../includes/mysql.php');
 include('../includes/functions.php');
 ?>
-<p class=page_small_title>Cities and Zones</p><ul>
+<h2>Cities and Zones</h2><ul class="zone-list">
 <li><a href=../zone.php?name=akanon>Ak'Anon</a>
 <li><a href=../zone.php?name=butcher>Butcherblock Mountains</a>
 <li><a href=../zone.php?name=crushbone>Crushbone</a>

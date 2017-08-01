@@ -6,7 +6,7 @@ include('../includes/headers.php');
 include('../includes/mysql.php');
 include('../includes/functions.php');
 ?>
-<p class=page_small_title>Zones</p><ul>
+<h2>Zones</h2><ul class="zone-list">
 <li><a href=../zone.php?name=alkabormare>Al'Kabor's Nightmare</a>
 <li><a href=../zone.php?name=alkabormare>Al'Kabor's Nightmare: At World's End</a>
 <li><a href=../zone.php?name=alkabormare>Al'Kabor's Nightmare: Catastrophic Power</a>
