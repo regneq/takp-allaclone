@@ -90,68 +90,11 @@
 
 	$DebugNpc=FALSE; // for world builders, set this to false for common use
     
-    print "<a href='".$peqeditor_url."index.php?editor=npc&amp;npcid=".$id."'><img src='".$images_url."/peq_npc.png' align='right'/></a>";
-	print "<a href='".$peqeditor_url."index.php?editor=merchant&amp;npcid=".$id."'><img src='".$images_url."/peq_merchant.png' align='right'/></a>";
+    print "<div class='dev-tools'><a href='".$peqeditor_url."index.php?editor=npc&amp;npcid=".$id."'><img src='".$images_url."/peq_npc.png' align='right'/></a>";
+	print "<a href='".$peqeditor_url."index.php?editor=merchant&amp;npcid=".$id."'><img src='".$images_url."/peq_merchant.png' align='right'/></a></div>";
 
     print "<div class='npc-wrapper'>";
-    print "<div class='right-col'>";
-	if($UseWikiImages)
-	{
-		$ImageFile = NpcImage($wiki_server_url, $wiki_root_name, $id);
-		if($ImageFile == "")
-		{
-			print "<a href='".$wiki_server_url.$wiki_root_name."/index.php?title=Special:Upload&wpDestFile=Npc-".$id.".jpg'>Click to add an image for this NPC</a>";
-		}
-		else
-		{
-			print "<img src='".$ImageFile."'/>";
-		}
-	}
-	else
-	{
-		if(file_exists($npcs_dir.$id.".jpg"))
-		{
-			print "<img src=".$npcs_url.$id.".jpg>";
-		}
-	}
 
-    if ($npc["npc_spells_id"]>0)
-	{
-		$query="SELECT * FROM $tbnpcspells WHERE id=".$npc["npc_spells_id"];
-		$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
-		if (mysql_num_rows($result)>0)
-		{
-			$g=mysql_fetch_array($result);
-			print "<div class='list-wrapper'><p><strong>This NPC casts the following spells:</strong></p>";
-			$query="SELECT $tbnpcspellsentries.*
-					FROM $tbnpcspellsentries
-					WHERE $tbnpcspellsentries.npc_spells_id=".$npc["npc_spells_id"]."
-					AND $tbnpcspellsentries.minlevel<=".$npc["level"]."
-					AND $tbnpcspellsentries.maxlevel>=".$npc["level"]."
-					ORDER BY $tbnpcspellsentries.priority DESC";
-			$result2=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
-			if (mysql_num_rows($result2)>0)
-			{
-				print "<p><strong>Listname : </strong>".ReadableNpcName($g["name"]."</p>");
-				if ($DebugNpc) { print " (".$npc["npc_spells_id"].")"; }
-				if ($g["attack_proc"]==1) { print " (Procs)"; }
-				print "<ul>";
-				while ($row=mysql_fetch_array($result2))
-				{
-					$spell=getspell($row["spellid"]);
-					print "<li><a href='spell.php?id=".$row["spellid"]."'>".$spell["name"]."</a>";
-					print " (".$dbspelltypes[$row["type"]].")";
-					if ($DebugNpc)
-					{
-						print " (recast=".$row["recast_delay"].", priority= ".$row["priority"].")"; 
-					}
-				}
-			}
-			print "</ul></div>";
-		}
-	}
-
-    print "</div>";
     print "<div class='left-col'><h2>".ReadableNpcName($npc["name"])."</h2>";
 
 	if ($npc["lastname"]!="") {
@@ -334,9 +277,66 @@
 		}
 	}
 	
-    print "</div>";
- 
-	// zone list
+    print "</div></div>";
+
+    print "<div class='right-col'>";
+	if($UseWikiImages)
+	{
+		$ImageFile = NpcImage($wiki_server_url, $wiki_root_name, $id);
+		if($ImageFile == "")
+		{
+			print "<a href='".$wiki_server_url.$wiki_root_name."/index.php?title=Special:Upload&wpDestFile=Npc-".$id.".jpg'>Click to add an image for this NPC</a>";
+		}
+		else
+		{
+			print "<img src='".$ImageFile."'/>";
+		}
+	}
+	else
+	{
+		if(file_exists($npcs_dir.$id.".jpg"))
+		{
+			print "<img src=".$npcs_url.$id.".jpg>";
+		}
+	}
+
+    if ($npc["npc_spells_id"]>0)
+	{
+		$query="SELECT * FROM $tbnpcspells WHERE id=".$npc["npc_spells_id"];
+		$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
+		if (mysql_num_rows($result)>0)
+		{
+			$g=mysql_fetch_array($result);
+			print "<div class='list-wrapper'><p><strong>This NPC casts the following spells:</strong></p>";
+			$query="SELECT $tbnpcspellsentries.*
+					FROM $tbnpcspellsentries
+					WHERE $tbnpcspellsentries.npc_spells_id=".$npc["npc_spells_id"]."
+					AND $tbnpcspellsentries.minlevel<=".$npc["level"]."
+					AND $tbnpcspellsentries.maxlevel>=".$npc["level"]."
+					ORDER BY $tbnpcspellsentries.priority DESC";
+			$result2=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
+			if (mysql_num_rows($result2)>0)
+			{
+				print "<p><strong>Listname : </strong>".ReadableNpcName($g["name"]."</p>");
+				if ($DebugNpc) { print " (".$npc["npc_spells_id"].")"; }
+				if ($g["attack_proc"]==1) { print " (Procs)"; }
+				print "<ul>";
+				while ($row=mysql_fetch_array($result2))
+				{
+					$spell=getspell($row["spellid"]);
+					print "<li><a href='spell.php?id=".$row["spellid"]."'>".$spell["name"]."</a>";
+					print " (".$dbspelltypes[$row["type"]].")";
+					if ($DebugNpc)
+					{
+						print " (recast=".$row["recast_delay"].", priority= ".$row["priority"].")"; 
+					}
+				}
+			}
+			print "</ul></div>";
+		}
+	}
+
+    // zone list
 	$query="SELECT $tbzones.long_name,
 				$tbzones.short_name,
 				$tbspawn2.x,$tbspawn2.y,$tbspawn2.z,
@@ -426,7 +426,9 @@
 			}
 		}
 	}
-	print "</ul></div></div>";
+	print "</ul></div>";
+
+    print "</div></div></div>";
 
 	include($includes_dir."footers.php");
 ?>
