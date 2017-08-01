@@ -58,15 +58,14 @@ $Title="NPCs search";
 $XhtmlCompliant = TRUE;
 include($includes_dir.'headers.php');
 
-echo "<center><table border='0' width='0%'><form method='GET' action='".$PHP_SELF."'>\n";
-echo "<tr align='left'>\n";
-echo "<td nowrap='1'><b>Name : </b></td>\n";
-echo "<td><input type='text' value=\"$iname\" size='30' name='iname'></td>\n";
-echo "</tr>\n";
-echo "<tr tr align='left'>\n";
-echo "<td nowrap='1' colspan='2'><input type='submit' value='Search' name='isearch'/></td>\n";
-echo "</tr>\n";
-echo "</form></table></center>\n";
+echo "<div class='refine-search visible'><div class='hamburger'>☰</div></div>";
+echo "<div class='search-wrapper visible'>";
+echo "<form method='GET' action='".$PHP_SELF."'>";
+echo "<strong>Name : </strong>";
+echo "<input type='text' value=\"$iname\" size='30' name='iname' />";
+echo "<input type='submit' value='Search' name='isearch' />";
+echo "</form>";
+echo "</div>";
 
 if(isset($QueryResult))
   PrintQueryResults($QueryResult, $MaxNpcsReturned, "npc.php", "npc", "npcs", "id", "name");
