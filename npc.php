@@ -93,22 +93,81 @@
     print "<a href='".$peqeditor_url."index.php?editor=npc&amp;npcid=".$id."'><img src='".$images_url."/peq_npc.png' align='right'/></a>";
 	print "<a href='".$peqeditor_url."index.php?editor=merchant&amp;npcid=".$id."'><img src='".$images_url."/peq_merchant.png' align='right'/></a>";
 
-    print "<div class='npc-wrapper'><h2>".ReadableNpcName($npc["name"])."</h2>";
+    print "<div class='npc-wrapper'>";
+    print "<div class='right-col'>";
+	if($UseWikiImages)
+	{
+		$ImageFile = NpcImage($wiki_server_url, $wiki_root_name, $id);
+		if($ImageFile == "")
+		{
+			print "<a href='".$wiki_server_url.$wiki_root_name."/index.php?title=Special:Upload&wpDestFile=Npc-".$id.".jpg'>Click to add an image for this NPC</a>";
+		}
+		else
+		{
+			print "<img src='".$ImageFile."'/>";
+		}
+	}
+	else
+	{
+		if(file_exists($npcs_dir.$id.".jpg"))
+		{
+			print "<img src=".$npcs_url.$id.".jpg>";
+		}
+	}
+
+    if ($npc["npc_spells_id"]>0)
+	{
+		$query="SELECT * FROM $tbnpcspells WHERE id=".$npc["npc_spells_id"];
+		$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
+		if (mysql_num_rows($result)>0)
+		{
+			$g=mysql_fetch_array($result);
+			print "<div class='list-wrapper'><p><strong>This NPC casts the following spells:</strong></p>";
+			$query="SELECT $tbnpcspellsentries.*
+					FROM $tbnpcspellsentries
+					WHERE $tbnpcspellsentries.npc_spells_id=".$npc["npc_spells_id"]."
+					AND $tbnpcspellsentries.minlevel<=".$npc["level"]."
+					AND $tbnpcspellsentries.maxlevel>=".$npc["level"]."
+					ORDER BY $tbnpcspellsentries.priority DESC";
+			$result2=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
+			if (mysql_num_rows($result2)>0)
+			{
+				print "<p><strong>Listname : </strong>".ReadableNpcName($g["name"]."</p>");
+				if ($DebugNpc) { print " (".$npc["npc_spells_id"].")"; }
+				if ($g["attack_proc"]==1) { print " (Procs)"; }
+				print "<ul>";
+				while ($row=mysql_fetch_array($result2))
+				{
+					$spell=getspell($row["spellid"]);
+					print "<li><a href='spell.php?id=".$row["spellid"]."'>".$spell["name"]."</a>";
+					print " (".$dbspelltypes[$row["type"]].")";
+					if ($DebugNpc)
+					{
+						print " (recast=".$row["recast_delay"].", priority= ".$row["priority"].")"; 
+					}
+				}
+			}
+			print "</ul></div>";
+		}
+	}
+
+    print "</div>";
+    print "<div class='left-col'><h2>".ReadableNpcName($npc["name"])."</h2>";
 
 	if ($npc["lastname"]!="") {
 	  print "<br/>".str_replace("_"," "," (".$npc["lastname"].")")." - id : ".$id;
 	}
 	else {
-      print "<p>Level ".$npc["level"]."</p>";
-	  print "<small>id : ".$id."</small>";
+      print "<p>Level ".$npc["level"]." ";
+	  print "<small>ID : ".$id."</small></p>";
 	}
 
-	print "<p><strong>Full Name: </strong>".ReadableNpcName($npc["name"]);
+	print "<div class='secondary-info'><p><strong>Full Name: </strong>".ReadableNpcName($npc["name"]);
 	if ($npc["lastname"]!="") { print str_replace("_"," "," (".$npc["lastname"].")"); }
 	print "</p>";
 	
 	print "<p><strong>Race:</strong> ".$dbiracenames[$npc["race"]]."</p>";
-	print "<p><strong>Class:</strong> ".$dbclasses[$npc["class"]]."</p>";
+	print "<p><strong>Class:</strong> ".$dbclasses[$npc["class"]]."</p></div>";
 
 	if ($npc["npc_faction_id"]>0) {
 	  $query="SELECT $tbfactionlist.name,$tbfactionlist.id
@@ -120,12 +179,12 @@
 
 	if ($DisplayNPCStats=="TRUE")
 	{
-		print "<tr><td nowrap='1'><b>Health points : </b></td><td>".$npc["hp"]."</td></tr>";
-		print "<tr><td nowrap='1'><b>Damage : </b></td><td>".$npc["mindmg"]." to ".$npc["maxdmg"]."</td></tr>";
+		print "<tr><td nowrap='1'><strong>Health points : </strong></td><td>".$npc["hp"]."</td></tr>";
+		print "<tr><td nowrap='1'><strong>Damage : </strong></td><td>".$npc["mindmg"]." to ".$npc["maxdmg"]."</td></tr>";
 	}
 	if ($ShowNpcsAttackSpeed==TRUE)
 	{
-		print "<tr><td nowrap='1'><b>Attack speed : </b></td><td>";
+		print "<tr><td nowrap='1'><strong>Attack speed : </strong></td><td>";
 		if ($npc["attack_speed"]==0)
 		{
 			print "Normal (100%)";
@@ -137,7 +196,7 @@
 	}
 	if ($ShowNpcsAverageDamages==TRUE)
 	{
-		print "<tr><td nowrap='1'><b>Average melee damages : </b></td><td>";
+		print "<tr><td nowrap='1'><strong>Average melee damages : </strong></td><td>";
 		$avghit=($npc["maxdmg"]+$npc["mindmg"])/2; // average hit
 		$dam=$avghit; # first hit of main hand
 		$com=$npc["npcspecialattks"];
@@ -183,45 +242,11 @@
 	{
 		if ($npc["npcspecialattks"]!='')
 		{
-			print "<tr><td nowrap='1'><b>Special attacks : </b></td><td>".SpecialAttacks($npc["npcspecialattks"])."</td></tr>";
+			print "<p><strong>Special attacks:</strong> ".SpecialAttacks($npc["npcspecialattks"])."</p>";
 		}
 	}
 
-	if ($npc["npc_spells_id"]>0)
-	{
-		$query="SELECT * FROM $tbnpcspells WHERE id=".$npc["npc_spells_id"];
-		$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
-		if (mysql_num_rows($result)>0)
-		{
-			$g=mysql_fetch_array($result);
-			print "<p><strong>This NPC casts the following spells:</strong></p>";
-			$query="SELECT $tbnpcspellsentries.*
-					FROM $tbnpcspellsentries
-					WHERE $tbnpcspellsentries.npc_spells_id=".$npc["npc_spells_id"]."
-					AND $tbnpcspellsentries.minlevel<=".$npc["level"]."
-					AND $tbnpcspellsentries.maxlevel>=".$npc["level"]."
-					ORDER BY $tbnpcspellsentries.priority DESC";
-			$result2=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
-			if (mysql_num_rows($result2)>0)
-			{
-				print "<p><b>Listname : </b>".ReadableNpcName($g["name"]."</p>");
-				if ($DebugNpc) { print " (".$npc["npc_spells_id"].")"; }
-				if ($g["attack_proc"]==1) { print " (Procs)"; }
-				print "<ul>";
-				while ($row=mysql_fetch_array($result2))
-				{
-					$spell=getspell($row["spellid"]);
-					print "<li><a href='spell.php?id=".$row["spellid"]."'>".$spell["name"]."</a>";
-					print " (".$dbspelltypes[$row["type"]].")";
-					if ($DebugNpc)
-					{
-						print " (recast=".$row["recast_delay"].", priority= ".$row["priority"].")"; 
-					}
-				}
-			}
-			print "</ul>";
-		}
-	}
+	
 
 	if (($npc["loottable_id"]>0) AND ((!in_array($npc["class"],$dbmerchants)) OR ($MerchantsDontDropStuff==FALSE)))
 	{
@@ -249,6 +274,7 @@
 		$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
 		if (mysql_num_rows($result)>0)
 		{
+            print "<div class='list-wrapper'>";
 			if ($ShowNpcDropChances==TRUE)
 			{
 				print "<p><strong>When killed, this NPC drops: </strong></p>";
@@ -258,6 +284,7 @@
 				print "<p><strong>When killed, this NPC can drop: </strong></p>";
 			}
 			$ldid=0;
+            print "<ul>";
 			while ($row=mysql_fetch_array($result))
 			{
 				if ($ShowNpcDropChances==TRUE)
@@ -277,6 +304,7 @@
 				}
 				print "</li>";
 			}
+            print "</ul>";
 		}
 		else
 		{
@@ -306,25 +334,7 @@
 		}
 	}
 	
-	if($UseWikiImages)
-	{
-		$ImageFile = NpcImage($wiki_server_url, $wiki_root_name, $id);
-		if($ImageFile == "")
-		{
-			print "<a href='".$wiki_server_url.$wiki_root_name."/index.php?title=Special:Upload&wpDestFile=Npc-".$id.".jpg'>Click to add an image for this NPC</a>";
-		}
-		else
-		{
-			print "<img src='".$ImageFile."'/>";
-		}
-	}
-	else
-	{
-		if(file_exists($npcs_dir.$id.".jpg"))
-		{
-			print "<img src=".$npcs_url.$id.".jpg>";
-		}
-	}
+    print "</div>";
  
 	// zone list
 	$query="SELECT $tbzones.long_name,
@@ -346,7 +356,7 @@
 	$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
 	if (mysql_num_rows($result)>0)
 	{
-		print "<p><strong>This NPC spawns in:</strong></p><ul>";
+		print "<div class='list-wrapper'><p><strong>This NPC spawns in:</strong></p><ul>";
 		$z="";
 		while ($row=mysql_fetch_array($result))
 		{
@@ -368,7 +378,7 @@
 				print "<br/>Spawns every ".translate_time($row["respawntime"]);
 			}
 		}
-        print "</ul>";
+        print "</ul></div>";
 	}
 	// factions
 	$query="SELECT $tbfactionlist.name,
@@ -382,18 +392,18 @@
 	$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
 	if (mysql_num_rows($result)>0)
 	{
-		print "<p><b>Killing this NPC lowers factions with : </b><ul>";
+		print "<div class='list-wrapper'><p><strong>Killing this NPC lowers factions with : </strong><ul>";
 		while ($row=mysql_fetch_array($result))
 		{
 			if ($ShowNPCFactionHits==TRUE) {
-				print "<li><a href=faction.php?id=".$row["id"].">".$row["name"]."</a> (".$row["value"].")";
+				print "<li class='bad'><a href=faction.php?id=".$row["id"].">".$row["name"]."</a> (".$row["value"].")";
 			}
 			else {
-				print "<li><a href=faction.php?id=".$row["id"].">".$row["name"]."</a>";
+				print "<li class='bad'><a href=faction.php?id=".$row["id"].">".$row["name"]."</a>";
 			}
 		}
 	}
-	print "</ul>";
+	print "</ul></div>";
 	$query="SELECT $tbfactionlist.name,
 			$tbfactionlist.id,
 			$tbnpcfactionentries.value
@@ -405,18 +415,18 @@
 	$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
 	if (mysql_num_rows($result)>0)
 	{
-		print "<p><b>Killing this NPC raises factions with : </b><ul>";
+		print "<div class='list-wrapper'><p><strong>Killing this NPC raises factions with : </strong><ul>";
 		while ($row=mysql_fetch_array($result))
 		{
 			if ($ShowNPCFactionHits==TRUE) {
-				print "<li><a href=faction.php?id=" . $row["id"] . ">" . $row["name"] . "</a> (" . $row["value"] . ")";
+				print "<li class='good'><a href=faction.php?id=" . $row["id"] . ">" . $row["name"] . "</a> (" . $row["value"] . ")";
 			}
 			else {
-				print "<li><a href=faction.php?id=" . $row["id"] . ">" . $row["name"] . "</a>";
+				print "<li class='good'><a href=faction.php?id=" . $row["id"] . ">" . $row["name"] . "</a>";
 			}
 		}
 	}
-	print "</ul></div>";
+	print "</ul></div></div>";
 
 	include($includes_dir."footers.php");
 ?>
