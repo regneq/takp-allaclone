@@ -38,6 +38,67 @@ a {
     }
 }
 
+.table-wrapper {
+    overflow-x: scroll;
+    
+    table {
+        table-layout: fixed;
+    }
+    
+    thead {
+        background: white;
+        box-shadow: 0px 0px 5px #666;
+    }
+    
+    td, th {
+        overflow: hidden;
+        border-right: 1px solid rgba(40, 40, 40, 0.1);
+//        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    th {
+        padding: 15px 0;
+        white-space: normal;
+        text-overflow:inherit;
+    }
+    
+    tr:nth-child(even) {
+        background: rgba(60, 60, 60, 0.1);
+    }
+    
+    .short-name {
+        text-align: center;
+        display: none;
+        
+        @include mq('tablet-wide') {
+            display: table-cell;
+        }
+    }
+    
+    td[align=center] {
+        font-size: 2vw;
+        
+        @include mq('tablet-wide') {
+            font-size: 16px;
+        }
+        
+        &:last-child {
+            display: none;
+        }
+    }
+    
+    a {
+        display: block;
+        width: 200px;
+        
+        &:hover {
+            color: black;
+            text-decoration: underline;
+        }
+    }
+}
+
 .expansion-list, 
 .zone-list {
     

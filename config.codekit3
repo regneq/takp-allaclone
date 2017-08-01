@@ -106361,6 +106361,15 @@
 		"oAP": "\/includes\/headers.php",
 		"oF": 0
 		},
+	"\/includes\/js\/jquery.floatHead.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/includes\/js\/jquery.floatHead-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
 	"\/includes\/menu.php": {
 		"ft": 8192,
 		"oA": 2,

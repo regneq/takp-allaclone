@@ -96,23 +96,19 @@ if ($SortZoneLevelList == TRUE) {
             }
         }
     } while ($end == FALSE);
-} // end SortZoneLevelList
-//print "<div style='background:white;'><pre>";
-//print print_r($zones);
-//print "</pre></div>";
+}
 
 
-print "<table border=0 width=100%><tr valign=top><td width=100%>";
-print "<center><table border=1>";
-print "<tr class='menuh'><th>Name</th>
-       <th class=tab_title>Short name</th>";
+print "<div class='table-wrapper'><table border=0 width=100% class='sticky-header'><tr valign=top><td width=100%>";
+print "<thead><tr><th>Name</th>
+       <th class='tab_title short-name'>Short name</th>";
 $LevelMax = 0;
 for ($i = 0; $i <= ($ServerMaxNPCLevel / 5); $i++) {
     $LevelMax += 5;
     $LevelMin = $LevelMax - 4;
-    print "<th class=tab_title>" . $LevelMin . " - " . $LevelMax . "</th>";
+    print "<th class=tab_title width='5%'>" . $LevelMin . " - " . $LevelMax . "</th>";
 }
-print "</tr>";
+print "</tr></thead>";
 
 $nb = 0;
 for ($i = 0; $i <= $cpt; $i++) {
@@ -120,8 +116,8 @@ for ($i = 0; $i <= $cpt; $i++) {
         $nb++;
         if (modulo($nb, 10) == 1) {
             print "<tr>
-       <td class=tab_title>Name</td>
-       <td class=tab_title>Short name</td>";
+                       <td class=tab_title width='10%'>Name</td>
+                       <td class='tab_title short-name'>Short name</td>";
             if ($SortZoneLevelList == TRUE) {
                 print "<td class=tab_title>Avg Lvl</td>";
             }
@@ -131,13 +127,13 @@ for ($i = 0; $i <= $cpt; $i++) {
             print "</tr>";
         }
         print "<tr>
-           <td><a href=zone.php?name=" . $zones[$i]["shortname"] . ">" . $zones[$i]["longname"] . "</a></td>
-           <td>" . $zones[$i]["shortname"] . "</td>";
+           <td width='200'><a href=zone.php?name=" . $zones[$i]["shortname"] . ">" . $zones[$i]["longname"] . "</a></td>
+           <td class='short-name'>" . $zones[$i]["shortname"] . "</td>";
         if ($SortZoneLevelList == TRUE) {
             print "<td align=center>" . round($zones[$i]["val"]) . "</td>";
         }
         foreach ($levels AS $lkey => $lval) {
-            print "<td align=center>";
+            print "<td align=center width='5%'>";
             if ($zones[$i][$lkey] > $lowlimit) {
                 if ($ShowNPCNumberInZoneLevelList == TRUE) {
                     print $zones[$i][$lkey];
@@ -149,10 +145,8 @@ for ($i = 0; $i <= $cpt; $i++) {
         }
     }
 }
-print "</table></center>";
-print "</td><td width=0% nowrap>";
-// right column, unused
-print "</td></tr></table>";
+
+print "</td></tr></table></div>";
 
 include($includes_dir . "footers.php");
 ?>
