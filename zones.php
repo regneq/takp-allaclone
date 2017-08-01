@@ -22,7 +22,7 @@ $query.=" GROUP BY $tbspawn2.zone
 $result=mysql_query($query) or message_die('zones.php','MYSQL_QUERY',$query,mysql_error());
 print "<div class='table-wrapper'><table width='100%' class='sticky-header'><thead><tr>
        <td class=tab_title>Name</td>
-       <td class=tab_title>Short name</td>
+       <td class='tab_title short-name'>Short name</td>
        <td class=tab_title>ID</td>
        <td class=tab_title>Spawn points</td>
        </tr>
@@ -31,8 +31,8 @@ print "<div class='table-wrapper'><table width='100%' class='sticky-header'><the
 while ($row=mysql_fetch_array($result)) {
   print "<tr>
          <td><a href=zone.php?name=".$row["short_name"].">".$row["long_name"]."</a></td>
-         <td>".$row["short_name"]."</td>
-         <td>".$row["zoneidnumber"]."</td>
+         <td class='short-name'>".$row["short_name"]."</td>
+         <td align=center>".$row["zoneidnumber"]."</td>
          <td align=center>".$row["spawns"]."</td>
          </tr>";
 }

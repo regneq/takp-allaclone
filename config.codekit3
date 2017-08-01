@@ -106446,6 +106446,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/includes\/scss\/_npc.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/includes\/scss\/_npc.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/includes\/scss\/_vars.scss": {
 		"aP": 1,
 		"bl": 1,

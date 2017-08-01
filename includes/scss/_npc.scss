@@ -1,0 +1,13 @@
+.npc-wrapper {
+    li {
+        a {
+            display: inline-block;
+            
+            &:hover {
+                color: $darkGray;
+                text-decoration: underline;
+                font-style: italic;
+            }
+        }
+    }
+}

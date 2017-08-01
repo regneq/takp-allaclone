@@ -89,38 +89,34 @@
 	include($includes_dir.'headers.php');
 
 	$DebugNpc=FALSE; // for world builders, set this to false for common use
-
-	print "<center><table border='0' width='0%'><tr valign='top'><td colspan='2' class='headerrow'>";
-	print "<a href='".$peqeditor_url."index.php?editor=npc&amp;npcid=".$id."'><img src='".$images_url."/peq_npc.png' align='right'/></a>";
+    
+    print "<a href='".$peqeditor_url."index.php?editor=npc&amp;npcid=".$id."'><img src='".$images_url."/peq_npc.png' align='right'/></a>";
 	print "<a href='".$peqeditor_url."index.php?editor=merchant&amp;npcid=".$id."'><img src='".$images_url."/peq_merchant.png' align='right'/></a>";
-	print "<b>".ReadableNpcName($npc["name"])."</b>";
+
+    print "<div class='npc-wrapper'><h2>".ReadableNpcName($npc["name"])."</h2>";
+
 	if ($npc["lastname"]!="") {
 	  print "<br/>".str_replace("_"," "," (".$npc["lastname"].")")." - id : ".$id;
 	}
 	else {
-	  print "<br/>id : ".$id;
+      print "<p>Level ".$npc["level"]."</p>";
+	  print "<small>id : ".$id."</small>";
 	}
-	print "</td></tr>"; 
-	print "<tr valign='top'><td width='0%'><table><tr><td><table border='0' width='100%' cellpadding='0' cellspacing='0'><tr><td>";
-	//print "<tr valign='top'><td width='0%'><table><tr><td>";
-	print "<table border='0' width='0%'><tr valign='top'><td width='100%'>\n";
-	print "<p><table border='0' width='100%'>";
-	print "<tr><td nowrap='1'><b>Full name : </b></td><td>".ReadableNpcName($npc["name"]);
+
+	print "<p><strong>Full Name: </strong>".ReadableNpcName($npc["name"]);
 	if ($npc["lastname"]!="") { print str_replace("_"," "," (".$npc["lastname"].")"); }
-	print "</td></tr>";
-	print "<tr><td nowrap='1'><b>Level : </b></td><td width='100%'>".$npc["level"]."</td></tr>";
-	print "<tr><td nowrap='1'><b>Race : </b></td><td>".$dbiracenames[$npc["race"]]."</td></tr>";
-	print "<tr><td nowrap='1'><b>Class : </b></td><td>".$dbclasses[$npc["class"]];
+	print "</p>";
+	
+	print "<p><strong>Race:</strong> ".$dbiracenames[$npc["race"]]."</p>";
+	print "<p><strong>Class:</strong> ".$dbclasses[$npc["class"]]."</p>";
+
 	if ($npc["npc_faction_id"]>0) {
 	  $query="SELECT $tbfactionlist.name,$tbfactionlist.id
 				FROM $tbfactionlist,$tbnpcfaction 
 				WHERE $tbnpcfaction.id=".$npc["npc_faction_id"]." 
 				AND $tbnpcfaction.primaryfaction=$tbfactionlist.id";
 	  $faction=GetRowByQuery($query);
-	  # print "<tr><td nowrap='1'><b>Main faction : </b></td><td><a href='faction.php?id=".$faction["id"]."'>".$faction["name"]."</a></td></tr>";
 	}
-
-	print "</td></tr>";
 
 	if ($DisplayNPCStats=="TRUE")
 	{
@@ -138,7 +134,6 @@
 		{
 			print (100+$npc["attack_speed"])."%";
 		}
-		//print "</td></tr>";
 	}
 	if ($ShowNpcsAverageDamages==TRUE)
 	{
@@ -191,12 +186,6 @@
 			print "<tr><td nowrap='1'><b>Special attacks : </b></td><td>".SpecialAttacks($npc["npcspecialattks"])."</td></tr>";
 		}
 	}
-	
-	print "</td></tr></table>\n";
-	
-	print "<tr class='myline' height='6'><td colspan='2'></td><tr>\n";
-
-	print "<tr valign='top'>";
 
 	if ($npc["npc_spells_id"]>0)
 	{
@@ -205,7 +194,7 @@
 		if (mysql_num_rows($result)>0)
 		{
 			$g=mysql_fetch_array($result);
-			print "<td><table border='0'><tr><td colspan='2' nowrap='1'><b>This NPC casts the following spells : </b><p>";
+			print "<p><strong>This NPC casts the following spells:</strong></p>";
 			$query="SELECT $tbnpcspellsentries.*
 					FROM $tbnpcspellsentries
 					WHERE $tbnpcspellsentries.npc_spells_id=".$npc["npc_spells_id"]."
@@ -215,7 +204,7 @@
 			$result2=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
 			if (mysql_num_rows($result2)>0)
 			{
-				print "</ul><li><b>Listname : </b>".ReadableNpcName($g["name"]);
+				print "<p><b>Listname : </b>".ReadableNpcName($g["name"]."</p>");
 				if ($DebugNpc) { print " (".$npc["npc_spells_id"].")"; }
 				if ($g["attack_proc"]==1) { print " (Procs)"; }
 				print "<ul>";
@@ -230,7 +219,7 @@
 					}
 				}
 			}
-			print "</td></tr></table></td>";
+			print "</ul>";
 		}
 	}
 
@@ -262,11 +251,11 @@
 		{
 			if ($ShowNpcDropChances==TRUE)
 			{
-				print "<td><table border='0'><tr><td colspan='2' nowrap='1'><b>When killed, this NPC drops : </b><br/>";
+				print "<p><strong>When killed, this NPC drops: </strong></p>";
 			}
 			else
 			{
-				print "<td><table border='0'><tr><td colspan='2' nowrap='1'><b>When killed, this NPC can drop : </b><br/>";
+				print "<p><strong>When killed, this NPC can drop: </strong></p>";
 			}
 			$ldid=0;
 			while ($row=mysql_fetch_array($result))
@@ -288,12 +277,10 @@
 				}
 				print "</li>";
 			}
-			print "</td></tr></table></td>";
 		}
 		else
 		{
-			print "<td><table border='0'><tr><td colspan='2' nowrap='1'><b>No item drops found. </b><br/>";
-			print "</td></tr></table></td>";
+			print "<p><strong>No item drops found.</strong></p>";
 		}
 	}
 
@@ -307,7 +294,7 @@
 		$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
 		if (mysql_num_rows($result)>0)
 		{
-			print "<td><table border='0'><tr><td colspan='2' nowrap='1'><b>This NPC sells : </b><br/>";
+			print "<p><strong>This NPC sells:</strong></p><ul>";
 			while ($row=mysql_fetch_array($result))
 			{
 				print "<li><a href='item.php?id=".$row["id"]."'>".$row["Name"]."</a> ";
@@ -315,15 +302,10 @@
 				if ($npc["class"]==61) { print "(".$row["ldonprice"]." points)"; } // NPC is a LDON merchant
 				print "</li>";
 			}
-			print "</td></tr></table></td>";
+			print "</ul>";
 		}
 	}
-
-	print "</tr></table>";
 	
-	
-	print "</td><td valign='top'><table border='0' width='0%'>"; // right column height='100%'
-	print "<tr><td nowrap='1'>"; // image
 	if($UseWikiImages)
 	{
 		$ImageFile = NpcImage($wiki_server_url, $wiki_root_name, $id);
@@ -343,8 +325,7 @@
 			print "<img src=".$npcs_url.$id.".jpg>";
 		}
 	}
-
-	print "</td></tr><tr><td nowrap='1'>"; 
+ 
 	// zone list
 	$query="SELECT $tbzones.long_name,
 				$tbzones.short_name,
@@ -365,13 +346,13 @@
 	$result=mysql_query($query) or message_die('npc.php','MYSQL_QUERY',$query,mysql_error());
 	if (mysql_num_rows($result)>0)
 	{
-		print "<b>This NPC spawns in : </b>";
+		print "<p><strong>This NPC spawns in:</strong></p><ul>";
 		$z="";
 		while ($row=mysql_fetch_array($result))
 		{
 			if ($z!=$row["short_name"])
 			{
-				print "<p><a href='zone.php?name=".$row["short_name"]."'>".$row["long_name"]."</a>";
+				print "<li><a href='zone.php?name=".$row["short_name"]."'>".$row["long_name"]."</a></li>";
 				$z=$row["short_name"];
 				if ($AllowQuestsNPC==TRUE)
 				{
@@ -387,6 +368,7 @@
 				print "<br/>Spawns every ".translate_time($row["respawntime"]);
 			}
 		}
+        print "</ul>";
 	}
 	// factions
 	$query="SELECT $tbfactionlist.name,
@@ -434,12 +416,7 @@
 			}
 		}
 	}
-	print "</ul>";
-	print "</td></tr></table>\n";
-	
-	print "</td></tr></table>\n";
-	print "</td></tr></table>\n";
-	print "</td></tr></table></center>\n";
+	print "</ul></div>";
 
 	include($includes_dir."footers.php");
 ?>
