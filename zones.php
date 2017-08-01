@@ -6,8 +6,6 @@ include($includes_dir.'headers.php');
 include($includes_dir.'mysql.php');
 include($includes_dir.'functions.php');
 
-print "<table border=0 width=100%><tr valign=top><td width=100%>";
-
 $query="SELECT $tbzones.short_name AS short_name,
                $tbzones.long_name AS long_name,
                COUNT($tbspawn2.id) AS spawns,
@@ -22,11 +20,13 @@ $query="SELECT $tbzones.short_name AS short_name,
 $query.=" GROUP BY $tbspawn2.zone
         ORDER BY $tbzones.long_name ASC";
 $result=mysql_query($query) or message_die('zones.php','MYSQL_QUERY',$query,mysql_error());
-print "<center><table border=1><tr>
+print "<div class='table-wrapper'><table width='100%' class='sticky-header'><thead><tr>
        <td class=tab_title>Name</td>
        <td class=tab_title>Short name</td>
        <td class=tab_title>ID</td>
        <td class=tab_title>Spawn points</td>
+       </tr>
+       </thead>
        ";
 while ($row=mysql_fetch_array($result)) {
   print "<tr>
@@ -36,13 +36,7 @@ while ($row=mysql_fetch_array($result)) {
          <td align=center>".$row["spawns"]."</td>
          </tr>";
 }
-print "</table></center>";
-
-print "</td><td width=0% nowrap>";
-
-
-
-print "</td></tr></table>";
+print "</table></div>";
 
 include($includes_dir."footers.php");
 ?>

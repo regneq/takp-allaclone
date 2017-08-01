@@ -53,14 +53,17 @@ a {
     td, th {
         overflow: hidden;
         border-right: 1px solid rgba(40, 40, 40, 0.1);
-//        text-overflow: ellipsis;
+        text-overflow: ellipsis;
         white-space: nowrap;
     }
     
-    th {
+    th,
+    .tab_title {
         padding: 15px 0;
         white-space: normal;
         text-overflow:inherit;
+        font-weight: bold;
+        padding-left: 15px;
     }
     
     tr:nth-child(even) {
@@ -81,10 +84,6 @@ a {
         
         @include mq('tablet-wide') {
             font-size: 16px;
-        }
-        
-        &:last-child {
-            display: none;
         }
     }
     
