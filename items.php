@@ -164,23 +164,17 @@
 	$Title="Item Search";
 	$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
-
-	echo "<center><table><tr><td style='toggle_btn'><a href='#' onclick='toggleItem(\"myTbody\")'><b><img src='" . $images_url . "dropdown.png' align='left' width='20' height='20'/>(Toggle Search Fields)</b></a></td></tr></table></center>";
-	echo "<center><table border='0' width='0%' cellpadding='15'>\n";
-
-	echo "<tbody id='myTbody'>";
-	// Hide the search fields when results show
-
+    
+    echo "<div class='refine-search'><div class='hamburger'>☰</div></div>";
+    echo "<div class='search-wrapper'>";
 	echo "<form method='GET' action='".$PHP_SELF."'>\n";
-	// Split into 2 tables side by side
-	echo "<tr><td><table border='0' width='0%'>";
-	echo "<tr><td nowrap='1'><b>Name : </b></td><td><input type='text' value=\"$iname\" size='30' name='iname'/></td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Class : </b></td><td>"; SelectIClass("iclass", $iclass); echo "</td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Race : </b></td><td>";  SelectRace  ("irace",   $irace); echo "</td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Slot : </b></td><td>";  SelectSlot  ("islot",   $islot); echo "</td></tr>\n";
-	echo "<tr>\n";
-	echo "  <td nowrap='1'><b>Stats : </b></td>\n";
-	echo "  <td>"; SelectStats("istat1", $istat1); echo "\n";
+	echo "<strong>Name: </strong></td><td><input type='text' value=\"$iname\" size='30' name='iname'/>";
+	echo "<strong>Class: </strong></td><td>"; SelectIClass("iclass", $iclass);
+	echo "<strong>Race: </strong></td><td>";  SelectRace  ("irace",   $irace);
+	echo "<strong>Slot: </strong></td><td>";  SelectSlot  ("islot",   $islot);
+	
+	echo "<strong>Stats: </strong>";
+	echo ""; SelectStats("istat1", $istat1); echo "\n";
 	echo "    <select name='istat1comp'>\n";
 	echo "      <option value='&gt;='".   ($istat1comp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
 	echo "      <option value='&lt;='".($istat1comp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
@@ -188,11 +182,9 @@
 	echo "      <option value='&lt'".($istat1comp == '<' ? " selected='1'" : "").">&lt</option>\n";
 	echo "    </select>\n";
 	echo "    <input type='text' size='4' name='istat1value' value='".$istat1value."'/>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
-	echo "<tr>\n";
-	echo "  <td nowrap='1'><b>Stats : </b></td>\n";
-	echo "  <td>"; SelectStats("istat2",$istat2); echo "\n";
+	
+	echo "<strong>Stats: </strong>";
+	echo ""; SelectStats("istat2",$istat2); echo "\n";
 	echo "    <select name='istat2comp'>\n";
 	echo "      <option value='&gt;='".   ($istat2comp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
 	echo "      <option value='&lt;='".($istat2comp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
@@ -200,11 +192,9 @@
 	echo "      <option value='&lt'".($istat2comp == '<' ? " selected='1'" : "").">&lt</option>\n";
 	echo "    </select>\n";
 	echo "    <input type='text' size='4' name='istat2value' value='".$istat2value."'/>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
-	echo "<tr>\n";
-	echo "  <td nowrap='1'><b>Resists : </b></td>\n";
-	echo "  <td>"; SelectResists("iresists",$iresists); echo "\n";
+	
+	echo "<strong>Resists: </strong>";
+	echo ""; SelectResists("iresists",$iresists); echo "\n";
 	echo "    <select name='iresistscomp'>\n";
 	echo "      <option value='&gt;='".   ($iresistscomp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
 	echo "      <option value='&lt;='".($iresistscomp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
@@ -212,11 +202,10 @@
 	echo "      <option value='&lt'".($iresistscomp == '<' ? " selected='1'" : "").">&lt</option>\n";
 	echo "    </select>\n";
 	echo "    <input type='text' size='4' name='iresistsvalue' value='".$iresistsvalue."'/>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
-	echo "<tr>\n";
-	echo "  <td nowrap='1'><b>Heroic Stats : </b></td>\n";
-	echo "  <td>"; SelectHeroicStats("iheroics",$iheroics); echo "\n";
+
+	
+	echo "<strong>Heroic Stats: </strong>";
+	echo ""; SelectHeroicStats("iheroics",$iheroics); echo "\n";
 	echo "    <select name='iheroicscomp'>\n";
 	echo "      <option value='&gt;='".   ($iheroicscomp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
 	echo "      <option value='&lt;='".($iheroicscomp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
@@ -224,11 +213,10 @@
 	echo "      <option value='&lt'".($iheroicscomp == '<' ? " selected='1'" : "").">&lt</option>\n";
 	echo "    </select>\n";
 	echo "    <input type='text' size='4' name='iheroicsvalue' value='".$iheroicsvalue."'/>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
-	echo "<tr>\n";
-	echo "  <td nowrap='1'><b>Modifiers : </b></td>\n";
-	echo "  <td>"; SelectModifiers("imod",$imod); echo "\n";
+
+	
+	echo "<strong>Modifiers: </strong>";
+	echo ""; SelectModifiers("imod",$imod); echo "\n"; 
 	echo "    <select name='imodcomp'>\n";
 	echo "      <option value='&gt;='".   ($imodcomp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
 	echo "      <option value='&lt;='".($imodcomp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
@@ -236,34 +224,24 @@
 	echo "      <option value='&lt'".($imodcomp == '<' ? " selected='1'" : "").">&lt</option>\n";
 	echo "    </select>\n";
 	echo "    <input type='text' size='4' name='imodvalue' value='".$imodvalue."'/>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
-	echo "</td></tr></table></td><td>";
-	// Left Table End and Right Table Start
-	echo "<table border='0' width='0%'>";
-	echo "<tr><td nowrap='1'><b>Item Type : </b></td><td>"; SelectIType("itype",$itype); echo "</td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Augmentation Type : </b></td><td>"; SelectAugSlot("iaugslot",$iaugslot); echo "</td></tr>\n";
-	echo "<tr><td nowrap='1'><b>With Effect : </b></td><td><input type='text' value='".$ieffect."' size='30' name='ieffect'/></td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Min Required Level : </b></td><td>\n"; SelectLevel("iminlevel",$ServerMaxLevel,$iminlevel); echo "</td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Max Required Level : </b></td><td>\n"; SelectLevel("ireqlevel",$ServerMaxLevel,$ireqlevel); echo "</td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Tradeable Items Only : </b></td><td><input type='checkbox' name='inodrop'".($inodrop?" checked='1'":"")."/></td></tr>\n";
-	echo "<tr>\n";
-	echo "  <td nowrap='1'><b>Item availability : </b></td>\n";
-	echo "  <td>\n";
+
+	echo "<strong>Item Type: </strong></td><td>"; SelectIType("itype",$itype);
+	echo "<strong>With Effect: </strong></td><td><input type='text' value='".$ieffect."' size='30' name='ieffect'/>";
+	echo "<strong>Min Req Level: </strong></td><td>\n"; SelectLevel("iminlevel",$ServerMaxLevel,$iminlevel);
+	echo "<strong>Max Req Level: </strong></td><td>\n"; SelectLevel("ireqlevel",$ServerMaxLevel,$ireqlevel);
+	echo "<strong>Only Tradeable: </strong></td><td><input type='checkbox' name='inodrop'".($inodrop?" checked='1'":"")."/>";
+	
+	echo "<strong>Item availability: </strong>";
 	echo "    <select name='iavailability'>\n";
 	echo "      <option value='0' ".($iavailability==0?" selected='1'":"").">-</option>\n";
 	echo "      <option value='1' ".($iavailability==1?" selected='1'":"").">Mob Dropped</option>\n";
 	echo "      <option value='2' ".($iavailability==2?" selected='1'":"").">Merchant Sold</option>\n";
-	echo "    </select>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
-	echo "<tr><td nowrap='1'><b>Max Level : </b></td><td>"; SelectLevel("iavaillevel",$ServerMaxLevel,$iavaillevel); echo "</td></tr>\n";
-	echo "<tr><td nowrap='1'><b>Deity : </b></td><td>"; SelectDeity("ideity",$ideity); echo "</td></tr>\n";
-	echo "</td></tr></table>";
-	echo "<tr align='center'><td nowrap='1' colspan='2'><input type='submit' value='Search' name='isearch'/>&nbsp;<input type='reset' value='Reset'/></td></tr>\n";
+	echo "    </select>";
+	echo "<strong>Max Level: </strong>"; SelectLevel("iavaillevel",$ServerMaxLevel,$iavaillevel);
+	echo "<strong>Deity: </strong>"; SelectDeity("ideity",$ideity);
+	echo "<input type='submit' value='Search' name='isearch'/> <input type='reset' value='Reset'/>";
 	echo "</form>\n";
-	echo "</tbody>";
-	echo "</table>\n";
+    echo "</div>";
 
 	// Print the query results if any
 	if(isset($QueryResult)) 
@@ -280,7 +258,7 @@
 		echo "<center>";
 		if($num_rows == 0)
 		{
-			echo "<b>No items found...</b><br>";
+			echo "<strong>No items found...</strong><br>";
 		}
 		else
 		{
@@ -289,7 +267,7 @@
 			{
 				$OutOf = " (Searches are limited to 100 Max Results)";
 			}
-			echo "<b>" . $num_rows . " " . ($num_rows == 1 ? "item" : "items") . " displayed</b>" . $OutOf . "<br>";
+			echo "<strong>" . $num_rows . " " . ($num_rows == 1 ? "item" : "items") . " displayed</strong>" . $OutOf . "<br>";
 			echo "</center>";
 
 			echo "<center><table border='$Tableborder' cellpadding='5' width='0%'>";

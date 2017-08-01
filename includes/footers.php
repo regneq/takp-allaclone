@@ -12,6 +12,11 @@
                         return $table.closest('.table-wrapper');
                     }
                 });
+                
+                $(".refine-search").on('click', function(el) {
+                    el.preventDefault();
+                    $('.search-wrapper, .refine-search').toggleClass('visible');
+                })
             });
         </script>
     </body>
