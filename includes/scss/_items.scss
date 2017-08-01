@@ -2,11 +2,11 @@
     width: 50px;
     height: 50px;
     background: rgb(0, 0, 60);
-    transform: rotate(90deg);
+    transform: translateX(-20px) translateY(-20px) rotate(90deg);
     transition: all 0.4s ease-in;
     
     &.visible {
-        transform: translateX(550px) rotate(90deg);
+        transform: translateX(530px) translateY(-20px)  rotate(90deg);
         
         .hamburger {
             background: #d2d2d2;
@@ -41,6 +41,7 @@
     
     transform: translateX(-550px);
     transition: all 0.4s ease-in;
+    box-shadow: 0px 0px 10px #000;
     
     &.visible {
         transform: translateX(0);
@@ -75,5 +76,15 @@
     
     input[type=submit] {
         clear: left;
+    }
+    
+    input[type=submit],
+    input[type=reset] {
+        width: 50%;
+        max-width: 100%;
+        padding: 10px;
+        background: #fff;
+        color: rgb(0, 0, 60);
+        border-right: 1px solid rgb(0, 0, 60);
     }
 }

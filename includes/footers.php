@@ -17,6 +17,10 @@
                     el.preventDefault();
                     $('.search-wrapper, .refine-search').toggleClass('visible');
                 })
+                
+                if (window.location.href.indexOf("?iname=") > -1) {
+                    $('.visible').removeClass('visible');
+                }
             });
         </script>
     </body>
