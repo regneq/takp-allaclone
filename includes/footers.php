@@ -21,6 +21,21 @@
                 if (window.location.href.indexOf("?iname=") > -1) {
                     $('.visible').removeClass('visible');
                 }
+                
+                if (window.location.href.indexOf("items.php") > -1) {
+                    
+                    $('select[name=iminlevel] option:lt(1)').html('Min Lvl');
+                    $('select[name=ireqlevel] option:lt(1)').html('Req Lvl');
+                    $('select[name=iavaillevel] option:lt(1)').html('Available Lvl');
+                    
+                    var noDrop = $('input[name=inodrop]');
+                    var label = $('label[for=inodrop]');
+                    
+                    $(label).on('click', function() {
+                        $(noDrop).trigger('click');
+                    })
+                }
+                
             });
         </script>
     </body>

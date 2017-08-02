@@ -233,7 +233,7 @@ function gedeities($val) {
 function SelectClass($name,$selected) {
   global $dbclasses;
   print "<SELECT name=\"$name\">";
-  print "<option value='0'>-</option>\n";
+  print "<option value='0'>Class</option>\n";
   for ($i=1; $i<=16; $i++) {
     print "<option value='".$i."'";
     if ($i==$selected) { print " selected='1'"; }
@@ -244,7 +244,7 @@ function SelectClass($name,$selected) {
 function SelectDeity($name,$selected) {
   global $dbideities;
   print "<SELECT name=\"$name\">";
-  print "<option value='0'>-</option>\n";
+  print "<option value='0'>Deity</option>\n";
   for ($i=2; $i<=65536; $i*=2) {
     print "<option value='".$i."'";
     if ($i==$selected) { print " selected='1'"; }
@@ -255,7 +255,7 @@ function SelectDeity($name,$selected) {
 function SelectRace($name,$selected) {
   global $dbraces;
   print "<SELECT name=\"$name\">";
-  print "<option value='0'>-</option>\n";
+  print "<option value='0'>Race</option>\n";
   for ($i=1; $i<32768; $i*=2) {
     print "<option value='".$i."'";
     if ($i==$selected) { print " selected='1'"; }
@@ -266,7 +266,7 @@ function SelectRace($name,$selected) {
 function SelectMobRace($name,$selected) {
 	global $dbiracenames;
 	print "<SELECT name=\"$name\">";
-	print "<option value='0'>-</option>\n";
+	print "<option value='0'>Mob Race</option>\n";
 	foreach ($dbiracenames as $key => $value)
 	{
 		print "<option value='".$key."'";
@@ -278,7 +278,7 @@ function SelectMobRace($name,$selected) {
 function SelectIClass($name,$selected) {
 	global $dbiclasses;
 	print "<SELECT name=\"$name\">";
-	print "<option value='0'>-</option>\n";
+	print "<option value='0'>Class</option>\n";
 	for ($i=1; $i<=32768; $i*=2)
 	{
 		print "<option value='".$i."'";
@@ -290,7 +290,7 @@ function SelectIClass($name,$selected) {
 function SelectIType($name,$selected) {
   global $dbitypes;
   print "<SELECT name=\"$name\">";
-  print "<option value='-1'>-</option>\n";
+  print "<option value='-1'>Type</option>\n";
   reset($dbitypes);
   do {
     $key=key($dbitypes);
@@ -303,7 +303,7 @@ function SelectIType($name,$selected) {
 function SelectSlot($name,$selected) {
   global $dbslots;
   print "<SELECT name=\"$name\">";
-  print "<option value='0'>-</option>\n";
+  print "<option value='0'>Slot</option>\n";
   reset($dbslots);
   do {
     $key=key($dbslots);
@@ -316,7 +316,7 @@ function SelectSlot($name,$selected) {
 function SelectSpellEffect($name,$selected) {
 	global $dbspelleffects;
 	print "<SELECT name=\"$name\">";
-	print "<option value=-1>-</option>\n";
+	print "<option value=-1>Effect</option>\n";
 	reset($dbspelleffects);
 	do
 	{
@@ -333,7 +333,7 @@ function SelectSpellEffect($name,$selected) {
 }
 function SelectAugSlot($name,$selected) {
   print "<SELECT name=\"$name\">";
-  print "<option value='0'>-</option>\n";
+  print "<option value='0'>Augment Slot</option>\n";
   for ($i=1; $i<=25; $i++) {
     print "<option value='".$i."'";
     if ($i==$selected) { print " selected='1'"; }
@@ -343,7 +343,7 @@ function SelectAugSlot($name,$selected) {
 }
 function SelectLevel($name,$maxlevel,$selevel) {
 	print "<SELECT name=\"$name\">";
-	print "<option value='0'>-</option>\n";
+	print "<option value='0'>Level</option>\n";
 	for ($i=1; $i<=$maxlevel; $i++)
 	{
 		print "<option value='".$i."'";
@@ -376,7 +376,7 @@ function WriteIt($value,$name,$sel) {
 }
 function SelectStats($name,$stat) {
   print "<select name=\"$name\">\n";
-  print "  <option value=''>-</option>\n";
+  print "  <option value=''>Stat</option>\n";
   WriteIt("hp","Hit Points",$stat);
   WriteIt("mana","Mana",$stat);
   WriteIt("ac","AC",$stat);
@@ -399,7 +399,7 @@ function SelectStats($name,$stat) {
 }
 function SelectHeroicStats($name,$heroic) {
   print "<select name=\"$name\">\n";
-  print "  <option value=''>-</option>\n";
+  print "  <option value=''>H. Stat</option>\n";
   WriteIt("heroic_agi","Heroic Agility",$stat);
   WriteIt("heroic_cha","Heroic Charisma",$stat);
   WriteIt("heroic_dex","Heroic Dexterity",$stat);
@@ -417,7 +417,7 @@ function SelectHeroicStats($name,$heroic) {
 }
 function SelectResists($name,$resist) {
   print "<select name=\"$name\">\n";
-  print "  <option value=''>-</option>\n";
+  print "  <option value=''>Resists</option>\n";
   WriteIt("mr","Resist Magic",$resist);
   WriteIt("fr","Resist Fire",$resist);
   WriteIt("cr","Resist Cold",$resist);
@@ -428,7 +428,7 @@ function SelectResists($name,$resist) {
 }
 function SelectModifiers($name,$mod) {
   print "<select name=\"$name\">\n";
-  print "  <option value=''>-</option>\n";
+  print "  <option value=''>Modifiers</option>\n";
   WriteIt("avoidance","Avoidance",$mod);
   WriteIt("accuracy","Accuracy",$mod);
   WriteIt("backstabdmg","Backstab Damage",$mod);
