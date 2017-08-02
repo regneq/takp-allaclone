@@ -167,69 +167,63 @@
     
     echo "<div class='refine-search visible'><div class='hamburger'>☰</div></div>";
     echo "<div class='search-wrapper visible'>";
-	echo "<form method='GET' action='".$PHP_SELF."'>\n";
-	echo "<strong>Name: </strong><input type='text' value=\"$iname\" size='30' name='iname'/>";
-	echo "<strong>Class: </strong>"; SelectIClass("iclass", $iclass);
-	echo "<strong>Race: </strong>";  SelectRace  ("irace",   $irace);
-	echo "<strong>Slot: </strong>";  SelectSlot  ("islot",   $islot);
+	echo "<form method='GET' action='".$PHP_SELF."'>";
+	echo "<input type='text' value=\"$iname\" size='30' name='iname'/>";
+	echo SelectIClass("iclass", $iclass);
+	echo SelectRace  ("irace",   $irace);
+	echo SelectSlot  ("islot",   $islot);
 	
-	echo "<strong>Stats: </strong>";
-	echo SelectStats("istat1", $istat1); echo "\n";
-	echo "    <select name='istat1comp'>\n";
-	echo "      <option value='&gt;='".   ($istat1comp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
-	echo "      <option value='&lt;='".($istat1comp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
-	echo "      <option value='='".    ($istat1comp == '='  ? " selected='1'" : "").">=</option>\n";
-	echo "      <option value='&lt'".($istat1comp == '<' ? " selected='1'" : "").">&lt</option>\n";
-	echo "    </select>\n";
-	echo "    <input type='text' size='4' name='istat1value' value='".$istat1value."'/>\n";
-	
-	echo "<strong>Stats: </strong>";
-	echo SelectStats("istat2",$istat2); echo "\n";
-	echo "    <select name='istat2comp'>\n";
-	echo "      <option value='&gt;='".   ($istat2comp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
-	echo "      <option value='&lt;='".($istat2comp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
-	echo "      <option value='='".    ($istat2comp == '='  ? " selected='1'" : "").">=</option>\n";
-	echo "      <option value='&lt'".($istat2comp == '<' ? " selected='1'" : "").">&lt</option>\n";
-	echo "    </select>\n";
-	echo "    <input type='text' size='4' name='istat2value' value='".$istat2value."'/>\n";
-	
-	echo "<strong>Resists: </strong>";
-	echo SelectResists("iresists",$iresists); echo "\n";
-	echo "    <select name='iresistscomp'>\n";
-	echo "      <option value='&gt;='".   ($iresistscomp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
-	echo "      <option value='&lt;='".($iresistscomp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
-	echo "      <option value='='".    ($iresistscomp == '='  ? " selected='1'" : "").">=</option>\n";
-	echo "      <option value='&lt'".($iresistscomp == '<' ? " selected='1'" : "").">&lt</option>\n";
-	echo "    </select>\n";
-	echo "    <input type='text' size='4' name='iresistsvalue' value='".$iresistsvalue."'/>\n";
-
-	
-	echo "<strong>Modifiers: </strong>";
-	echo SelectModifiers("imod",$imod); echo "\n"; 
-	echo "    <select name='imodcomp'>\n";
-	echo "      <option value='&gt;='".   ($imodcomp == '>=' ? " selected='1'" : "").">&gt;=</option>\n";
-	echo "      <option value='&lt;='".($imodcomp == '<=' ? " selected='1'" : "").">&lt;=</option>\n";
-	echo "      <option value='='".    ($imodcomp == '='  ? " selected='1'" : "").">=</option>\n";
-	echo "      <option value='&lt'".($imodcomp == '<' ? " selected='1'" : "").">&lt</option>\n";
-	echo "    </select>\n";
-	echo "    <input type='text' size='4' name='imodvalue' value='".$imodvalue."'/>\n";
-
-	echo "<strong>Item Type: </strong>"; SelectIType("itype",$itype);
-	echo "<strong>With Effect: </strong><input type='text' value='".$ieffect."' size='30' name='ieffect'/>";
-	echo "<strong>Min Req Level: </strong>\n"; SelectLevel("iminlevel",$ServerMaxLevel,$iminlevel);
-	echo "<strong>Max Req Level: </strong>\n"; SelectLevel("ireqlevel",$ServerMaxLevel,$ireqlevel);
-	echo "<strong>Only Tradeable: </strong><input type='checkbox' name='inodrop'".($inodrop?" checked='1'":"")."/>";
-	
-	echo "<strong>Item availability: </strong>";
-	echo "    <select name='iavailability'>\n";
-	echo "      <option value='0' ".($iavailability==0?" selected='1'":"").">-</option>\n";
-	echo "      <option value='1' ".($iavailability==1?" selected='1'":"").">Mob Dropped</option>\n";
-	echo "      <option value='2' ".($iavailability==2?" selected='1'":"").">Merchant Sold</option>\n";
+	echo SelectStats("istat1", $istat1);
+	echo "    <select name='istat1comp'>";
+	echo "      <option value='&gt;='" . ($istat1comp == '>=' ? " selected='1'" : "") . ">&gt;=</option>";
+	echo "      <option value='&lt;='" . ($istat1comp == '<=' ? " selected='1'" : "") . ">&lt;=</option>";
+	echo "      <option value='='" . ($istat1comp == '='  ? " selected='1'" : "") . ">=</option>";
+	echo "      <option value='&lt'" . ($istat1comp == '<' ? " selected='1'" : "") . ">&lt</option>";
 	echo "    </select>";
-	echo "<strong>Max Level: </strong>"; SelectLevel("iavaillevel",$ServerMaxLevel,$iavaillevel);
-	echo "<strong>Deity: </strong>"; SelectDeity("ideity",$ideity);
-	echo "<input type='submit' value='Search' name='isearch'/> <input type='reset' value='Reset'/>";
-	echo "</form>\n";
+	echo "    <input type='text' size='4' name='istat1value' value='".$istat1value."'/>";
+	
+	echo SelectStats("istat2",$istat2);
+	echo "    <select name='istat2comp'>";
+	echo "      <option value='&gt;='".   ($istat2comp == '>=' ? " selected='1'" : "").">&gt;=</option>";
+	echo "      <option value='&lt;='".($istat2comp == '<=' ? " selected='1'" : "").">&lt;=</option>";
+	echo "      <option value='='".    ($istat2comp == '='  ? " selected='1'" : "").">=</option>";
+	echo "      <option value='&lt'".($istat2comp == '<' ? " selected='1'" : "").">&lt</option>";
+	echo "    </select>";
+	echo "    <input type='text' size='4' name='istat2value' value='".$istat2value."'/>";
+	
+	echo SelectResists("iresists",$iresists);
+	echo "    <select name='iresistscomp'>";
+	echo "      <option value='&gt;='".   ($iresistscomp == '>=' ? " selected='1'" : "").">&gt;=</option>";
+	echo "      <option value='&lt;='".($iresistscomp == '<=' ? " selected='1'" : "").">&lt;=</option>";
+	echo "      <option value='='".    ($iresistscomp == '='  ? " selected='1'" : "").">=</option>";
+	echo "      <option value='&lt'".($iresistscomp == '<' ? " selected='1'" : "").">&lt</option>";
+	echo "    </select>";
+	echo "    <input type='text' size='4' name='iresistsvalue' value='".$iresistsvalue."'/>";
+
+	
+	echo SelectModifiers("imod",$imod);
+	echo "    <select name='imodcomp'>";
+	echo "      <option value='&gt;='" . ($imodcomp == '>=' ? " selected='1'" : "") . ">&gt;=</option>";
+	echo "      <option value='&lt;='" . ($imodcomp == '<=' ? " selected='1'" : "") . ">&lt;=</option>";
+	echo "      <option value='='" . ($imodcomp == '='  ? " selected='1'" : "") . ">=</option>";
+	echo "      <option value='&lt'" . ($imodcomp == '<' ? " selected='1'" : "") . ">&lt</option>";
+	echo "    </select>";
+	echo "    <input type='text' size='4' name='imodvalue' value='".$imodvalue."'/>";
+
+	echo "<input type='text' value='".$ieffect."' size='30' name='ieffect'/>";
+	echo SelectLevel("iminlevel",$ServerMaxLevel,$iminlevel);
+	echo SelectLevel("ireqlevel",$ServerMaxLevel,$ireqlevel);
+	echo "<input type='checkbox' name='inodrop'".($inodrop?" checked='1'":"") . "/>";
+	
+	echo "    <select name='iavailability'>";
+	echo "      <option value='0' ".($iavailability==0?" selected='1'":"") . ">-</option>";
+	echo "      <option value='1' ".($iavailability==1?" selected='1'":"") . ">Mob Dropped</option>";
+	echo "      <option value='2' ".($iavailability==2?" selected='1'":"") . ">Merchant Sold</option>";
+	echo "    </select>";
+	echo SelectLevel("iavaillevel",$ServerMaxLevel,$iavaillevel);
+	echo SelectDeity("ideity",$ideity);
+	echo "<input type='submit' value='Search' name='isearch'/> <input type='reset' value='Reset' />";
+	echo "</form>";
     echo "</div>";
 
 	// Print the query results if any

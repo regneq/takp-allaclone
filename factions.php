@@ -49,17 +49,14 @@
 	$Title="Faction Search";
 	$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
-
-	print "<center><table border='0' width='0%'><form method='GET' action='".$PHP_SELF."'>\n";
-	print "<tr>\n";
-	print "<td nowrap='1'><b>Search : </b></td>\n";
-	print "<td><input type='text' value=\"$iname\" size='30' name='iname'/></td>\n";
-	print "</tr>";
-	print "<tr align='center'>";
-	print "<td nowrap='1' colspan='2'><input type='submit' value='Search' name='isearch' class='form'/></td>\n";
-	print "</tr>\n";
-	print "</form></table></center>\n";
-	print "\n";
+    
+    echo "<div class='refine-search visible'><div class='hamburger'>☰</div></div>";
+    echo "<div class='search-wrapper visible'>";
+	print "<form method='GET' action='".$PHP_SELF."'>";
+	print "<input class='full' type='text' value=\"$iname\" size='30' name='iname' placeholder='Search' />";
+	print "<input type='submit' value='Search' name='isearch' class='form'/>";
+	print "</form>";
+	print "</div>";
 
 	if(isset($QueryResult))
 	{
