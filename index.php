@@ -68,7 +68,7 @@
 			   
 		$RowClass = "lr";
 		while ($row=mysql_fetch_array($result)) {
-				CreateToolTip($row["item_id"], BuildItemStats($row, 1));
+				
 				print "<tr class='" .$RowClass. "'>
 				<td><a href=item.php?id=".$row["item_id"]." id='" . $row["item_id"] . "'>";
 				

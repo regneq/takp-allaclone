@@ -31,15 +31,6 @@ $query = "SELECT $tbzones.* FROM $tbzones WHERE $tbzones.short_name='$name'";
 $result = mysql_query($query) or message_die('zones.php', 'MYSQL_QUERY', $query, mysql_error());
 $zone = mysql_fetch_array($result);
 
-print "<p><strong>Succor point : X (</strong>" . floor($zone["safe_x"]) . ")  Y (" . floor($zone["safe_y"]) . ") Z (" . floor($zone["safe_z"]) . ")";
-if ($zone["minium_level"] > 0) {
-    print "<strong>Minimum level : </strong>" . floor($zone["minium_level"]);
-}
-
-if (file_exists($maps_dir . $name . ".jpg")) {
-    print "<a href=" . $maps_url . $name . ".jpg target=_new>Popup map</a>";
-}
-
 if ($mode == "npcs") {
     $query = "SELECT $tbnpctypes.id,$tbnpctypes.class,$tbnpctypes.level,$tbnpctypes.maxlevel,$tbnpctypes.race,$tbnpctypes.name,$tbnpctypes.maxlevel,$tbnpctypes.loottable_id
         FROM $tbnpctypes,$tbspawn2,$tbspawnentry,$tbspawngroup";
@@ -60,7 +51,7 @@ if ($mode == "npcs") {
     $result = mysql_query($query) or message_die('zone.php', 'MYSQL_QUERY', $query, mysql_error());
     
     if (mysql_num_rows($result) > 0) {
-        print "<h2>Bestiary</h2><table class='bestiary' border=0 width='60%' cellpadding='5' cellspacing='0'><tr>";
+        print "<h2>Bestiary</h2><div class='left-col'><table class='bestiary' border=0 width='100%' cellpadding='5' cellspacing='0'><tr>";
         if ($ZoneDebug == TRUE) {
             print "<td class='menuh'><b><a href=$PHP_SELF?name=$name&order=id>Id</a></b></td>";
         }
@@ -110,7 +101,7 @@ if ($mode == "npcs") {
 if ($mode == "items") {
     $ItemsFound = 0;
     
-    $EquiptmentTable = "<p>Equipment List<p><table border=0><tr>
+    $EquiptmentTable = "<p>Equipment List</p><div class='left-col'><table border=0><tr>
         <th class='menuh' width='100' align='left'>Icon</a></th>
         <th class='menuh' align='left'><a href=$PHP_SELF?name=$name&mode=items&order=Name>Name</a></th>
         <th class='menuh' align='left' width='400'><a href=$PHP_SELF?name=$name&mode=items&order=itemtype>Item type</a></th>
@@ -201,10 +192,6 @@ if ($mode == "items") {
     
     if ($ItemsFound > 0) {
         print $EquiptmentTable;
-        foreach ($ItemsData as $key => $ItemData) {
-            $ToolTips .= CreateToolTip($ItemData["id"], BuildItemStats($ItemData, 1));
-        }
-        print $ToolTips;
         
     } else {
         print "<br><b>No Items Found</b>";
@@ -312,28 +299,32 @@ if ($mode == "tasks") {
     }
     
 } // end Tasks
+print "</div>"; // end left-col
 
-
-print "<p class=menuh>Resources:</p>";
-print "<ul><li><a href=$PHP_SELF?name=$name&mode=npcs>" . $zone["long_name"] . " Bestiary List</a>";
+print "<div class='zone-resources'>";
+print "<p><strong>Succor point : X (</strong>" . floor($zone["safe_x"]) . ")  Y (" . floor($zone["safe_y"]) . ") Z (" . floor($zone["safe_z"]) . ")";
+if ($zone["minium_level"] > 0) {
+    print "<strong>Minimum level : </strong>" . floor($zone["minium_level"]);
+}
+print "<ul><li><a href=$PHP_SELF?name=$name&mode=npcs>" . $zone["long_name"] . " Bestiary</a>";
 if ($DisplayNamedNPCsInfo == TRUE) {
     print "<li><a href=zonenameds.php?name=$name&mode=npcs>" . $zone["long_name"] . " Named Mobs List</a>";
 }
-print "<li><a href=$PHP_SELF?name=$name&mode=items>" . $zone["long_name"] . " Equipment List </a>";
+print "<li><a href=$PHP_SELF?name=$name&mode=items>" . $zone["long_name"] . " Equipment</a>";
 if (file_exists($maps_dir . $name . ".jpg")) {
     print "<li><a href=" . $maps_url . $name . ".jpg>" . $zone["long_name"] . " Map</a>";
 }
 if ($DisplaySpawnGroupInfo == TRUE) {
     print "<li><a href=$PHP_SELF?name=$name&mode=spawngroups>" . $zone["long_name"] . " Spawn Groups</a>";
 }
-print "<li><a href=$PHP_SELF?name=$name&mode=forage>" . $zone["long_name"] . " Forageable items</a>";
+print "<li><a href=$PHP_SELF?name=$name&mode=forage>" . $zone["long_name"] . " Forageable Items</a>";
 if ($DisplayTaskInfo == TRUE) {
     print "<li><a href=$PHP_SELF?name=$name&mode=tasks>" . $zone["long_name"] . " Tasks</a>";
 }
 if ($AllowQuestsNPC == TRUE) {
     print "<li><a href=$root_url" . "quests/zones.php?aZone=$name>" . $zone["long_name"] . " Quest NPCs</a>";
 }
-print "</ul>";
+print "</ul></div>";
 
 include($includes_dir . "footers.php");
 ?>

@@ -56,7 +56,7 @@
 		print "<ul>";
 		while ($row=mysql_fetch_array($result))
 		{
-			CreateToolTip($row["item_id"], BuildItemStats($row, 1));
+			
 			print "<img src='" . $icons_url . "item_" . $row["icon"] . ".gif' align='left' width='15' height='15'/>" .
 			"<a href=item.php?id=" . $row["item_id"] . " id=" . $row["item_id"] . ">" .
 			str_replace("_"," ",$row["Name"])."</a><br>";
@@ -84,7 +84,7 @@
 		print "<tr><td nowrap><b>Items resulting of a <FONT COLOR='#FFFF00'> successfull combine </FONT></b><ul>";
 		while ($row=mysql_fetch_array($result))
 		{
-			CreateToolTip(($row["item_id"] * 110), BuildItemStats($row, 1));
+			
 			print "<img src='" . $icons_url . "item_" . $row["icon"] . ".gif' align='left' width='15' height='15'/>" .
 			"<a href=item.php?id=" . $row["item_id"] . " id=" . ($row["item_id"] * 110) . ">" .
 			str_replace("_"," ",$row["Name"])."</a> x".$row["successcount"]." <br>"; 
@@ -109,7 +109,7 @@
 			print "<tr><td nowrap><b>Items resulting of a <FONT COLOR='#FF0000'> failed combine </FONT></b><ul>";
 			while ($row=mysql_fetch_array($result))
 			{
-				CreateToolTip(($row["item_id"] * 10), BuildItemStats($row, 1));
+				
 				print "<img src='" . $icons_url . "item_" . $row["icon"] . ".gif' align='left' width='15' height='15'/>" .
 				"<a href=item.php?id=" . $row["item_id"] . " id=" . ($row["item_id"] * 10) . ">" .
 				str_replace("_"," ",$row["Name"])."</a> x".$row["failcount"]." <br>"; 
@@ -135,7 +135,7 @@
 
 			while ($row=mysql_fetch_array($result))
 			{
-				CreateToolTip(($row["item_id"] * 100), BuildItemStats($row, 1));
+				
 				print "<img src='" . $icons_url . "item_" . $row["icon"] . ".gif' align='left' width='15' height='15'/>" . "<a href=item.php?id=".$row["item_id"]." id=".($row["item_id"] * 100).">".
 				str_replace("_"," ",$row["Name"])."</a> x ".$row["componentcount"]." <br>"; 
 			}

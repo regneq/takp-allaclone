@@ -325,7 +325,7 @@
 				}
 				$TableData .= "</td><td>";
 
-				CreateToolTip($row["id"], BuildItemStats($row, 1));
+				
 				$TableData .= "<a href='item.php?id=" . $row["id"] . "' id='" . $row["id"] . "'>" . $row["Name"] . "</a>";
 				
 				$TableData .= "</td><td>";

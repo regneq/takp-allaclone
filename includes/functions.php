@@ -723,18 +723,6 @@ function AutoDataTable($Query) {
 	}
 	echo "</tbody></table>";
 }
-function CreateToolTip($ID, $Content){
-	$Content = preg_replace("/'/i", "\'", $Content);
-	echo '<script type="text/javascript">
-		$(document).ready(function(){	
-			$("a").easyTooltip();
-			$("a#'. $ID . '").easyTooltip({
-				tooltipId: "easyTooltip2",
-				content: \''. $Content . '\'
-			});
-		});
-	</script>';
-}
 function Pagination($targetpage, $page, $total_pages, $limit, $adjacents)
 {
 
