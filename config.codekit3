@@ -106505,6 +106505,114 @@
 		"oAP": "\/items.php",
 		"oF": 0
 		},
+	"\/maps\/acrylia.jpg": {
+		"ft": 16384,
+		"iS": 43826,
+		"oA": 0,
+		"oAP": "\/maps\/acrylia.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/airplane.jpg": {
+		"ft": 16384,
+		"iS": 50070,
+		"oA": 0,
+		"oAP": "\/maps\/airplane.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/akheva.jpg": {
+		"ft": 16384,
+		"iS": 66886,
+		"oA": 0,
+		"oAP": "\/maps\/akheva.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/bothunder.jpg": {
+		"ft": 16384,
+		"iS": 257151,
+		"oA": 0,
+		"oAP": "\/maps\/bothunder.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/chardok.jpg": {
+		"ft": 16384,
+		"iS": 63694,
+		"oA": 0,
+		"oAP": "\/maps\/chardok.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/codecay.gif": {
+		"ft": 4194304,
+		"iS": 153987,
+		"oA": 0,
+		"oAP": "\/maps\/codecay.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/fearplane.jpg": {
+		"ft": 16384,
+		"iS": 85223,
+		"oA": 0,
+		"oAP": "\/maps\/fearplane.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/fungusgrove.jpg": {
+		"ft": 16384,
+		"iS": 95328,
+		"oA": 0,
+		"oAP": "\/maps\/fungusgrove.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/griegsend.jpg": {
+		"ft": 16384,
+		"iS": 49331,
+		"oA": 0,
+		"oAP": "\/maps\/griegsend.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"\/maps\/growthplane.jpg": {
+		"ft": 16384,
+		"iS": 110048,
+		"oA": 0,
+		"oAP": "\/maps\/growthplane.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/hateplane.jpg": {
+		"ft": 16384,
+		"iS": 90734,
+		"oA": 0,
+		"oAP": "\/maps\/hateplane.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
 	"\/maps\/hole.jpg": {
 		"ft": 16384,
 		"iS": 49571,
@@ -106515,15 +106623,31 @@
 		"opt": 0,
 		"q": 100
 		},
-	"\/maps\/mischiefplane.jpg": {
-		"ft": 16384,
-		"iS": 132519,
+	"\/maps\/honora.gif": {
+		"ft": 4194304,
+		"iS": 119745,
 		"oA": 0,
-		"oAP": "\/maps\/mischiefplane.jpg",
+		"oAP": "\/maps\/honora.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/honorb.jpg": {
+		"ft": 16384,
+		"iS": 54395,
+		"oA": 0,
+		"oAP": "\/maps\/honorb.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 100
+		},
+	"\/maps\/mischiefplane.gif": {
+		"ft": 4194304,
+		"iS": 90451,
+		"oA": 0,
+		"oAP": "\/maps\/mischiefplane.gif",
+		"oF": 0,
+		"opt": 0
 		},
 	"\/maps\/necropolis.jpg": {
 		"ft": 16384,
@@ -106533,6 +106657,227 @@
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/nightmareb.gif": {
+		"ft": 4194304,
+		"iS": 81311,
+		"oA": 0,
+		"oAP": "\/maps\/lairofterristhule.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/poair.jpg": {
+		"ft": 16384,
+		"iS": 170704,
+		"oA": 0,
+		"oAP": "\/maps\/poair.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/podisease.gif": {
+		"ft": 4194304,
+		"iS": 164211,
+		"oA": 0,
+		"oAP": "\/maps\/planeofdisease.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/poeartha.gif": {
+		"ft": 4194304,
+		"iS": 24241,
+		"oA": 0,
+		"oAP": "\/maps\/poeartha.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/poearthb.gif": {
+		"ft": 4194304,
+		"iS": 21621,
+		"oA": 0,
+		"oAP": "\/maps\/poearthb.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/pofire.jpg": {
+		"ft": 16384,
+		"iS": 229398,
+		"oA": 0,
+		"oAP": "\/maps\/pofire.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/poinnovation.jpg": {
+		"ft": 16384,
+		"iS": 94267,
+		"oA": 0,
+		"oAP": "\/maps\/poinnovation.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/pojustice.jpg": {
+		"ft": 16384,
+		"iS": 101728,
+		"oA": 0,
+		"oAP": "\/maps\/pojustice.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/ponightmare.jpg": {
+		"ft": 16384,
+		"iS": 35347,
+		"oA": 0,
+		"oAP": "\/maps\/ponightmare.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/postorms.png": {
+		"ft": 32768,
+		"iS": 17767,
+		"oA": 0,
+		"oAP": "\/maps\/postorms.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/maps\/potactics.jpg": {
+		"ft": 16384,
+		"iS": 260626,
+		"oA": 0,
+		"oAP": "\/maps\/potactics.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/potimea.png": {
+		"ft": 32768,
+		"iS": 16736,
+		"oA": 0,
+		"oAP": "\/maps\/potimea.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/maps\/potimeb.png": {
+		"ft": 32768,
+		"iS": 14816,
+		"oA": 0,
+		"oAP": "\/maps\/potimeb.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/maps\/potorment.jpg": {
+		"ft": 16384,
+		"iS": 163203,
+		"oA": 0,
+		"oAP": "\/maps\/potorment.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/potranquility.gif": {
+		"ft": 4194304,
+		"iS": 37456,
+		"oA": 0,
+		"oAP": "\/maps\/potranquility.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/povalor.gif": {
+		"ft": 4194304,
+		"iS": 26380,
+		"oA": 0,
+		"oAP": "\/maps\/povalor.gif",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/maps\/powater.jpg": {
+		"ft": 16384,
+		"iS": 144356,
+		"oA": 0,
+		"oAP": "\/maps\/powater.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/skyshrine.jpg": {
+		"ft": 16384,
+		"iS": 1350374,
+		"oA": 0,
+		"oAP": "\/maps\/skyshrine.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/sleeper.jpg": {
+		"ft": 16384,
+		"iS": 35015,
+		"oA": 0,
+		"oAP": "\/maps\/sleeper.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/solrotower.jpg": {
+		"ft": 16384,
+		"iS": 282885,
+		"oA": 0,
+		"oAP": "\/maps\/solrotower.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/soltemple.jpg": {
+		"ft": 16384,
+		"iS": 33038,
+		"oA": 0,
+		"oAP": "\/maps\/soltemple.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"\/maps\/sseru.jpg": {
+		"ft": 16384,
+		"iS": 18970,
+		"oA": 0,
+		"oAP": "\/maps\/sseru.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/ssratemple.jpg": {
+		"ft": 16384,
+		"iS": 30539,
+		"oA": 0,
+		"oAP": "\/maps\/ssratemple.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
 		"q": 100
 		},
 	"\/maps\/templeveeshan.jpg": {
@@ -106545,11 +106890,41 @@
 		"opt": 0,
 		"q": 100
 		},
-	"\/maps\/veksar.jpg": {
+	"\/maps\/thedeep.jpg": {
 		"ft": 16384,
-		"iS": 400686,
+		"iS": 101074,
 		"oA": 0,
-		"oAP": "\/maps\/veksar.jpg",
+		"oAP": "\/maps\/thedeep.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/veeshan.jpg": {
+		"ft": 16384,
+		"iS": 243139,
+		"oA": 0,
+		"oAP": "\/maps\/veeshan.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/velketor.jpg": {
+		"ft": 16384,
+		"iS": 95445,
+		"oA": 0,
+		"oAP": "\/maps\/velketor.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/maps\/vexthal.jpg": {
+		"ft": 16384,
+		"iS": 272475,
+		"oA": 0,
+		"oAP": "\/maps\/vexthal.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -130143,12 +130518,6 @@
 		"oAP": "\/revision.php",
 		"oF": 0
 		},
-	"\/robots.txt": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/robots.txt",
-		"oF": 0
-		},
 	"\/spawngroup.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -130219,18 +130588,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/static\/velious.php",
-		"oF": 0
-		},
-	"\/static\/voa.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/voa.php",
-		"oF": 0
-		},
-	"\/static\/ykesha.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/ykesha.php",
 		"oF": 0
 		},
 	"\/strategy\/aadef.php": {
