@@ -16,3 +16,4 @@
         </header>
         <div id="main">
         <?php include("menu.php"); ?>
+        <h2 class="page_title"><?php echo $Title; ?></h2>

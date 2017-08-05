@@ -27,9 +27,7 @@ if (!isset($name)) {
 $ZoneDebug = FALSE; // this is new in 0.5.3 but undocumented, it is for world builders
 
 
-$query = "SELECT $tbzones.*
-        FROM $tbzones
-        WHERE $tbzones.short_name='$name'";
+$query = "SELECT $tbzones.* FROM $tbzones WHERE $tbzones.short_name='$name'";
 $result = mysql_query($query) or message_die('zones.php', 'MYSQL_QUERY', $query, mysql_error());
 $zone = mysql_fetch_array($result);
 
@@ -39,15 +37,10 @@ if ($zone["minium_level"] > 0) {
 }
 
 if (file_exists($maps_dir . $name . ".jpg")) {
-    if (!file_exists($maps_url . $name . "._tn.jpg")) {
-        make_thumb($maps_dir . $name . ".jpg");
-    }
-    print "<a href=" . $maps_url . $name . ".jpg><img src=" . $maps_url . $name . "._tn.jpg width=120 height=80 border=0></a><br>
-        <a href=" . $maps_url . $name . ".jpg target=_new>Popup map</a>";
+    print "<a href=" . $maps_url . $name . ".jpg target=_new>Popup map</a>";
 }
 
 if ($mode == "npcs") {
-    ////////////// NPCS
     $query = "SELECT $tbnpctypes.id,$tbnpctypes.class,$tbnpctypes.level,$tbnpctypes.maxlevel,$tbnpctypes.race,$tbnpctypes.name,$tbnpctypes.maxlevel,$tbnpctypes.loottable_id
         FROM $tbnpctypes,$tbspawn2,$tbspawnentry,$tbspawngroup";
     $query .= " WHERE $tbspawn2.zone='$name'
@@ -67,7 +60,7 @@ if ($mode == "npcs") {
     $result = mysql_query($query) or message_die('zone.php', 'MYSQL_QUERY', $query, mysql_error());
     
     if (mysql_num_rows($result) > 0) {
-        print "<h2>Bestiary</h2><table class='bestiary' border=0 width='100%' cellpadding='5' cellspacing='0'><tr>";
+        print "<h2>Bestiary</h2><table class='bestiary' border=0 width='60%' cellpadding='5' cellspacing='0'><tr>";
         if ($ZoneDebug == TRUE) {
             print "<td class='menuh'><b><a href=$PHP_SELF?name=$name&order=id>Id</a></b></td>";
         }
@@ -112,16 +105,15 @@ if ($mode == "npcs") {
     } else {
         print "<br><b>No NPCs Found</b>";
     }
-    print "</center>";
 } // end npcs
 
 if ($mode == "items") {
     $ItemsFound = 0;
     
     $EquiptmentTable = "<p>Equipment List<p><table border=0><tr>
-        <th class='menuh'>Icon</a></th>
-        <th class='menuh'><a href=$PHP_SELF?name=$name&mode=items&order=Name>Name</a></th>
-        <th class='menuh'><a href=$PHP_SELF?name=$name&mode=items&order=itemtype>Item type</a></th>
+        <th class='menuh' width='100' align='left'>Icon</a></th>
+        <th class='menuh' align='left'><a href=$PHP_SELF?name=$name&mode=items&order=Name>Name</a></th>
+        <th class='menuh' align='left' width='400'><a href=$PHP_SELF?name=$name&mode=items&order=itemtype>Item type</a></th>
         </tr>";
     
     $query = "SELECT $tbnpctypes.id";
@@ -194,10 +186,10 @@ if ($mode == "items") {
             }
         }
         $EquiptmentTable .= "<tr class='" . $RowClass . "'>
-        <td><img src='" . $icons_url . "item_" . $ItemData["icon"] . ".gif' align='left'/>
+        <td width='100' align='left'><img src='" . $icons_url . "item_" . $ItemData["icon"] . ".gif' align='left'/>
         <img src='" . $images_url . "spacer_1.png' align='left'/>
         </td><td><a href=item.php?id=" . $ItemData["id"] . " id='" . $ItemData["id"] . "'>" . $ItemData["Name"] . "</a></td>
-        <td>" . $ItemType . "</td></tr>";
+        <td width='400'>" . $ItemType . "</td></tr>";
         if ($RowClass == "lr") {
             $RowClass = "dr";
         } else {
@@ -206,7 +198,6 @@ if ($mode == "items") {
     }
     
     $EquiptmentTable .= "</table>";
-    print "<center>";
     
     if ($ItemsFound > 0) {
         print $EquiptmentTable;
@@ -218,8 +209,6 @@ if ($mode == "items") {
     } else {
         print "<br><b>No Items Found</b>";
     }
-    
-    print "</center>";
     
 } // end items
 
@@ -251,33 +240,23 @@ if ($mode == "spawngroups") {
         } else {
             print "<center><br><b>No Spawns Found</b></center>";
         }
-        
-        print "<center>";
     }
     
 } // end spawngroups
 
 if ($mode == "forage") {
-    $query = "SELECT $tbitems.Name,$tbitems.id
-        FROM $tbitems,$tbforage,$tbzones
-        WHERE $tbitems.id=$tbforage.itemid
-        AND $tbforage.zoneid=$tbzones.zoneidnumber
-        AND $tbzones.short_name='$name'
-        ORDER BY $tbitems.Name ASC";
+    $query = "SELECT $tbitems.Name,$tbitems.id FROM $tbitems,$tbforage,$tbzones WHERE $tbitems.id=$tbforage.itemid AND $tbforage.zoneid=$tbzones.zoneidnumber AND $tbzones.short_name='$name' ORDER BY $tbitems.Name ASC";
     $result = mysql_query($query) or message_die('zone.php', 'MYSQL_QUERY', $query, mysql_error());
-    print "<center>";
+    
     if (mysql_num_rows($result) > 0) {
-        print "<p>Forageable Items<p><table border=1><tr>
-            <td class=tab_title>Name</a></td>
-            </tr>";
+        print "<p>Forageable Items<p><ul>";
         while ($row = mysql_fetch_array($result)) {
-            print "<tr><td><a href=item.php?id=" . $row["id"] . ">" . $row["Name"] . "</a></td></tr>";
+            print "<li><a href=item.php?id=" . $row["id"] . ">" . $row["Name"] . "</a></li>";
         }
-        print "</table>";
+        print "</ul>";
     } else {
         print "<br><b>No Forageable Items Found</b>";
     }
-    print "</center>";
 } // end forage
 
 if ($mode == "tasks") {
@@ -325,21 +304,18 @@ if ($mode == "tasks") {
                     $RowClass = "lr";
                 }
             }
-            print "</table></center>";
-            print "</td><td width=0% nowrap>";
-            print "</td></tr></table>";
+            print "</table>";
         } else {
             print "<br><b>No Tasks Found</b>";
         }
-        print "</center>";
         
     }
     
 } // end Tasks
 
-print "</td><td width=0% nowrap>"; // end first column
+
 print "<p class=menuh>Resources:</p>";
-print "<li><a href=$PHP_SELF?name=$name&mode=npcs>" . $zone["long_name"] . " Bestiary List</a>";
+print "<ul><li><a href=$PHP_SELF?name=$name&mode=npcs>" . $zone["long_name"] . " Bestiary List</a>";
 if ($DisplayNamedNPCsInfo == TRUE) {
     print "<li><a href=zonenameds.php?name=$name&mode=npcs>" . $zone["long_name"] . " Named Mobs List</a>";
 }
@@ -357,7 +333,7 @@ if ($DisplayTaskInfo == TRUE) {
 if ($AllowQuestsNPC == TRUE) {
     print "<li><a href=$root_url" . "quests/zones.php?aZone=$name>" . $zone["long_name"] . " Quest NPCs</a>";
 }
-print "</td></tr></table>";
+print "</ul>";
 
 include($includes_dir . "footers.php");
 ?>

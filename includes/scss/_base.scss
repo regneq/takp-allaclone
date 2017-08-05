@@ -12,6 +12,20 @@ header {
     background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg) top left no-repeat;
 }
 
+a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: $darkGray;
+    font-family: "Raleway";
+    font-weight: bold;
+    transition: all 0.1s ease-in;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 #main {
     min-height: 60vh;
     padding: 20px;
