@@ -106286,25 +106286,6 @@
 		"oAP": "\/includes\/2017.css.map",
 		"oF": 0
 		},
-	"\/includes\/allakhazam.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/includes\/allakhazam-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"\/includes\/app.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/includes\/app-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"\/includes\/blobs.inc.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -106322,16 +106303,6 @@
 		"oA": 2,
 		"oAP": "\/includes\/constantes.php",
 		"oF": 0
-		},
-	"\/includes\/dark_blue.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/includes\/dark_blue-min.css",
-		"oF": 0,
-		"oS": 3
 		},
 	"\/includes\/footers.php": {
 		"ft": 8192,
@@ -106374,12 +106345,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/includes\/menu.php",
-		"oF": 0
-		},
-	"\/includes\/menu.php.dist": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/includes\/menu.php.dist",
 		"oF": 0
 		},
 	"\/includes\/mysql.php": {
@@ -106472,6 +106437,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/includes\/scss\/_resultlists.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/includes\/scss\/_resultlists.css",
+		"oF": 1,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/includes\/scss\/_vars.scss": {
 		"aP": 1,
 		"bl": 1,
@@ -106482,19 +106460,6 @@
 		"oA": 1,
 		"oAP": "\/includes\/scss\/_vars.css",
 		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"\/includes\/scss\/_zonelists.scss": {
-		"aP": 1,
-		"bl": 1,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "\/includes\/scss\/_zonelists.css",
-		"oF": 1,
 		"oS": 0,
 		"uL": 1
 		},
@@ -106521,16 +106486,6 @@
 		"oA": 2,
 		"oAP": "\/includes\/sql\/README.TXT",
 		"oF": 0
-		},
-	"\/includes\/tooltip.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/includes\/tooltip-min.css",
-		"oF": 0,
-		"oS": 3
 		},
 	"\/index.php": {
 		"ft": 8192,
@@ -130224,46 +130179,16 @@
 		"oAP": "\/static\/antonica.php",
 		"oF": 0
 		},
-	"\/static\/dod.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/dod.php",
-		"oF": 0
-		},
-	"\/static\/don.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/don.php",
-		"oF": 0
-		},
 	"\/static\/faydwer.php": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/static\/faydwer.php",
 		"oF": 0
 		},
-	"\/static\/god.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/god.php",
-		"oF": 0
-		},
-	"\/static\/hot.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/hot.php",
-		"oF": 0
-		},
 	"\/static\/kunark.php": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/static\/kunark.php",
-		"oF": 0
-		},
-	"\/static\/ldon.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/ldon.php",
 		"oF": 0
 		},
 	"\/static\/luclin.php": {
@@ -130278,58 +130203,16 @@
 		"oAP": "\/static\/odus.php",
 		"oF": 0
 		},
-	"\/static\/omens.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/omens.php",
-		"oF": 0
-		},
 	"\/static\/planes.php": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/static\/planes.php",
 		"oF": 0
 		},
-	"\/static\/por.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/por.php",
-		"oF": 0
-		},
 	"\/static\/power.php": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/static\/power.php",
-		"oF": 0
-		},
-	"\/static\/sod.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/sod.php",
-		"oF": 0
-		},
-	"\/static\/sof.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/sof.php",
-		"oF": 0
-		},
-	"\/static\/tbs.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/tbs.php",
-		"oF": 0
-		},
-	"\/static\/tss.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/tss.php",
-		"oF": 0
-		},
-	"\/static\/uf.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/static\/uf.php",
 		"oF": 0
 		},
 	"\/static\/velious.php": {
@@ -130418,7 +130301,7 @@
 "projectSettings": {
 	"abortBuildOnError": 1,
 	"alwaysUseExternalServer": 1,
-	"animateCSSInjections": 1,
+	"animateCSSInjections": 0,
 	"autoBuildNewItems": 1,
 	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
 	"babelAuxiliaryCommentAfter": "",
