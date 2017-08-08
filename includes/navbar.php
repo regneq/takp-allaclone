@@ -6,11 +6,11 @@
                     <input type='hidden' name='isearchtype' value='' />
                     <li>
                         <input 
-                            onfocus="if(this.value == 'Name...') { this.value = ''; }"
+                            onfocus="if(this.value == 'Search...') { this.value = ''; }"
                             onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'name'; this.form.submit(); } else {return true;}"
                             type='text'
                             name='iname'
-                            placeholder='Name...' />
+                            placeholder='Search...' />
                     </li>
                     <li>
                         <input
@@ -20,8 +20,37 @@
                             name='iid'
                             placeholder='ID...' />
                     </li>
-                    </form>
-                </li>
+                </form>
+                <form method='GET' action='spells.php'>
+                    <li>
+                        <input
+                            onfocus="if(this.value == 'Spells...') { this.value = ''; }"
+                            onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
+                            type='text'
+                            name='name'
+                            placeholder='Spells...' />
+                    </li>
+                </form>
+                <form method='GET' action='factions.php'>
+                    <li>
+                        <input
+                            onfocus="if(this.value == 'Factions...') { this.value = ''; }"
+                            onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
+                            type='text'
+                            name='iname'
+                            placeholder='Factions...' />
+                    </li>
+                </form>
+                <form method='GET' action='recipes.php'>
+                    <li>
+                        <input
+                            onfocus="if(this.value == 'Recipes...') { this.value = ''; }"
+                            onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
+                            type='text'
+                            name='iname'
+                            placeholder='Recipes...' />
+                    </li>
+                </form>
             </ul>
         </li>
         <?php if ($EnableNews) : ?>
@@ -47,14 +76,6 @@
                 <li><a href="<?php echo $root_url; ?>pets.php">Pets</a></li>
             </ul>
         </li>
-        <li><a href="#" class="toggle">Factions</a>
-            <ul class="dropdown-menu">
-                <li><a href="<?php echo $root_url; ?>factions.php">Faction Search</a></li>
-                <li><a href="<?php echo $root_url; ?>npcfactions.php">NPCs By Faction</a></li>
-            </ul>
-        </li>
-        <li><a href="<?php echo $root_url; ?>spells.php">Spells</a></li>
-        <li><a href="<?php echo $root_url; ?>recipes.php">Recipes</a></li>
         <li><a href="#" class="toggle">Resources</a>
             <ul class="dropdown-menu">
                 <li><a href="http://wiki.takp.info">TAKP Wiki</a></li>

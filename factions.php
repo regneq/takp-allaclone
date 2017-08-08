@@ -13,9 +13,7 @@
 	$isearch = (isset($_GET['isearch']) ? $_GET['isearch'] : '');
 	$iname   = (isset($_GET[  'iname']) ? $_GET[  'iname'] : '');
 
-	if($isearch != "")
-	{
-		if($iname == "")
+	if($iname == "")
 		{
 			$name = "";
 		}
@@ -38,7 +36,6 @@
 			header("Location: faction.php?id=".$row["id"]);
 			exit();
 		}
-	}
 
 	/** Here the following holds :
 	 *    $QueryResult : factions queried for if any query was issued, otherwise it is not defined
