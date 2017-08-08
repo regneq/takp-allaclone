@@ -66,8 +66,11 @@ echo "<input type='submit' value='Search' name='isearch' />";
 echo "</form>";
 echo "</div>";
 
-if(isset($QueryResult))
-  PrintQueryResults($QueryResult, $MaxNpcsReturned, "npc.php", "npc", "npcs", "id", "name");
+if(isset($QueryResult)) {
+    echo '<div class="flex">';
+    PrintQueryResults($QueryResult, $MaxNpcsReturned, "npc.php", "npc", "npcs", "id", "name");
+    echo '</div>';
+}
 
 include($includes_dir."footers.php");
 ?>

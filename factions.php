@@ -55,9 +55,10 @@
 	print "</form>";
 	print "</div>";
 
-	if(isset($QueryResult))
-	{
+	if(isset($QueryResult)) {
+        echo '<div class="flex">';
 		PrintQueryResults($QueryResult, $MaxFactionsReturned, "faction.php", "faction", "factions", "id", "name");
+        echo '</div>';
 	}
 
 	include($includes_dir."footers.php");
