@@ -14,8 +14,7 @@
 	$id   = (isset($_GET[  'id']) ? addslashes($_GET[  'id']) : '');
 	$name = (isset($_GET['name']) ? addslashes($_GET['name']) : '');
 
-	if($id != "" && is_numeric($id))
-	{
+	if($id != "" && is_numeric($id)) {
 		if ($DiscoveredItemsOnly==TRUE)
 		{
 			$Query = "SELECT * FROM $tbitems, discovered_items WHERE $tbitems.id='".$id."' AND discovered_items.item_id=$tbitems.id";
@@ -33,8 +32,7 @@
 		$ItemRow=mysql_fetch_array($QueryResult);
 		$name=$ItemRow["name"];
 	}
-	elseif($name != "")
-	{
+	elseif($name != "") {
 		if ($DiscoveredItemsOnly==TRUE)
 		{
 			$Query = "SELECT * FROM $tbitems, discovered_items WHERE $tbitems.name like '$name' AND discovered_items.item_id=$tbitems.id";
@@ -56,8 +54,7 @@
 			$name = $ItemRow["name"];
 		}
 	}
-	else
-	{
+	else {
 		header("Location: items.php");
 		exit();
 	}
@@ -68,20 +65,17 @@
 	 *    $ItemRow : row of the item to display extracted from the database
 	 *    The item actually exists
 	 */
-	 
-	$Title="Item:: ".str_replace('_',' ',GetFieldByQuery("Name","SELECT Name FROM $tbitems WHERE id=$id"));
 	$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
 	$item = $ItemRow;
 	$Tableborder = 0;
-
-
-	// Title and Icon bar
-    echo "<div class='item-wrapper'>";
-	
+    
+    echo "<div class='item-column'>";
+    echo "<div class='item-wrapper'>";	
     echo "<a class='hidden' href='http://lucy.allakhazam.com/item.html?id=".$id."'><img src='".$images_url."lucy.png' align='right'/></a>";
 	echo "<strong>".$item["Name"]."</strong>";
-	if($item["lore"] != "") {
+	
+    if($item["lore"] != "") {
 		echo "<p class='hidden'>(".$item["lore"].") - id : ".$id."</p>";
 	} else {
 		echo "id : ".$id;
@@ -93,43 +87,8 @@
 		echo "<img src='".$icons_url. "item_" . $item["icon"].".gif' />"; 
 	}
 
-	echo '</div>';
-	// Discovered by
-	if ($DiscoveredItemsOnly==TRUE)
-	{
-		$CharName = GetFieldByQuery("char_name","SELECT char_name  FROM $tbdiscovereditems WHERE item_id=$id");
-		$DiscoveredDate = GetFieldByQuery("discovered_date","SELECT discovered_date  FROM $tbdiscovereditems WHERE item_id=$id");
-		if ($charbrowser_url)
-		{
-			$DiscoveredBy = "<a href=".$charbrowser_url."character.php?char=".$CharName.">".$CharName."</a>";
-		}
-		else
-		{
-			$DiscoveredBy = $CharName;
-		}
-		if($CharName != '')
-		{
-			echo "<br><tr><td colspan='2' nowrap='1'><b>Discovered by: </b>$DiscoveredBy - ".date("m/d/y",$DiscoveredDate)."</td></tr>";
-		}
-	}
-
-	// places where to forage this item
-	$query="SELECT $tbzones.short_name,$tbzones.long_name,$tbforage.chance,$tbforage.level
-			FROM $tbzones,$tbforage
-			WHERE $tbzones.zoneidnumber=$tbforage.zoneid
-			AND $tbforage.itemid=$id
-			GROUP BY $tbzones.zoneidnumber";
-	$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
-	if (mysql_num_rows($result)>0)
-	{
-		echo "<tr class='myline' height='6'><td colspan='2'></td><tr>";
-		echo "<tr><td nowrap='1'><b>This item can be foraged in: </b>";
-		while ($row=mysql_fetch_array($result))
-		{
-			echo "<li><a href='zone.php?name=".$row["short_name"]."'>".str_replace("_"," ",$row["long_name"])."</a></li>";
-		}
-		echo "</td></tr>";
-	}
+	echo "</div></div>";
+    echo "<div class='drop-information'>";
 
 	// trade skills for which that item is a component
 	$query="SELECT $tbtradeskillrecipe.name,$tbtradeskillrecipe.id,$tbtradeskillrecipe.tradeskill
@@ -140,15 +99,13 @@
 			GROUP BY $tbtradeskillrecipe.id";
 	$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
 	$TradeskillResults = "";
-	if (mysql_num_rows($result)>0)
-	{
-		$TradeskillResults .= "<tr class='myline' height='6'><td colspan='2'></td><tr>";
-		$TradeskillResults .= "<tr><td nowrap='1'><b>This item is used in the following tradeskill recipes : </b><ul>";
-		while ($row=mysql_fetch_array($result))
-		{
+	
+    if (mysql_num_rows($result)>0) {
+		$TradeskillResults .= "<p>This item is used in the following tradeskill recipes : </p><ul>";
+		while ($row=mysql_fetch_array($result)) {
 			$TradeskillResults .= "<li><a href='recipe.php?id=".$row["id"]."'>".str_replace("_"," ",$row["name"])."</a> (".ucfirstwords($dbskills[$row["tradeskill"]]).")</li>";
 		}
-		$TradeskillResults .= "</ul></td></tr>";
+		$TradeskillResults .= "</ul>";
 	}
 	echo $TradeskillResults;
 
@@ -162,8 +119,8 @@
 			GROUP BY $tbtradeskillrecipe.id";
 	$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
 	$TradeskillResults = "";
-	if (mysql_num_rows($result)>0)
-	{
+	
+    if (mysql_num_rows($result)>0) {
 		$TradeskillResults .= "<tr class='myline' height='6'><td colspan='2'></td><tr>";
 		$TradeskillResults .= "<tr><td nowrap='1'><b>This item is the result of the following tradeskill recipes : </b><ul>";
 		while ($row=mysql_fetch_array($result))
@@ -174,8 +131,7 @@
 	}
 	echo $TradeskillResults;
 	
-	if ($AllowQuestsNPC==TRUE)
-	{
+	if ($AllowQuestsNPC==TRUE) {
 		// npcs that use that give that item as reward
 		$query="SELECT * FROM $tbquestitems WHERE item_id=$id AND rewarded>0";
 		$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
@@ -211,8 +167,7 @@
 
 	$Separator = "";
 
-	if ($ItemFoundInfo==TRUE)
-	{
+	if ($ItemFoundInfo==TRUE) {
 		// Check with a quick query before trying the long one
 		$IsDropped = GetFieldByQuery("item_id","SELECT item_id FROM $tblootdropentries WHERE item_id=$id LIMIT 1");
 
@@ -239,38 +194,25 @@
 			}          
 			$query.=" GROUP BY $tbspawnentry.npcID ORDER BY $tbzones.long_name ASC";
 			$result = mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
-			if(mysql_num_rows($result)>0)
-			{
+            
+			if(mysql_num_rows($result)>0) {
 				$DroppedList = "";
-				$DroppedList .= $Separator; $Separator = "<tr class='myline' height='6'><td colspan='2'></td><tr>\n";
-				$DroppedList .= "<tr>\n";
-				$DroppedList .= "<td nowrap='1'><b>This item is dropped : </b>\n";
 				$CurrentZone = "";
 				while($row = mysql_fetch_array($result))
 				{
 					if($CurrentZone != $row["zone"])
 					{
-						if($CurrentZone != "")
-						{
-							$DroppedList .= "</ul>\n"; 
-							$DroppedList .= "</ul>\n";
-						}
-						$DroppedList .= "<ul>\n";
-						$DroppedList .= "<li><b>in <a href='zone.php?name=".$row["zone"]."'>".$row["long_name"]."</a> by </b></li>\n";
-						$DroppedList .= "<ul>\n"; 
+						$DroppedList .= "<ul>";
+						$DroppedList .= "<li class='zone'>
+                                           <a href='zone.php?name=".$row["zone"]."'>".$row["long_name"]."</a>
+                                         </li>";
 						$CurrentZone = $row["zone"];
 					}
-					$DroppedList .= "<li><a href='npc.php?id=".$row["id"]."'>".str_replace("_"," ",$row["name"])."</a>";
-					if($ItemAddChanceToDrop)
-					{
-						$DroppedList .= " (".($row["chance"]*$row["probability"]/100)."% x ".$row["multiplier"].")";
-					}
-					$DroppedList .= "</li>\n";
+					$DroppedList .= "<li>
+                                       <a href='npc.php?id=".$row["id"]."'>".str_replace("_"," ",$row["name"])."</a>
+                                     </li>";
 				}
-				$DroppedList .= "</ul>\n";
-				$DroppedList .= "</ul>\n";
-				$DroppedList .= "</td>\n";
-				$DroppedList .= "</tr>\n";
+				$DroppedList .= "</ul>";
 				echo $DroppedList;
 			}
 		}
@@ -278,8 +220,7 @@
 		// Check with a quick query before trying the long one
 		$IsSold = GetFieldByQuery("item","SELECT item FROM $tbmerchantlist WHERE item=$id LIMIT 1");
 
-		if ($IsSold)
-		{
+		if ($IsSold) {
 			// npcs selling this (Very Heavy Query)
 			$query="SELECT $tbnpctypes.id,$tbnpctypes.name,$tbspawn2.zone,$tbzones.long_name,$tbnpctypes.class
 					FROM $tbnpctypes,$tbmerchantlist,$tbspawn2,$tbzones,$tbspawnentry
@@ -331,8 +272,8 @@
 			WHERE item=$id
 			AND $tbgroundspawns.zoneid=$tbzones.zoneidnumber";
 	$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
-	if (mysql_num_rows($result)>0)
-	{
+	
+    if (mysql_num_rows($result)>0) {
 		echo "<b>This item spawns on the ground in : </b><br><br>\n";
 		$CurrentZone = "";
 		while($row = mysql_fetch_array($result))
@@ -351,6 +292,9 @@
 		}
 		echo "</ul>\n";
 	}
+
+    echo "</div>";
+    echo "</div>";
 
 	include($includes_dir."footers.php");
 ?>
