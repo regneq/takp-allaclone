@@ -907,15 +907,15 @@ function BuildItemStats($item, $show_name_icon) {
 	$html_string .= GetItemStatsString(" Haste",$item["haste"."%"]);
 	
     if (($item["banedmgrace"]>0) && ($item["banedmgamt"]!=0)) {
-		$html_string .= "Bane Damage (";
+		$html_string .= " Bane Damage (";
 		$html_string .= $dbiracenames[$item["banedmgrace"]];
 		$html_string .= ")".sign($item["banedmgamt"])."";
 	}
 	$html_string .= GetItemStatsString(ucfirstwords($dbbodytypes[$item["banedmgbody"]]),$item["banedmgamt"]);
 	$html_string .= GetItemStatsString(" Backstab Damage",$item["backstabdmg"]);
 	$html_string .= GetItemStatsString(" Atk Delay",$item["delay"]);
-    
-	$html_string .= GetItemStatsString("<br/>DMG",$item["damage"]);
+    $html_string .= "<br />";
+	$html_string .= GetItemStatsString(" DMG",$item["damage"]);
 	$html_string .= GetItemStatsString(ucfirstwords($dbelements[$item["elemdmgtype"]])." Damage",$item["elemdmgamt"]);
     if($item["damage"] > 0) {
 		switch($item["itemtype"])
@@ -925,17 +925,17 @@ function BuildItemStats($item, $show_name_icon) {
 			case 3: // 1HB
 			case 42: // H2H
 				$dmgbonus = 13; // floor((65-25)/3)  main hand
-				$html_string .= " Dmg Bonus: $dmgbonus<br />";
+				$html_string .= " Dmg Bonus: $dmgbonus";
 				break;
 			case 1: // 2hs
 			case 4: // 2hb 
 			case 35: // 2hp
 				$dmgbonus = $dam2h[$item["delay"]]; 
-				$html_string .= " Dmg Bonus: $dmgbonus<br />";
+				$html_string .= " Dmg Bonus: $dmgbonus";
 				break;  
 		}
 	}
-    
+    $html_string .= "<br />";
 	$html_string .= GetItemStatsString(" Range",$item["range"]);
 	$html_string .= GetItemStatsString(" STR",$item["astr"],$item["heroic_str"],"orange");
 	$html_string .= GetItemStatsString(" DEX",$item["adex"],$item["heroic_dex"],"orange");

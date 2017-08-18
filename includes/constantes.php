@@ -175,20 +175,20 @@ $dbiclasses[1]="WAR";
 // races
 $dbraces=array();
 $dbraces[65535]="ALL";
-$dbraces[8192]="Vah Shir";
-$dbraces[4096]="Iksar";
-$dbraces[2048]="Gnome";
-$dbraces[1024]="Halfling";
-$dbraces[512]="Ogre";
-$dbraces[256]="Troll";
-$dbraces[128]="Dwarf";
-$dbraces[64]="Half Elf";
-$dbraces[32]="Dark Elf";
-$dbraces[16]="High Elf";
-$dbraces[8]="Wood Elf";
-$dbraces[4]="Erudite";
-$dbraces[2]="Barbarian";
-$dbraces[1]="Human";
+$dbraces[8192]="VAH";
+$dbraces[4096]="IKS";
+$dbraces[2048]="GNM";
+$dbraces[1024]="HFL";
+$dbraces[512]="OGR";
+$dbraces[256]="TRL";
+$dbraces[128]="DWF";
+$dbraces[64]="HEF";
+$dbraces[32]="DEF";
+$dbraces[16]="HIE";
+$dbraces[8]="ELF";
+$dbraces[4]="ERU";
+$dbraces[2]="BAR";
+$dbraces[1]="HUM";
 
 // skills
 $dbskills=array();
