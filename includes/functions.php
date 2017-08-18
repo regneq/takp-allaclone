@@ -455,8 +455,7 @@ function GetItemStatsString($name,$stat,$stat2,$stat2color) {
 
 	if (!$stat2) { $stat2 = 0; }
 	$PrintString = "";
-	if (is_numeric($stat))
-	{
+	if (is_numeric($stat)) {
 		if($stat != 0 || $stat2 != 0)
 		{
 			$PrintString .= $name.": ";
@@ -484,8 +483,7 @@ function GetItemStatsString($name,$stat,$stat2,$stat2color) {
 				}
 			}
 		}
-	}
-	else {
+	} else {
 		if (ereg_replace("[^0-9]", "", $stat) > 0)
 		{
 			$PrintString .= $name.": ".$stat;
