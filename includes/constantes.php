@@ -155,29 +155,26 @@ $dbslots[1]="Charm";
 
 // ItemClasses 2^(class-1)
 $dbiclasses=array();
-$dbiclasses[65535]="All classes";
-$dbiclasses[32768]="Berserker";
-$dbiclasses[16384]="Beastlord";
-$dbiclasses[8192]="Enchanter";
-$dbiclasses[4096]="Magician";
-$dbiclasses[2048]="Wizard";
-$dbiclasses[1024]="Necromancer";
-$dbiclasses[512]="Shaman";
-$dbiclasses[256]="Rogue";
-$dbiclasses[128]="Bard";
-$dbiclasses[64]="Monk";
-$dbiclasses[32]="Druid";
-$dbiclasses[16]="Shadow knight";
-$dbiclasses[8]="Ranger";
-$dbiclasses[4]="Paladin";
-$dbiclasses[2]="Cleric";
-$dbiclasses[1]="Warrior";
+$dbiclasses[65535]="ALL";
+$dbiclasses[16384]="BST";
+$dbiclasses[8192]="ENC";
+$dbiclasses[4096]="MAG";
+$dbiclasses[2048]="WIZ";
+$dbiclasses[1024]="NEC";
+$dbiclasses[512]="SHM";
+$dbiclasses[256]="ROG";
+$dbiclasses[128]="BRD";
+$dbiclasses[64]="MNK";
+$dbiclasses[32]="DRU";
+$dbiclasses[16]="SHD";
+$dbiclasses[8]="RNG";
+$dbiclasses[4]="PAL";
+$dbiclasses[2]="CLR";
+$dbiclasses[1]="WAR";
 
 // races
 $dbraces=array();
-$dbraces[65535]="All races";
-$dbraces[32768]="Drakkin";
-$dbraces[16384]="Froglok";
+$dbraces[65535]="ALL";
 $dbraces[8192]="Vah Shir";
 $dbraces[4096]="Iksar";
 $dbraces[2048]="Gnome";
