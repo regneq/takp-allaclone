@@ -77,26 +77,23 @@
 
 
 	// Title and Icon bar
-
-	if(file_exists(getcwd(). "/icons/item_". $item['icon'] . ".gif"))
-	{ 
-		echo "<div class='item-wrapper'><div class='item-header'><img src='".$icons_url. "item_" . $item["icon"].".gif' align='left'/>"; 
+    echo "<div class='item-wrapper'>";
+	
+    echo "<a class='hidden' href='http://lucy.allakhazam.com/item.html?id=".$id."'><img src='".$images_url."lucy.png' align='right'/></a>";
+	echo "<strong>".$item["Name"]."</strong>";
+	if($item["lore"] != "") {
+		echo "<p class='hidden'>(".$item["lore"].") - id : ".$id."</p>";
+	} else {
+		echo "id : ".$id;
 	}
 
-	print "<a href='http://lucy.allakhazam.com/item.html?id=".$id."'><img src='".$images_url."lucy.png' align='right'/></a>";
-	print "<b>".$item["Name"]."</b>";
-	if($item["lore"] != "")
-	{
-		print "<p>(".$item["lore"].") - id : ".$id."</p></div>";
-	}
-	else
-	{
-		print "id : ".$id."</div>";
+	echo BuildItemStats($item, 0);
+
+    if(file_exists(getcwd(). "/icons/item_". $item['icon'] . ".gif")) { 
+		echo "<img src='".$icons_url. "item_" . $item["icon"].".gif' />"; 
 	}
 
-	// Prints all Item data into formatted tables
-	print BuildItemStats($item, 0);
-	print '</div>';
+	echo '</div>';
 	// Discovered by
 	if ($DiscoveredItemsOnly==TRUE)
 	{
@@ -112,7 +109,7 @@
 		}
 		if($CharName != '')
 		{
-			print "<br><tr><td colspan='2' nowrap='1'><b>Discovered by: </b>$DiscoveredBy - ".date("m/d/y",$DiscoveredDate)."</td></tr>";
+			echo "<br><tr><td colspan='2' nowrap='1'><b>Discovered by: </b>$DiscoveredBy - ".date("m/d/y",$DiscoveredDate)."</td></tr>";
 		}
 	}
 
@@ -125,13 +122,13 @@
 	$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
 	if (mysql_num_rows($result)>0)
 	{
-		print "<tr class='myline' height='6'><td colspan='2'></td><tr>";
-		print "<tr><td nowrap='1'><b>This item can be foraged in: </b>";
+		echo "<tr class='myline' height='6'><td colspan='2'></td><tr>";
+		echo "<tr><td nowrap='1'><b>This item can be foraged in: </b>";
 		while ($row=mysql_fetch_array($result))
 		{
-			print "<li><a href='zone.php?name=".$row["short_name"]."'>".str_replace("_"," ",$row["long_name"])."</a></li>";
+			echo "<li><a href='zone.php?name=".$row["short_name"]."'>".str_replace("_"," ",$row["long_name"])."</a></li>";
 		}
-		print "</td></tr>";
+		echo "</td></tr>";
 	}
 
 	// trade skills for which that item is a component
@@ -153,7 +150,7 @@
 		}
 		$TradeskillResults .= "</ul></td></tr>";
 	}
-	print $TradeskillResults;
+	echo $TradeskillResults;
 
 
 	// trade skills which result is the component
@@ -175,7 +172,7 @@
 		}
 		$TradeskillResults .= "</ul></td></tr>";
 	}
-	print $TradeskillResults;
+	echo $TradeskillResults;
 	
 	if ($AllowQuestsNPC==TRUE)
 	{
@@ -184,15 +181,15 @@
 		$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
 		if (mysql_num_rows($result)>0)
 		{
-			print "<tr class='myline' height='6'><td colspan='2'></td><tr>";
-			print "<tr><td nowrap='1'><b>This item is the result of a quest.</b></b><ul>";
+			echo "<tr class='myline' height='6'><td colspan='2'></td><tr>";
+			echo "<tr><td nowrap='1'><b>This item is the result of a quest.</b></b><ul>";
 			while ($res=mysql_fetch_array($result))
 			{
-				print "<li><a href='".$root_url."quests/index.php?zone=".$res["zone"]."&amp;npc=".$res["npc"]."'>".str_replace("_"," ",$res["npc"])."</a>";
-				print ", <a href=$root_url"."zone.php?name=".$res["zone"].">";
-				print GetFieldByQuery("long_name","SELECT long_name FROM $tbzones WHERE short_name='".$res["zone"]."'")."</a></li>";
+				echo "<li><a href='".$root_url."quests/index.php?zone=".$res["zone"]."&amp;npc=".$res["npc"]."'>".str_replace("_"," ",$res["npc"])."</a>";
+				echo ", <a href=$root_url"."zone.php?name=".$res["zone"].">";
+				echo GetFieldByQuery("long_name","SELECT long_name FROM $tbzones WHERE short_name='".$res["zone"]."'")."</a></li>";
 			}
-			print "</ul></td></tr>";
+			echo "</ul></td></tr>";
 		}
 		
 		// npcs that use that give that item as quest item
@@ -200,15 +197,15 @@
 		$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
 		if (mysql_num_rows($result)>0)
 		{
-			print "<tr class='myline' height='6'><td colspan='2'></td><tr>";
-			print "<tr><td nowrap='1'><b>This item is used in quests.</b></b><ul>";
+			echo "<tr class='myline' height='6'><td colspan='2'></td><tr>";
+			echo "<tr><td nowrap='1'><b>This item is used in quests.</b></b><ul>";
 			while ($res=mysql_fetch_array($result))
 			{
-				print "<li><a href='".$root_url."quests/index.php?zone=".$res["zone"]."&amp;npc=".$res["npc"]."'>".str_replace("_"," ",$res["npc"])."</a>"; 
-				print ", <a href=$root_url"."zone.php?name=".$res["zone"].">";
-				print GetFieldByQuery("long_name","SELECT long_name FROM $tbzones WHERE short_name='".$res["zone"]."'")."</a></li>";
+				echo "<li><a href='".$root_url."quests/index.php?zone=".$res["zone"]."&amp;npc=".$res["npc"]."'>".str_replace("_"," ",$res["npc"])."</a>"; 
+				echo ", <a href=$root_url"."zone.php?name=".$res["zone"].">";
+				echo GetFieldByQuery("long_name","SELECT long_name FROM $tbzones WHERE short_name='".$res["zone"]."'")."</a></li>";
 			}
-			print "</ul></td></tr>";
+			echo "</ul></td></tr>";
 		}
 	}
 
@@ -274,7 +271,7 @@
 				$DroppedList .= "</ul>\n";
 				$DroppedList .= "</td>\n";
 				$DroppedList .= "</tr>\n";
-				print $DroppedList;
+				echo $DroppedList;
 			}
 		}
 		
@@ -322,7 +319,7 @@
 				$MerchantList .= "</ul>\n";
 				$MerchantList .= "</td>\n";
 				$MerchantList .= "</tr>\n";
-				print $MerchantList;
+				echo $MerchantList;
 			}
 		}
 	}
@@ -336,7 +333,7 @@
 	$result=mysql_query($query) or message_die('item.php','MYSQL_QUERY',$query,mysql_error());
 	if (mysql_num_rows($result)>0)
 	{
-		print "<b>This item spawns on the ground in : </b><br><br>\n";
+		echo "<b>This item spawns on the ground in : </b><br><br>\n";
 		$CurrentZone = "";
 		while($row = mysql_fetch_array($result))
 		{
@@ -344,15 +341,15 @@
 			{
 				if($CurrentZone != "")
 				{
-					print "</ul>\n";
+					echo "</ul>\n";
 				}
-				print "<b><a href='zone.php?name=".$row["short_name"]."'>".$row["long_name"]."</a> at: </b>\n";
-				print "<ul>\n";
+				echo "<b><a href='zone.php?name=".$row["short_name"]."'>".$row["long_name"]."</a> at: </b>\n";
+				echo "<ul>\n";
 				$CurrentZone = $row["short_name"];
 			}
-			print "<li>".$row["max_y"]." (Y), ".$row["max_x"]." (X), ".$row["max_z"]." (Z)</a></li>";
+			echo "<li>".$row["max_y"]." (Y), ".$row["max_x"]." (X), ".$row["max_z"]." (Z)</a></li>";
 		}
-		print "</ul>\n";
+		echo "</ul>\n";
 	}
 
 	include($includes_dir."footers.php");
