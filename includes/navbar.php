@@ -49,6 +49,9 @@
                             type='text'
                             name='iname'
                             placeholder='Recipes...' />
+                        <input type="hidden" name="minskill" value="0" />
+                        <input type="hidden" name="maxskill" value="0" />
+                        <input type="hidden" name="isearch" value="Search" />
                     </li>
                 </form>
             </ul>
