@@ -18,17 +18,17 @@
 	if (!ctype_digit($minskill)) { $minskill=0; }
 	if ($minskill>$maxskill) { $tempskill=$minskill; $minskill=$maxskill; $maxskill=$tempskill; }
 
-	print "<table border=0 width=0%>";
-	print "<form method='GET' action=$PHP_SELF>";
-	print "<tr><td nowrap><b>Name : </b></td><td><input type=text value=\"$iname\" size=30 name=iname></td></tr>";
-	print "<tr><td nowrap><b>Tradeskill : </b></td><td>";
-	print SelectTradeSkills("iskill",$iskill);
-	print "</td></tr>";
-	print "<tr><td nowrap><b>Min trivial skill : </b></td><td><input type=text value=\"$minskill\" size=4 name=minskill></td></tr>";
-	print "<tr><td nowrap><b>Max trivial skill : </b></td><td><input type=text value=\"$maxskill\" size=4 name=maxskill></td></tr>";
-	print "<tr align=center><td nowrap colspan=2><input type='submit' value='Search' name='isearch' class='form'/> <input type='reset' value='Reset' class='form'/></td></tr>";
-	print "</form></table></center>";
-
+	echo "<form method='GET' action=$PHP_SELF>";
+    echo "<div class='recipe-container'>";
+	echo "<div class='recipe-search'><b>Name : </b><input type=text value=\"$iname\" size=30 name=iname></div>";
+	echo "<div class='recipe-search'><b>Tradeskill : </b>";
+	echo SelectTradeSkills("iskill",$iskill);
+    echo "</div>";
+	echo "<div class='recipe-search'><b>Min trivial skill : </b><input type=text value=\"$minskill\" size=30 name=minskill></div>";
+	echo "<div class='recipe-search'><b>Max trivial skill : </b><input type=text value=\"$maxskill\" size=30 name=maxskill></div></div>";
+	echo "<input type='submit' value='Search' name='isearch' class='form'/> <input type='reset' value='Reset' class='form'/>";
+    echo "</form>";
+    echo "<div class='recipe-results'>";
 	if (isset($isearch) && $isearch != "")
 	{
 		if ($minskill>$maxskill) { $tempskill=$minskill; $minskill=$maxskill; $maxskill=$tempskill; }
@@ -52,6 +52,7 @@
 			PrintQueryResults($result, $MaxItemsReturned, "recipe.php", "recipe", "recipes", "id", "name", "trivial", "trivial at level", "tradeskill");
 		}
 	}
+    echo "</div>";
 
 	include($includes_dir."footers.php");
 

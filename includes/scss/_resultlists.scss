@@ -108,3 +108,18 @@
         }
     }
 }
+
+.recipe-container {
+    display: flex;
+    
+    .recipe-search {
+        flex: 0 1 25%;
+        padding: 0 20px;
+    }
+}
+
+.recipe-results {
+    a {
+        display: inline;
+    }
+}
