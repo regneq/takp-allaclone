@@ -84,8 +84,6 @@
 	 *    The NPC actually exists
 	 */
 
-	$Title="NPC :: ".ReadableNpcName($name);
-	//$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
 
 	$DebugNpc=FALSE; // for world builders, set this to false for common use
@@ -247,7 +245,7 @@
 				}
 				print "</li>";
 			}
-            print "</ul>";
+            print "</ul></div>";
 		}
 		else
 		{
@@ -277,7 +275,7 @@
 		}
 	}
 	
-    print "</div></div>";
+    print "</div>";
 
     print "<div class='right-col'>";
 	if($UseWikiImages)

@@ -87,7 +87,7 @@
 		echo "<img src='".$icons_url. "item_" . $item["icon"].".gif' />"; 
 	}
 
-	echo "</div></div>";
+	echo "</div></div>"; 
     echo "<div class='drop-information'>";
 
 	// trade skills for which that item is a component
@@ -295,6 +295,6 @@
 
     echo "</div>";
     echo "</div>";
-
-	include($includes_dir."footers.php");
+    
+    include($includes_dir."footers.php");
 ?>
