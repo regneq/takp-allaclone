@@ -126,5 +126,65 @@
 
 .faction-search {
     max-width: 255px;
-    margin: 0 auto
+    margin: 0 auto;
+}
+
+.spell-search {
+    
+    form {
+        max-width: 375px;
+        margin: 0 auto;   
+    }
+    
+    input[type="text"],
+    select {
+        width: 100%;
+        max-width: 100%;
+        
+        + input[type="text"],
+        + select {
+            margin-top: 10px;
+        }
+    }
+    
+    input[type="radio"] {
+        width: 14%;
+    }
+    
+    input[type="submit"],
+    input[type="reset"] {
+        width: 45%;
+        margin-top: 20px;
+    }
+    
+    table {
+        margin: 0 auto;
+        border-spacing: 15px;
+        
+        a {
+            margin: 0;
+            padding: 0;
+        }
+        
+        tr {
+            + .level {
+                height: 70px;
+                vertical-align: bottom;
+            }
+        }
+        
+        td {
+            &.left {
+                text-align: left;
+            }
+            
+            &.center {
+                text-align: center;
+            }
+            
+            &.right {
+                text-align: right;
+            }
+        }
+    }
 }
