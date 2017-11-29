@@ -23,14 +23,12 @@
                 if($CurrentZone != $row["zone"]) {
                     if($CurrentZone != "")
                         print "<br/><br/>\n";
-                        print "<strong class='zone'><a href='zone.php?name=".$row["zone"]."'>".$row["long_name"]."</a></strong>";
+                        print "<a class='zone' href='zone.php?name=".$row["zone"]."'>".$row["long_name"]."</a>";
                     $CurrentZone = $row["zone"];
                 }
-                print "<li><a href='npc.php?id=".$row["id"]."'>".str_replace("_"," ",$row["name"])."</a></li>\n";
+                print "<li><a href='npc.php?id=".$row["id"]."'>".str_replace("_"," ",$row["name"])."</a></li>";
             }
             echo '</ul>';
-            if($CurrentZone != "")
-                print "<br/><br/>";
         }
 	}
 
@@ -77,10 +75,10 @@
 	 *    $FactionRow : row of the faction to display extracted from the database
 	 *    The faction actually exists
 	 */
-
-	$Title = "Faction: ".$name." <a href='".$peqeditor_url."index.php?editor=faction&amp;fid=".$id."'><img src='".$images_url."/peq_faction.png' align='right'/></a>";
+    $Title = "Faction: " . $name . " - id: " . $id;
 	include($includes_dir.'headers.php');
-	echo "<strong>".$name."</strong> - id: " . $id;
+
+    //echo "<a href='".$peqeditor_url."index.php?editor=faction&amp;fid=".$id."'><img src='".$images_url."/peq_faction.png' align='right'/></a>";
 
     echo '<div class="flex">';
     echo '<div class="column">';
