@@ -3,6 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
         <title><?php echo $SiteTitle.' '.( $Title != "" ? " :: $Title" : "") ?></title>
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo $includes_url . $CssStyle; ?>.css" type="text/css" />
     </head>
     <body>
