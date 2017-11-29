@@ -47,13 +47,9 @@
 	$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
     
-    echo "<div class='refine-search visible'><div class='hamburger'>☰</div></div>";
-    echo "<div class='search-wrapper visible'>";
-	print "<form method='GET' action='".$PHP_SELF."'>";
+	print "<form method='GET' action='".$PHP_SELF."' class='faction-search'>";
 	print "<input class='full' type='text' value=\"$iname\" size='30' name='iname' placeholder='Search' />";
-	print "<input type='submit' value='Search' name='isearch' class='form'/>";
 	print "</form>";
-	print "</div>";
 
 	if(isset($QueryResult)) {
         echo '<div class="flex">';
