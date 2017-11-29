@@ -12,14 +12,7 @@
     echo'<img style="max-height:50%; margin:0 auto; display: block;" src="'. $root_url .'images/eqmac.jpg" />';
 
 
-	if (file_exists("design/index.html"))
-	{
-		print "<center><table width=95% border=0><tr valign=top><td>";
-		include("design/index.html");
-		print "</td></tr></table></center>";
-	}
+	if (file_exists("design/index.html")) { include("design/index.html"); }
 	
 	include($includes_dir."footers.php");
 ?>
-
-
