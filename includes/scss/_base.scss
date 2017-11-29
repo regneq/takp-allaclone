@@ -10,6 +10,7 @@ html {
 
 header {
     background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg) top left no-repeat;
+    background-size: contain;
     background-attachment: fixed;
 }
 
@@ -165,5 +166,7 @@ footer {
     font-weight: bold;
     background: url(https://www.takproject.net/assets/images/kelethinimage31-2000x1250.jpg) bottom left no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     margin-top: 50px;
+    width: 100%;
 }
