@@ -106323,16 +106323,6 @@
 		"oAP": "\/includes\/footers.php",
 		"oF": 0
 		},
-	"\/includes\/foundation.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/includes\/foundation.min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
 	"\/includes\/functions.php": {
 		"cB": 0,
 		"ft": 8192,

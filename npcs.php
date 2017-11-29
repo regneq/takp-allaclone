@@ -58,13 +58,10 @@ $Title="NPCs search";
 $XhtmlCompliant = TRUE;
 include($includes_dir.'headers.php');
 
-echo "<div class='refine-search visible'><div class='hamburger'>☰</div></div>";
-echo "<div class='search-wrapper visible'>";
 echo "<form method='GET' action='".$PHP_SELF."'>";
 echo "<input type='text' value=\"$iname\" size='30' name='iname' placeholder='NPC Name' />";
 echo "<input type='submit' value='Search' name='isearch' />";
 echo "</form>";
-echo "</div>";
 
 if(isset($QueryResult)) {
     echo '<div class="flex">';
