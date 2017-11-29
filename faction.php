@@ -15,25 +15,23 @@
 	/** Formats the npc/zone info selected in '$QueryResult' to display them by zone
 	 *  The top-level sort must be on the zone
 	 */
-	function PrintNpcsByZone($QueryResult)
-	{
-			if(mysql_num_rows($QueryResult) > 0)
-			{
-				$CurrentZone = "";
-				while($row = mysql_fetch_array($QueryResult))
-				{
-				if($CurrentZone != $row["zone"])
-				{
-					if($CurrentZone != "")
-						print "                  <br/><br/>\n";
-					print "                  <b>in <a href='zone.php?name=".$row["zone"]."'>".$row["long_name"]."</a> by </b>\n";
-					$CurrentZone = $row["zone"];
-				}
-				print "<li><a href='npc.php?id=".$row["id"]."'>".str_replace("_"," ",$row["name"])."</a> (".$row["id"].")</li>\n";
-			}
-			if($CurrentZone != "")
-				print "                  <br/><br/>\n";
-		}
+	function PrintNpcsByZone($QueryResult) {
+        if(mysql_num_rows($QueryResult) > 0) {
+            $CurrentZone = "";
+            echo '<ul>';
+            while($row = mysql_fetch_array($QueryResult)) {
+                if($CurrentZone != $row["zone"]) {
+                    if($CurrentZone != "")
+                        print "<br/><br/>\n";
+                        print "<strong class='zone'><a href='zone.php?name=".$row["zone"]."'>".$row["long_name"]."</a></strong>";
+                    $CurrentZone = $row["zone"];
+                }
+                print "<li><a href='npc.php?id=".$row["id"]."'>".str_replace("_"," ",$row["name"])."</a></li>\n";
+            }
+            echo '</ul>';
+            if($CurrentZone != "")
+                print "<br/><br/>";
+        }
 	}
 
 
@@ -80,29 +78,13 @@
 	 *    The faction actually exists
 	 */
 
-	$Title = "Faction :: ".$name;
-	$XhtmlCompliant = TRUE;
+	$Title = "Faction: ".$name." <a href='".$peqeditor_url."index.php?editor=faction&amp;fid=".$id."'><img src='".$images_url."/peq_faction.png' align='right'/></a>";
 	include($includes_dir.'headers.php');
+	echo "<strong>".$name."</strong> - id: " . $id;
 
-	print "          <center>\n";
-	print "            <table border='1' width='80%' style='background-color: black; filter:alpha(opacity=70); -moz-opacity:0.7; opacity: 0.7;'>\n";
-
-	// Title and Icon bar
-	print "              <tr valign='top' align='left'>\n";
-	print "                <td colspan='2' class='headerrow'>\n";
-	print "                  <a href='".$peqeditor_url."index.php?editor=faction&amp;fid=".$id."'><img src='".$images_url."/peq_faction.png' align='right'/></a>\n";
-	print "                  <b>".$name."</b>\n";
-	print "                  <br/>id : ".$id."\n";
-	print "                </td>\n";
-	print "              </tr>\n";
-	print "            </table>\n"; 
-
-	print "            <table border='0' width='80%' style='background-color: ; filter:alpha(opacity=70); -moz-opacity:0.7; opacity: 0.7;'>\n";
-	print "              <tr valign='top' align='left'>\n";
-
-	// NPCs raising the faction by killing them
-	print "                <td width='50%' nowrap='1' align='left'>\n";
-	print "                  <b>NPCs whom death raises the faction</b><br/><br/>\n";
+    echo '<div class="flex">';
+    echo '<div class="column">';
+	echo "<strong>NPCs whom death raises the faction</strong>";
 	$Query="SELECT $tbnpctypes.id,$tbnpctypes.name,$tbzones.long_name,$tbspawn2.zone
 			FROM $tbnpcfactionentries,$tbnpctypes,$tbspawnentry,$tbspawn2,$tbzones
 			WHERE $tbnpcfactionentries.faction_id=$id
@@ -116,12 +98,10 @@
 			";       
 	$QueryResult = mysql_query($Query) or message_die('faction.php','MYSQL_QUERY',$query,mysql_error());
 	PrintNpcsByZone($QueryResult);
-	print "                </td>\n";
+    echo '</div>';
 
-
-	// NPCs lowering the faction by killing them
-	print "                <td width='50%' nowrap='1' align='left'>\n";
-	print "                  <b>NPCs whom death lowers the faction</b><br/><br/>\n";
+	echo '<div class="column">';
+	echo "<strong>NPCs whom death lowers the faction</strong>";
 	$Query="SELECT $tbnpctypes.id,$tbnpctypes.name,$tbzones.long_name,$tbspawn2.zone
 			FROM $tbnpcfactionentries,$tbnpctypes,$tbspawnentry,$tbspawn2,$tbzones
 			WHERE $tbnpcfactionentries.faction_id=$id
@@ -135,11 +115,8 @@
 			";
 	$QueryResult = mysql_query($Query) or message_die('faction.php','MYSQL_QUERY',$query,mysql_error());
 	PrintNpcsByZone($QueryResult);
-	print "                </td>\n";
-
-	print "              </tr>\n";
-	print "            </table>\n";
-	print "          </center>\n";
+    echo '</div>';
+    echo '</div>';
 
 	include($includes_dir."footers.php");
 
