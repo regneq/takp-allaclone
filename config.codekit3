@@ -106309,6 +106309,13 @@
 		"oAP": "\/includes\/config.php",
 		"oF": 0
 		},
+	"\/includes\/config.template.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/includes\/config.template.php",
+		"oF": 0
+		},
 	"\/includes\/constantes.php": {
 		"cB": 0,
 		"ft": 8192,
