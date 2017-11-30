@@ -165,8 +165,6 @@
 	$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
     
-    echo "<div class='refine-search visible'><div class='hamburger'>☰</div></div>";
-    echo "<div class='search-wrapper visible'>";
 	echo "<form method='GET' action='".$PHP_SELF."'>";
 	echo "<input type='text' value=\"$iname\" size='30' name='iname' placeholder='Item Name' />";
 	echo "<div class='select-wrapper onethird'>";
@@ -268,7 +266,6 @@
 	echo "</div>";
     echo "<input type='submit' value='Search' name='isearch'/> <input type='reset' value='Reset' />";
 	echo "</form>";
-    echo "</div>";
 
 	// Print the query results if any
 	if(isset($QueryResult)) 

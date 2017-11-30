@@ -16,8 +16,7 @@
 	$irace = (isset($_GET['irace']) ? $_GET['irace'] : '');
 	if ($irace==0) { $irace=''; }
     
-    echo "<div class='refine-search visible'><div class='hamburger'>☰</div></div>";
-    echo "<div class='search-wrapper visible'>";
+    
 	print "<center><table border=0 width=0%><tr valign=top><td>";
 	print "<table border=0 width=0%>";
 	print "<form method=GET action=$PHP_SELF>";
@@ -75,8 +74,6 @@
 			print "<li>No npc found.";
 		}
 	}
-    
-    echo "</div>";
 
 	include($includes_dir."footers.php");
 ?>
