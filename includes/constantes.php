@@ -71,12 +71,11 @@ $dbclasses_names=array(
     "Wizard",
     "Magician",
     "Enchanter",
-    "Beastlord",
-    "Berserker"
+    "Beastlord"
 );
 
 $dbclasses=array();
-$dbclasses[0]="Warrior";
+$dbclasses[0]="Class Unknown";
 $dbclasses[1]="Warrior";
 $dbclasses[2]="Cleric";
 $dbclasses[3]="Paladin";
@@ -92,8 +91,6 @@ $dbclasses[12]="Wizard";
 $dbclasses[13]="Magician";
 $dbclasses[14]="Enchanter";
 $dbclasses[15]="Beastlord";
-$dbclasses[16]="Berserker";
-$dbclasses[17]="Banker";
 $dbclasses[20]="GM Warrior";
 $dbclasses[21]="GM Cleric";
 $dbclasses[22]="GM Paladin";
@@ -109,20 +106,11 @@ $dbclasses[31]="GM Wizard";
 $dbclasses[32]="GM Magician";
 $dbclasses[33]="GM Enchanter";
 $dbclasses[34]="GM Beastlord";
-$dbclasses[35]="GM Berserker";
 $dbclasses[40]="Banker";
 $dbclasses[41]="Shopkeeper";
 $dbclasses[59]="Discord Merchant";
-$dbclasses[60]="Adventure Recruiter";
-$dbclasses[61]="Adventure Merchant";
-$dbclasses[63]="Tribute Master";
-$dbclasses[64]="Guild Tribute Master";
-$dbclasses[66]="Guild Bank";
-$dbclasses[67]="Radiant Crystal Merchant";
-$dbclasses[68]="Ebon Crystal Merchant";
-$dbclasses[69]="Fellowships";
-$dbclasses[70]="Alternate Currency Merchant";
-$dbclasses[71]="Mercenary Merchant ";
+$dbclasses[62]="Corpse Class";
+
 
 // Slots
 $dbslots=array(); $dbslotsid=array();
@@ -151,11 +139,11 @@ $dbslots[16]="Ear";
 $dbslots[8]="Face";
 $dbslots[4]="Head";
 $dbslots[2]="Ear"; 
-$dbslots[1]="Charm"; 
+$dbslots[1]="Held"; 
 
 // ItemClasses 2^(class-1)
 $dbiclasses=array();
-$dbiclasses[65535]="ALL";
+$dbiclasses[32767]="ALL";
 $dbiclasses[16384]="BST";
 $dbiclasses[8192]="ENC";
 $dbiclasses[4096]="MAG";
@@ -174,7 +162,7 @@ $dbiclasses[1]="WAR";
 
 // races
 $dbraces=array();
-$dbraces[65535]="ALL";
+$dbraces[16383]="ALL";
 $dbraces[8192]="VAH";
 $dbraces[4096]="IKS";
 $dbraces[2048]="GNM";
@@ -490,9 +478,9 @@ $dbitypes[5]="Archery";
 $dbitypes[6]="Unknown";
 $dbitypes[7]="Throwing range items";
 $dbitypes[8]="Shield";
-$dbitypes[9]="Unknown";
+$dbitypes[9]="Scroll";
 $dbitypes[10]="Armor";
-$dbitypes[11]="Gems";
+$dbitypes[11]="Misc";
 $dbitypes[12]="Lockpicks";
 $dbitypes[13]="Unknown";
 $dbitypes[14]="Food";
@@ -501,9 +489,9 @@ $dbitypes[16]="Light";
 $dbitypes[17]="Combinable";
 $dbitypes[18]="Bandages";
 $dbitypes[19]="Throwing";
-$dbitypes[20]="Scroll";
+$dbitypes[20]="Spell";
 $dbitypes[21]="Potion";
-$dbitypes[22]="Unknown";
+$dbitypes[22]="Fletched Arrow";
 $dbitypes[23]="Wind Instrument";
 $dbitypes[24]="Stringed Instrument";
 $dbitypes[25]="Brass Instrument";
@@ -528,14 +516,6 @@ $dbitypes[43]="Unknown";
 $dbitypes[44]="Unknown";
 $dbitypes[45]="Martial";
 $dbitypes[46]="Unknown";
-$dbitypes[47]="Unknown";
-$dbitypes[48]="Unknown";
-$dbitypes[49]="Unknown";
-$dbitypes[50]="Unknown";
-$dbitypes[51]="Unknown";
-$dbitypes[52]="Charm";
-$dbitypes[53]="Unknown";
-$dbitypes[54]="Augmentation";
 
 $dbiaugrestrict[1]="Armor Only";
 $dbiaugrestrict[2]="Weapons Only";
@@ -688,6 +668,7 @@ $dbbodytypes=array(
   "Discord Mob"); //34
 $dbbodytypes[60]="No Target 2"; 
 $dbbodytypes[63]="Swarm pet"; 
+$dbbodytypes[66]="Invisible Man"; 
 $dbbodytypes[67]="Special"; 
 
 $dbbagtypes=array( 
