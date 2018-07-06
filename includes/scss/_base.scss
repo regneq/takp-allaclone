@@ -29,7 +29,7 @@ a {
 }
 
 .left-col {
-        
+
     margin-bottom: 10px;
     clear: both;
 
@@ -47,6 +47,7 @@ a {
     box-shadow: 0px 2px 5px #666;
     margin-bottom: 10px;
     clear: both;
+    overflow: hidden;
 
     @include mq('tablet') {
         float: right;
@@ -76,48 +77,48 @@ footer {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    
+
     h2 {
         margin-top: 0;
     }
-    
+
     .flex {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        
+
         .column {
             flex: 1 1 100%;
             text-align: center;
-            
+
             @include mq('tablet') {
                 flex: 1 1 50%;
             }
-            
+
             @include mq('desktop') {
                 flex: 1 1 33.3%;
             }
-            
+
             a.zone {
                 background: #333;
                 color: #fff;
             }
-            
+
             ul {
                 list-style-type: none;
                 padding: 0;
                 margin: 0;
-                
+
                 li {
                     &:nth-child(even) {
                         background: #eee;
                     }
                 }
-                
+
                 a {
                     display: block;
                     padding: 10px;
-                    
+
                     @include mq('desktop') {
                         margin-bottom: 0;
                     }
@@ -130,11 +131,11 @@ footer {
 .container {
     max-width: 960px;
     margin: 0 auto;
-    
+
     &.intro {
-        
+
         overflow: hidden;
-        
+
         img {
             width: 350px;
             height: auto;
