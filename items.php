@@ -249,7 +249,7 @@
 	echo SelectLevel("ireqlevel",$ServerMaxLevel,$ireqlevel);
 	echo "</div>";
 	echo "<div class='checkbox'>";
-	echo "<label for='inodrop'>Include No Drop</label>";
+	echo "<label class='text' for='inodrop'>Include No Drop</label>";
 	echo "<label class='checkbox'>";
 	echo "<input type='checkbox' name='inodrop'".($inodrop?" checked='checked'":"") . "/><span></span>";
 	echo "</label>";
@@ -283,7 +283,7 @@
 		{
 			$num_rows = LimitToUse($MaxItemsReturned);
 		}
-		echo "<center>";
+		echo "<div>";
 		if($num_rows == 0)
 		{
 			echo "<strong>No items found...</strong><br>";
@@ -296,9 +296,9 @@
 				$OutOf = " (Searches are limited to 100 Max Results)";
 			}
 			echo "<strong>" . $num_rows . " " . ($num_rows == 1 ? "item" : "items") . " displayed</strong>" . $OutOf . "<br>";
-			echo "</center>";
+			echo "</div>";
 
-			echo "<center><table border='$Tableborder' cellpadding='5' width='0%'>";
+			echo "<div class='search-item-list'><table border='$Tableborder' cellpadding='5' width='100%'>";
 			echo "<tr>
 					<th class='menuh'>Icon</th>
 					<th class='menuh'>Item Name</th>
@@ -357,7 +357,7 @@
 
 				print $TableData;
 			}
-			echo "</table></center>";
+			echo "</table></div>";
 		}
 	}
 
