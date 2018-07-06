@@ -5,15 +5,18 @@
                 <li>
                     <form name='fullsearch' method='GET' action='fullsearch.php'>
                     <input type='hidden' name='isearchtype' value='' />
-                    <input 
-                        onfocus="if(this.value == 'Search...') { this.value = ''; }"
+                    <input
+                        onfocus="if(this.value == 'Item...') { this.value = ''; }"
                         onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'name'; this.form.submit(); } else {return true;}"
                         type='text'
                         name='iname'
                         placeholder='Search...' />
+                    <div class="full-search">
+                        <a href="items.php">more</a>
+                    </div>
                     </form>
                 </li>
-                <li>
+                <!-- <li>
                     <form name='fullsearch' method='GET' action='fullsearch.php'>
                     <input type='hidden' name='isearchtype' value='' />
                     <input
@@ -23,7 +26,7 @@
                         name='iid'
                         placeholder='ID...' />
                     </form>
-                </li>
+                </li> -->
                 <li>
                     <form method='GET' action='spells.php'>
                     <input
@@ -32,6 +35,9 @@
                         type='text'
                         name='name'
                         placeholder='Spells...' />
+                    <div class="full-search">
+                        <a href="spells.php">more</a>
+                    </div>
                     </form>
                 </li>
                 <li>
@@ -42,6 +48,9 @@
                         type='text'
                         name='iname'
                         placeholder='Factions...' />
+                    <div class="full-search">
+                        <a href="factions.php">more</a>
+                    </div>
                     </form>
                 </li>
                 <li>
@@ -52,6 +61,9 @@
                         type='text'
                         name='iname'
                         placeholder='Recipes...' />
+                    <div class="full-search">
+                        <a href="recipes.php">more</a>
+                    </div>
                     <input type="hidden" name="isearch" value="Search" />
                     </form>
                 </li>

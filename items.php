@@ -165,7 +165,7 @@
 	$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
 
-	echo "<form method='GET' action='".$PHP_SELF."'>";
+	echo "<form class='item-refine' method='GET' action='".$PHP_SELF."'>";
 	echo "<input type='text' value=\"$iname\" name='iname' placeholder='Item Name' />";
 	echo "<div class='select-wrapper onethird'>";
     echo SelectIClass("iclass", $iclass);
