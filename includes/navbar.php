@@ -6,35 +6,38 @@
                     <form name='fullsearch' method='GET' action='fullsearch.php'>
                     <input type='hidden' name='isearchtype' value='' />
                     <input
+                        onfocus="if(this.value == 'All...') { this.value = ''; }"
+                        onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
+                        type='text'
+                        name='iid'
+                        placeholder='All...' />
+                    <div class="full-search">
+                        <a href="fullsearch.php">more</a>
+                    </div>
+                    </form>
+                </li>
+                <li>
+                    <form name='fullsearch' method='GET' action='fullsearch.php'>
+                    <input type='hidden' name='isearchtype' value='' />
+                    <input
                         onfocus="if(this.value == 'Item...') { this.value = ''; }"
                         onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'name'; this.form.submit(); } else {return true;}"
                         type='text'
                         name='iname'
-                        placeholder='Search...' />
+                        placeholder='Item...' />
                     <div class="full-search">
                         <a href="items.php">more</a>
                     </div>
                     </form>
                 </li>
-                <!-- <li>
-                    <form name='fullsearch' method='GET' action='fullsearch.php'>
-                    <input type='hidden' name='isearchtype' value='' />
-                    <input
-                        onfocus="if(this.value == 'ID...') { this.value = ''; }"
-                        onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
-                        type='text'
-                        name='iid'
-                        placeholder='ID...' />
-                    </form>
-                </li> -->
                 <li>
                     <form method='GET' action='spells.php'>
                     <input
-                        onfocus="if(this.value == 'Spells...') { this.value = ''; }"
+                        onfocus="if(this.value == 'Spell...') { this.value = ''; }"
                         onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
                         type='text'
                         name='name'
-                        placeholder='Spells...' />
+                        placeholder='Spell...' />
                     <div class="full-search">
                         <a href="spells.php">more</a>
                     </div>
@@ -43,11 +46,11 @@
                 <li>
                     <form method='GET' action='factions.php'>
                     <input
-                        onfocus="if(this.value == 'Factions...') { this.value = ''; }"
+                        onfocus="if(this.value == 'Faction...') { this.value = ''; }"
                         onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
                         type='text'
                         name='iname'
-                        placeholder='Factions...' />
+                        placeholder='Faction...' />
                     <div class="full-search">
                         <a href="factions.php">more</a>
                     </div>
@@ -56,11 +59,11 @@
                 <li>
                     <form method='GET' action='recipes.php'>
                     <input
-                        onfocus="if(this.value == 'Recipes...') { this.value = ''; }"
+                        onfocus="if(this.value == 'Recipe...') { this.value = ''; }"
                         onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
                         type='text'
                         name='iname'
-                        placeholder='Recipes...' />
+                        placeholder='Recipe...' />
                     <div class="full-search">
                         <a href="recipes.php">more</a>
                     </div>
