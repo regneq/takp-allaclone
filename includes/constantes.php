@@ -665,17 +665,12 @@ $dbbodytypes=array(
   "Unknown", //31
   "Dragon 3", //32
   "Boxes", //33
-  "Discord Mob"); //34
-<<<<<<< HEAD
-$dbbodytypes[60]="No Target 2";
-$dbbodytypes[63]="Swarm pet";
-$dbbodytypes[67]="Special";
-=======
+  "Discord Mob" ); //34
+
 $dbbodytypes[60]="No Target 2";
 $dbbodytypes[63]="Swarm pet";
 $dbbodytypes[66]="Invisible Man";
 $dbbodytypes[67]="Special";
->>>>>>> 4a2bc021284097a3969c28ab0271a5c68e20575b
 
 $dbbagtypes=array(
   9 =>"Alchemy",
