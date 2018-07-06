@@ -286,7 +286,7 @@
 		echo "<div>";
 		if($num_rows == 0)
 		{
-			echo "<strong>No items found...</strong><br>";
+			echo "<strong>No items found...</strong></div>";
 		}
 		else
 		{
