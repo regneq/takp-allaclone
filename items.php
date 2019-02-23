@@ -10,7 +10,7 @@
 	include($includes_dir.'mysql.php');
 	include($includes_dir.'functions.php');
 
-	
+
 	$isearch       = (isset($_GET[       'isearch']) ? $_GET[       'isearch'] : '');
 	$iname         = (isset($_GET[         'iname']) ? $_GET[         'iname'] : '');
 	$iclass        = (isset($_GET[        'iclass']) ? addslashes($_GET[        'iclass']) : '');
@@ -44,7 +44,7 @@
 	if($isearch != "")
 	{
 		$Query  = "SELECT $tbitems.* FROM ($tbitems";
-				
+
 		if ($DiscoveredItemsOnly==TRUE)
 		{
 			$Query .= ",discovered_items";
@@ -64,48 +64,48 @@
 			$Query.=" LEFT JOIN $tbspells AS worn_s ON worneffect=worn_s.id";
 			$Query.=" LEFT JOIN $tbspells AS focus_s ON focuseffect=focus_s.id";
 			$Query.=" LEFT JOIN $tbspells AS click_s ON clickeffect=click_s.id";
-			$Query.=" WHERE (proc_s.name LIKE '$effect' 
-				OR worn_s.name LIKE '$effect' 
-				OR focus_s.name LIKE '$effect' 
+			$Query.=" WHERE (proc_s.name LIKE '$effect'
+				OR worn_s.name LIKE '$effect'
+				OR focus_s.name LIKE '$effect'
 				OR click_s.name LIKE '$effect') ";
 			$s="AND";
-		}     
+		}
 		if(($istat1 != "") AND ($istat1value != ""))
 		{
 			if($istat1 == "ratio")
 			{
-				$Query .= " $s ($tbitems.delay/$tbitems.damage $istat1comp $istat1value) AND ($tbitems.damage>0)"; 
-				$s="AND"; 
+				$Query .= " $s ($tbitems.delay/$tbitems.damage $istat1comp $istat1value) AND ($tbitems.damage>0)";
+				$s="AND";
 			}
 			else
 			{
-				$Query .= " $s ($tbitems.$istat1 $istat1comp $istat1value)"; 
-				$s="AND"; 
+				$Query .= " $s ($tbitems.$istat1 $istat1comp $istat1value)";
+				$s="AND";
 			}
 		}
 		if(($istat2 != "") AND ($istat2value != ""))
 		{
 			if($istat2 == "ratio")
 			{
-				$Query .= " $s ($tbitems.delay/$tbitems.damage $istat2comp $istat2value) AND ($tbitems.damage>0)"; 
-				$s="AND"; 
+				$Query .= " $s ($tbitems.delay/$tbitems.damage $istat2comp $istat2value) AND ($tbitems.damage>0)";
+				$s="AND";
 			}
 			else
 			{
-				$Query .= " $s ($tbitems.$istat2 $istat2comp $istat2value)"; 
-				$s="AND"; 
+				$Query .= " $s ($tbitems.$istat2 $istat2comp $istat2value)";
+				$s="AND";
 			}
 		}
 		if(($imod != "") AND ($imodvalue != ""))
 		{
-			$Query .= " $s ($tbitems.$imod $imodcomp $imodvalue)"; 
-			$s="AND"; 
+			$Query .= " $s ($tbitems.$imod $imodcomp $imodvalue)";
+			$s="AND";
 		}
 		if($iavailability == 1) // mob dropped
 		{
 			$Query .= " $s $tblootdropentries.item_id=$tbitems.id
 				AND $tbloottableentries.lootdrop_id=$tblootdropentries.lootdrop_id
-				AND $tbloottableentries.loottable_id=$tbnpctypes.loottable_id"; 
+				AND $tbloottableentries.loottable_id=$tbnpctypes.loottable_id";
 			if($iavaillevel > 0)
 			{
 				$Query .= " AND $tbnpctypes.level<=$iavaillevel";
@@ -114,18 +114,18 @@
 		}
 		if($iavailability == 2) // merchant sold
 		{
-			$Query .= ",$tbmerchantlist $s $tbmerchantlist.item=$tbitems.id"; 
+			$Query .= ",$tbmerchantlist $s $tbmerchantlist.item=$tbitems.id";
 			$s="AND";
 		}
 		if ($DiscoveredItemsOnly==TRUE)
 		{
-			$Query .= " $s discovered_items.item_id=$tbitems.id"; 
-			$s="AND"; 
+			$Query .= " $s discovered_items.item_id=$tbitems.id";
+			$s="AND";
 		}
 		if($iname != "")
 		{
 			$name = addslashes(str_replace("_", "%", str_replace(" ","%",$iname)));
-			$Query .= " $s ($tbitems.Name like '%".$name."%')"; $s="AND"; 
+			$Query .= " $s ($tbitems.Name like '%".$name."%')"; $s="AND";
 		}
 		if($iclass > 0)    { $Query.=" $s ($tbitems.classes & $iclass) ";    $s="AND"; }
 		if($ideity > 0)    { $Query.=" $s ($tbitems.deity   & $ideity) ";    $s="AND"; }
@@ -164,9 +164,9 @@
 	$Title="Item Search";
 	$XhtmlCompliant = TRUE;
 	include($includes_dir.'headers.php');
-    
-	echo "<form method='GET' action='".$PHP_SELF."'>";
-	echo "<input type='text' value=\"$iname\" size='30' name='iname' placeholder='Item Name' />";
+
+	echo "<form class='item-refine' method='GET' action='".$PHP_SELF."'>";
+	echo "<input type='text' value=\"$iname\" name='iname' placeholder='Item Name' />";
 	echo "<div class='select-wrapper onethird'>";
     echo SelectIClass("iclass", $iclass);
     echo "</div>";
@@ -191,8 +191,8 @@
 	echo "</div>";
     echo "    <input type='text' size='4' name='istat1value' value='".$istat1value."' placeholder='0' />";
     echo "</div>";
-	
-    
+
+
     echo "<div class='form-stat-wrapper'>";
 	echo "<div class='select-wrapper'>";
 	echo SelectStats("istat2",$istat2);
@@ -208,7 +208,7 @@
     echo "    <input type='text' size='4' name='istat2value' value='".$istat2value."' placeholder='0' />";
     echo "</div>";
 
-    
+
     echo "<div class='form-stat-wrapper'>";
 	echo "<div class='select-wrapper'>";
 	echo SelectResists("iresists",$iresists);
@@ -224,8 +224,8 @@
     echo "    <input type='text' size='4' name='iresistsvalue' value='".$iresistsvalue."' placeholder='0' />";
     echo "</div>";
 
-	
-    
+
+
     echo "<div class='form-stat-wrapper'>";
 	echo "<div class='select-wrapper'>";
 	echo SelectModifiers("imod",$imod);
@@ -248,9 +248,13 @@
     echo "<div class='select-wrapper half'>";
 	echo SelectLevel("ireqlevel",$ServerMaxLevel,$ireqlevel);
 	echo "</div>";
-    echo "<input type='checkbox' name='inodrop'".($inodrop?" checked='checked'":"") . "/>";
-    echo "<label for='inodrop'></label>";
-	
+	echo "<div class='checkbox'>";
+	echo "<label class='text' for='inodrop'>Include No Drop</label>";
+	echo "<label class='checkbox'>";
+	echo "<input type='checkbox' name='inodrop'".($inodrop?" checked='checked'":"") . "/><span></span>";
+	echo "</label>";
+	echo "</div>";
+
     echo "<div class='select-wrapper'>";
     echo "    <select name='iavailability'>";
 	echo "      <option value='0' ".($iavailability==0?" selected='1'":"") . ">Availability</option>";
@@ -264,11 +268,11 @@
     echo "<div class='select-wrapper'>";
 	echo SelectDeity("ideity",$ideity);
 	echo "</div>";
-    echo "<input type='submit' value='Search' name='isearch'/> <input type='reset' value='Reset' />";
+    echo "<div><input type='submit' value='Search' name='isearch'/> <input type='reset' value='Reset' /></div>";
 	echo "</form>";
 
 	// Print the query results if any
-	if(isset($QueryResult)) 
+	if(isset($QueryResult))
 	{
 
 		$Tableborder = 0;
@@ -279,10 +283,10 @@
 		{
 			$num_rows = LimitToUse($MaxItemsReturned);
 		}
-		echo "<center>";
+		echo "<div>";
 		if($num_rows == 0)
 		{
-			echo "<strong>No items found...</strong><br>";
+			echo "<strong>No items found...</strong></div>";
 		}
 		else
 		{
@@ -292,9 +296,9 @@
 				$OutOf = " (Searches are limited to 100 Max Results)";
 			}
 			echo "<strong>" . $num_rows . " " . ($num_rows == 1 ? "item" : "items") . " displayed</strong>" . $OutOf . "<br>";
-			echo "</center>";
+			echo "</div>";
 
-			echo "<center><table border='$Tableborder' cellpadding='5' width='0%'>";
+			echo "<div class='search-item-list'><table border='$Tableborder' cellpadding='5' width='100%'>";
 			echo "<tr>
 					<th class='menuh'>Icon</th>
 					<th class='menuh'>Item Name</th>
@@ -313,18 +317,18 @@
 				$row = mysql_fetch_array($QueryResult);
 				$TableData .= "<tr valign='top' class='".$RowClass."'><td>";
 				if(file_exists(getcwd() . "/icons/item_" . $row["icon"] . ".gif"))
-				{ 
+				{
 					$TableData .= "<img src='" . $icons_url . "item_" . $row["icon"] . ".gif' align='left'/>";
 				}
 				else
 				{
-					$TableData .= "<img src='" . $icons_url . "item_.gif' align='left'/>"; 
+					$TableData .= "<img src='" . $icons_url . "item_.gif' align='left'/>";
 				}
 				$TableData .= "</td><td>";
 
-				
+
 				$TableData .= "<a href='item.php?id=" . $row["id"] . "' id='" . $row["id"] . "'>" . $row["Name"] . "</a>";
-				
+
 				$TableData .= "</td><td>";
 				$TableData .= $dbitypes[$row["itemtype"]];
 				$TableData .= "</td><td>";
@@ -337,11 +341,11 @@
 				$TableData .= $row["damage"];
 				$TableData .= "</td><td>";
 				$TableData .= $row["delay"];
-				
+
 				$TableData .= "</td><td>";
 				$TableData .= $row["id"];
 				$TableData .= "</td></tr>";
-				 
+
 				if ($RowClass == "lr")
 				{
 					$RowClass = "dr";
@@ -350,10 +354,10 @@
 				{
 					$RowClass = "lr";
 				}
-				
+
 				print $TableData;
 			}
-			echo "</table></center>";
+			echo "</table></div>";
 		}
 	}
 

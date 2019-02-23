@@ -61,7 +61,7 @@ $dbclasses_names=array(
     "Cleric",
     "Paladin",
     "Ranger",
-    "Shadowknight",
+    "Shadow Knight",
     "Druid",
     "Monk",
     "Bard",
@@ -80,7 +80,7 @@ $dbclasses[1]="Warrior";
 $dbclasses[2]="Cleric";
 $dbclasses[3]="Paladin";
 $dbclasses[4]="Ranger";
-$dbclasses[5]="Shadown Knight";
+$dbclasses[5]="Shadow Knight";
 $dbclasses[6]="Druid";
 $dbclasses[7]="Monk";
 $dbclasses[8]="Bard";
@@ -95,7 +95,7 @@ $dbclasses[20]="GM Warrior";
 $dbclasses[21]="GM Cleric";
 $dbclasses[22]="GM Paladin";
 $dbclasses[23]="GM Ranger";
-$dbclasses[24]="GM Shadown Knight";
+$dbclasses[24]="GM Shadow Knight";
 $dbclasses[25]="GM Druid";
 $dbclasses[26]="GM Monk";
 $dbclasses[27]="GM Bard";
@@ -114,32 +114,32 @@ $dbclasses[62]="Corpse Class";
 
 // Slots
 $dbslots=array(); $dbslotsid=array();
-$dbslots[4194304]="Ammo"; 
-$dbslots[2097152]="Power Source"; 
-$dbslots[1048576]="Waist"; 
-$dbslots[524288]="Feet"; 
-$dbslots[262144]="Legs"; 
-$dbslots[131072]="Chest"; 
+$dbslots[4194304]="Ammo";
+$dbslots[2097152]="Power Source";
+$dbslots[1048576]="Waist";
+$dbslots[524288]="Feet";
+$dbslots[262144]="Legs";
+$dbslots[131072]="Chest";
 $dbslots[98304]="Fingers";
-$dbslots[65536]="Finger"; 
-$dbslots[32768]="Finger"; 
-$dbslots[16384]="Secondary"; 
-$dbslots[8192]="Primary"; 
+$dbslots[65536]="Finger";
+$dbslots[32768]="Finger";
+$dbslots[16384]="Secondary";
+$dbslots[8192]="Primary";
 $dbslots[4096]="Hands";
-$dbslots[2048]="Range"; 
-$dbslots[1536]="Wrists"; 
-$dbslots[1024]="Wrist"; 
-$dbslots[512]="Wrist"; 
+$dbslots[2048]="Range";
+$dbslots[1536]="Wrists";
+$dbslots[1024]="Wrist";
+$dbslots[512]="Wrist";
 $dbslots[256]="Back";
 $dbslots[128]="Arms";
-$dbslots[64]="Shoulders"; 
+$dbslots[64]="Shoulders";
 $dbslots[32]="Neck";
-$dbslots[18]="Ears"; 
-$dbslots[16]="Ear"; 
+$dbslots[18]="Ears";
+$dbslots[16]="Ear";
 $dbslots[8]="Face";
 $dbslots[4]="Head";
-$dbslots[2]="Ear"; 
-$dbslots[1]="Held"; 
+$dbslots[2]="Ear";
+$dbslots[1]="Held";
 
 // ItemClasses 2^(class-1)
 $dbiclasses=array();
@@ -383,7 +383,7 @@ $dbspelleffects[142]='LimitMinLevel';
 $dbspelleffects[143]='Limit: Min Casting Time';
 $dbspelleffects[145]='Teleport v2';
 $dbspelleffects[147]='Increase Hitpoints';
-$dbspelleffects[148]='Block new spell'; 
+$dbspelleffects[148]='Block new spell';
 $dbspelleffects[149]='Stacking: Overwrite existing spell';
 $dbspelleffects[150]='Death Save - Restore Partial Health';
 $dbspelleffects[151]='Suspend Pet - Lose Buffs and Equipment';
@@ -421,13 +421,13 @@ $dbspelleffects[200]='Increase Proc Modifier';
 $dbspelleffects[201]='Increase Range Proc Modifier';
 $dbspelleffects[205]='Rampage';
 $dbspelleffects[206]='Area of Effect Taunt';
-$dbspelleffects[216]='Increase Accuracy'; 
+$dbspelleffects[216]='Increase Accuracy';
 $dbspelleffects[227]='Reduce Skill Timer';
 $dbspelleffects[254]='Blank';
 $dbspelleffects[266]='Increase Attack Chance';
-$dbspelleffects[273]='Increase Critical Dot Chance'; 
+$dbspelleffects[273]='Increase Critical Dot Chance';
 $dbspelleffects[289]='Improved Spell Effect: ';
-$dbspelleffects[294]='Increase Critial Spell Chance'; 
+$dbspelleffects[294]='Increase Critial Spell Chance';
 $dbspelleffects[299]='Wake the Dead';
 $dbspelleffects[311]='Limit: Combat Skills Not Allowed';
 $dbspelleffects[314]='Fixed Duration Invisbility (not documented on Lucy)';
@@ -537,7 +537,7 @@ $dbbardskills[26]="Percussions";
 $dbbardskills[51]="All instruments";
 
 // Taken from PEQ DB
-$dbpets=array(); 
+$dbpets=array();
 $dbpets["mag"]["earth"]=array(0,567,568,569,570,571,572,573,574,575,576,577,0,578,0,0,0,0,0,579,0,0,0,0,0,0,0,580,0,0,0,0,581);
 $dbpets["mag"]["air"]=  array(0,552,553,554,555,556,557,558,559,560,561,562,0,0,0,563,0,0,0,0,0,564,0,565,0,0,0,0,566);
 $dbpets["mag"]["water"]=array(0,599,600,601,602,603,604,605,606,607,608,609,0,0,0,0,610,0,0,0,0,0,611,0,612,0,0,0,0,613);
@@ -565,7 +565,7 @@ $NPCTypeArray=array(
 	'~' => 'Quest NPC',
 	'!' => 'Hidden',
 	'_' => 'Event Spawned'
-); 
+);
 
 // deities
 $dbdeities=array();
@@ -628,11 +628,11 @@ $dam2h=array( 0,14,14,14,14,14,14,14,14,14, // 0->9
               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 130->139
               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 140->149
             132); // 150
-            
+
 // Body types (bodytypes.h)
 $dbbodytypes=array(
   "Unknown", // 0
-  "Humanoid", // 1 
+  "Humanoid", // 1
   "Lycanthrope", // 2
   "Undead",  // 3
   "Giant", // 4
@@ -653,25 +653,26 @@ $dbbodytypes=array(
   "Zek", // 19
   "Unkownn", // 20
   "Animal", // 21
-  "Insect", // 22 
+  "Insect", // 22
   "Monster", // 23
   "Summoned", // 24
   "Plant", // 25
   "Dragon", // 26
   "Summoned 2", // 27
-  "Summoned 3", // 28 
+  "Summoned 3", // 28
   "Unknown", //29
   "Velious Dragon", //30
   "Unknown", //31
   "Dragon 3", //32
   "Boxes", //33
-  "Discord Mob"); //34
-$dbbodytypes[60]="No Target 2"; 
-$dbbodytypes[63]="Swarm pet"; 
-$dbbodytypes[66]="Invisible Man"; 
-$dbbodytypes[67]="Special"; 
+  "Discord Mob" ); //34
 
-$dbbagtypes=array( 
+$dbbodytypes[60]="No Target 2";
+$dbbodytypes[63]="Swarm pet";
+$dbbodytypes[66]="Invisible Man";
+$dbbodytypes[67]="Special";
+
+$dbbagtypes=array(
   9 =>"Alchemy",
   10=>"Tinkering",
   12=>"Poison making",

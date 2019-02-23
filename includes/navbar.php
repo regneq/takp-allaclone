@@ -3,57 +3,22 @@
         <li><a href="#" class="toggle">Search</a>
             <ul class="dropdown-menu">
                 <li>
-                    <form name='fullsearch' method='GET' action='fullsearch.php'>
-                    <input type='hidden' name='isearchtype' value='' />
-                    <input 
-                        onfocus="if(this.value == 'Search...') { this.value = ''; }"
-                        onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'name'; this.form.submit(); } else {return true;}"
-                        type='text'
-                        name='iname'
-                        placeholder='Search...' />
+                    <form name="fullsearch" method="GET" action="fullsearch.php">
+                    <input name="isearchtype" value="" type="hidden">
+                    <input onfocus="if(this.value == 'Search...') { this.value = ''; }" onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'name'; this.form.submit(); } else {return true;}" name="iname" placeholder="Search..." type="text">
                     </form>
                 </li>
                 <li>
-                    <form name='fullsearch' method='GET' action='fullsearch.php'>
-                    <input type='hidden' name='isearchtype' value='' />
-                    <input
-                        onfocus="if(this.value == 'ID...') { this.value = ''; }"
-                        onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
-                        type='text'
-                        name='iid'
-                        placeholder='ID...' />
-                    </form>
+                    <a href="items.php">Items</a>
                 </li>
                 <li>
-                    <form method='GET' action='spells.php'>
-                    <input
-                        onfocus="if(this.value == 'Spells...') { this.value = ''; }"
-                        onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
-                        type='text'
-                        name='name'
-                        placeholder='Spells...' />
-                    </form>
+                    <a href="spells.php">Spells</a>
                 </li>
                 <li>
-                    <form method='GET' action='factions.php'>
-                    <input
-                        onfocus="if(this.value == 'Factions...') { this.value = ''; }"
-                        onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
-                        type='text'
-                        name='iname'
-                        placeholder='Factions...' />
-                    </form>
+                    <a href="factions.php">Factions</a>
                 </li>
                 <li>
-                    <form method='GET' action='recipes.php'>
-                    <input
-                        onfocus="if(this.value == 'Recipes...') { this.value = ''; }"
-                        onkeypress="var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'id'; this.form.submit(); } else {return true;}"
-                        type='text'
-                        name='iname'
-                        placeholder='Recipes...' />
-                    <input type="hidden" name="isearch" value="Search" />
-                    </form>
+                    <a href="recipes.php">Recipes</a>
                 </li>
             </ul>
         </li>
